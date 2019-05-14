@@ -6,13 +6,12 @@ class GameAdd extends Component {
   state = {
     title: "",
     image: "",
-    alt: "",
-    body: "Opis gry",
+    desc: "Opis gry",
     follow: true
   };
 
   handleChange = (event) => {
-    this.setState({title: event.target.value})
+    this.setState({[event.target.name]: event.target.value})
   };
 
   handleSubmit = () => {
@@ -34,18 +33,13 @@ class GameAdd extends Component {
             type="file"
             placeholder="Przeglądaj..."
             name="image"
+            className="custom-file-input"
           />
-          <input
-            type="text"
-            name="alt"
-            placeholder="Tekst alternatywny obrazu"
-            value={this.state.alt}
-            onChange={this.handleChange}
-          />
+
           <textarea
-            name="body"
-            value={this.state.body}
-            cols="30"
+            name="desc"
+            value={this.state.desc}
+            onChange={this.handleChange}
             rows="10"
           />
           <button onClick={this.handleSubmit}>Dodaj</button>

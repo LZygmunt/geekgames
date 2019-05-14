@@ -1,7 +1,56 @@
-.show{
-    display: block;
+.modal {
+  position: fixed;
+  top: 0;
+  right: 0;
+  left: 0;
+  bottom: 0;
+  z-index: 999;
+  background: rgba(0, 0, 0, 0.33);
 }
-
-.hide{
-    display: none;
+.modal .modal-main {
+  max-width: 600px;
+  max-height: 600px;
+  margin: auto;
+  padding: 30px;
+  background: #2b2a2b;
 }
+.modal .modal-head {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 15px;
+}
+.modal .modal-body input[type="text"],
+.modal .modal-body input[type="date"],
+.modal .modal-body textarea {
+  background: #788fba;
+  color: #2b2a2b;
+  height: 35px;
+  width: calc(100% - 20px);
+  border-radius: 15px;
+  border-color: transparent;
+  padding: 0 10px;
+  margin-bottom: 10px;
+}
+.modal .modal-body textarea {
+  margin-top: 10px;
+  height: auto;
+  max-height: 300px;
+  max-width: 580px;
+  min-width: 580px;
+}
+.modal button {
+  background: #d45640;
+  color: #2b2a2b;
+  height: 35px;
+  width: 100%;
+  margin: 0 auto;
+  border-radius: 15px;
+  border-color: transparent;
+}
+.show {
+  display: block;
+}
+.hide {
+  display: none;
+}
+/*# sourceMappingURL=modal.css.map */
