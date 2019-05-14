@@ -1,0 +1,14 @@
+@import "../variables";
+@import "../functions";
+
+#sign-up{
+    width: 40%;
+    max-width: 500px;
+  input{
+    .standardInputExec(calc( 100% - 20px), @blue,@dark-gray, 15px, transparent, 0 10px );
+    margin-bottom: 30px;
+  }
+  button{
+    .standardButtonExec(100%, @red, @dark-gray, 15px, transparent);
+  }
+}
