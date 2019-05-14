@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"
+          integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+    <link rel="stylesheet" href="modal.css"/>
+</head>
+<body>
+
+<div id="profile-modal">
+    <div class="avatar">
+        <i class="far fa-user-circle"> </i>
+    </div>
+    <div class="edit-personal-data">
+        <div class="nick">
+            <p>Nick:</p>
+            <input type="text" name="nick"  value="User 1"/>
+            <div class="clear"></div>
+        </div>
+        <div class="email">
+            <p>E-mail:</p>
+            <input type="text" name="email" value="test@test.pl" />
+            <div class="clear"></div>
+        </div>
+        <div class="city">
+            <p>Miasto:</p>
+            <input type="text" name="city" value="Rzeszów"/>
+            <div class="clear"></div>
+        </div>
+        <div class="new-password">
+            <p>Nowe hasło:</p>
+            <input type="password" name="new-password" value="password"/>
+            <div class="clear"></div>
+        </div>
+        <div class="confirm-password">
+            <p>Powierdź hasło:</p>
+            <input type="password" name="confirm-password" value="password"/>
+            <div class="clear"></div>
+        </div>
+    </div>
+
+    <div class="clear"></div>
+    <div class="personal-description">
+        <p>Krótki opis:</p>
+        <textarea rows="12" cols="80" name="description" id="edit-description">Lorem ipsum dolor sit amet, consectetur adipisicing elit. A, assumenda commodi delectus eius eum nam pariatur quaerat qui, ratione sint suscipit voluptas! Adipisci, consequatur eos ex laudantium non tempore velit? Lorem ipsum dolor sit amet, consectetur adipisicing elit. A, assumenda commodi delectus eius eum nam pariatur quaerat qui, ratione sint suscipit voluptas! Adipisci, consequatur eos ex laudantium non tempore velit?</textarea>
+    </div>
+    <div class="edit-place">
+
+
+        <div class="colors">
+            <p>Kolory: </p>
+            <div class="first">
+                <div class="background"></div>
+                <div class="second-background"></div>
+                <div class="third-background"></div>
+                <div class="color-text"></div>
+                <div class="color-link"></div>
+            </div>
+            <div class="second">
+                <div class="background"></div>
+                <div class="second-background"></div>
+                <div class="third-background"></div>
+                <div class="color-text"></div>
+                <div class="color-link"></div>
+            </div>
+            <div class="third">
+                <div class="background"></div>
+                <div class="second-background"></div>
+                <div class="third-background"></div>
+                <div class="color-text"></div>
+                <div class="color-link"></div>
+            </div>
+        </div>
+        <div class="button">
+            <input type="button" value="Potwierdź" name="confirm" id="confirm-btn">
+        </div>
+        <div class="clear"></div>
+
+    </div>
+
+</div>
+</body>
+</html>

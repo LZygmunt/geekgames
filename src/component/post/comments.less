@@ -1,0 +1,42 @@
+@import "../variables";
+
+#comments {
+  width: 80%;
+  margin: 30px auto;
+  padding: 10px;
+
+.comment-add{
+  display: flex;
+  input{
+    width: calc(100% - 30px);
+    padding: 5px;
+    border-radius: 15px;
+    border: transparent;
+    background: @blue;
+    overflow:visible;
+  }
+  i{
+    font-size: 25px;
+    margin-left: 5px;
+
+    &:hover{
+      color: darken(@blue, 15%);
+      text-shadow: 1px 1px 5px darken(@blue, 25%);
+    }
+  }
+}
+
+  .comment-extend{
+    input{
+      width: 100%;
+      height: 34px;
+      border-radius: 15px;
+      background: @red;
+      border: transparent;
+      &:hover{
+        background:darken(@red, 15%) ;
+        box-shadow: 1px 1px 5px darken(@red, 25%);
+      }
+    }
+  }
+}

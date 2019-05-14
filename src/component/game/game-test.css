@@ -1,0 +1,36 @@
+
+
+
+.rate{
+    margin-right: 45px;
+    float: right;
+}
+
+img.game-photo{
+    width: 15%;
+    float: left;
+    margin-left: 60px;
+}
+.game-info{
+    float: right;
+    width: 70%;
+    margin-top: 3em;
+}
+.game-desc{
+    padding: 15px;
+}
+.game-desc p{
+    text-align: justify;
+}
+
+#slide-right{
+    width: 30%;
+    float: right;
+}
+#slide-left h1, #slide-left h2{
+    padding-left: 45px;
+}
+#content{
+    width: 70%;
+    float: right;
+}

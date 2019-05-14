@@ -1,0 +1,52 @@
+body{
+    margin:0;
+    background: #2b2a2b;
+    color: #788fba;
+}
+.clear{
+    clear: both;
+}
+.box-description{
+    width: 600px;
+    margin: 30px 10px;
+}
+
+.title-of-game, .rate-game{
+    color: #d45640;
+    display: inline-block;
+}
+.rate-game{
+    margin-right: 45px;
+    float: right;
+}
+
+img.photo-of-game{
+    width: 15%;
+    float: left;
+    margin-left: 60px;
+}
+.info-game{
+    float: right;
+    width: 70%;
+    margin-top: 3em;
+}
+.description{
+    padding: 15px;
+}
+.description p{
+    text-align: justify;
+}
+.post-box{
+    margin: 30px auto;
+}
+#slide-right{
+    width: 30%;
+    float: right;
+}
+#slide-left h1, #slide-left h2{
+    padding-left: 45px;
+}
+#content{
+    width: 70%;
+    float: right;
+}

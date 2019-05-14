@@ -1,0 +1,40 @@
+@import "../variables";
+.game-section{
+  width: 80%;
+  max-width: 800px;
+  .game-header{
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    .add-button{
+      height: 34px;
+      background: @red;
+      color:@dark-gray;
+      border: transparent;
+      border-radius: 15px;
+      i{
+        padding-right: 2px;
+      }
+    }
+  }
+  .game-search {
+    input {
+      width: 100%;
+      background: @blue;
+      color: @dark-gray;
+      border:transparent;
+      border-radius: 15px;
+      padding: 5px;
+    }
+  }
+
+  ul{
+    //padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+    li{
+      margin:5px;
+      flex: 1 1 240px;
+    }
+  }
+}

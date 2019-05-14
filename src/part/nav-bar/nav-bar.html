@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="nav-bar.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"
+          integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+</head>
+
+<body>
+
+<div id="nav-bar">
+    <div class="top-nav" >
+        <div class="logo-space">
+            <img src="../../images/logo.png" alt="GEEK GAMES LOGO">
+        </div>
+        <div class="menu-space">
+            <i id="tu" class="far fa-user-circle"> </i>
+        </div>
+    </div>
+    <div style="clear: both"></div>
+    <div id="dropdown-menu" class="hide-dropdown">
+    <div class="position-in-menu"></div>
+    <div class="position-in-menu">Profil</div>
+    <div class="position-in-menu">Gry</div>
+    <div class="position-in-menu">Wydarzenia</div>
+    <div class="position-in-menu">Wyloguj się</div>
+    </div>
+</div>
+<script>
+    document.getElementById("tu").onclick = function () {
+        element = document.getElementById("dropdown-menu");
+        if(element.className == "show-dropdown"){
+            console.log(element.className);
+            element.className="hide-dropdown";
+        }
+        else {
+            console.log(element.className);
+            element.className="show-dropdown";
+        }
+
+    }
+</script>
+</body>
+</html>

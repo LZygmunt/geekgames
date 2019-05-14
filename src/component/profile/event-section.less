@@ -1,0 +1,35 @@
+@import "../variables";
+.event-section {
+  width: 80%;
+  max-width: 800px;
+ul{padding: 0}
+    li {
+      display: flex;
+      justify-content: space-between;
+      padding: 3px;
+      &:nth-child(2n){
+        background-color:darken(@dark-gray, 3%);
+      }
+      span{
+        margin: 5px 0;
+        &:first-child{
+          width: 150px;
+        }
+        &:nth-child(2n){
+          max-width: 250px;
+          text-align: center;
+        }
+      }
+    }
+
+  .event-search {
+    input {
+      width: 100%;
+      background: @blue;
+      color: @dark-gray;
+      border:transparent;
+      border-radius: 15px;
+      padding: 5px;
+    }
+  }
+}

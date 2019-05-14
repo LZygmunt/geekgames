@@ -1,0 +1,33 @@
+.event-section {
+  width: 80%;
+  max-width: 800px;
+}
+.event-section ul {
+  padding: 0;
+}
+.event-section li {
+  display: flex;
+  justify-content: space-between;
+  padding: 3px;
+}
+.event-section li:nth-child(2n) {
+  background-color: #232223;
+}
+.event-section li span {
+  margin: 5px 0;
+}
+.event-section li span:first-child {
+  width: 150px;
+}
+.event-section li span:nth-child(2n) {
+  max-width: 250px;
+  text-align: center;
+}
+.event-section .event-search input {
+  width: 100%;
+  background: #788fba;
+  color: #2b2a2b;
+  border: transparent;
+  border-radius: 15px;
+  padding: 5px;
+}

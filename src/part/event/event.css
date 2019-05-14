@@ -1,0 +1,144 @@
+.event{
+    position: relative;
+max-width: 375px;
+}
+
+.box{
+    background: #4b4d42;
+    border: 1px solid transparent;
+    border-radius: 15px;
+    padding:5px;
+    color: #2b2a2b;
+    max-width: 530px;
+    position: relative;
+    left:41px;
+}
+.navigation-event{
+    position: relative;
+    top: 50%;
+    z-index: 2;
+}
+.navigation-event i{
+    font-size: 41px;
+}
+.fa-chevron-right{
+    position: absolute;
+    left:430px;
+}
+
+
+.event-box{
+    max-width: 300px;
+    background: #777a76;
+    border: 1px solid transparent;
+    border-radius: 15px;
+    padding: 15px 15px 25px;
+    margin: 15px;
+
+}
+a{
+    text-decoration: none;
+    font-weight: bold;
+    color: #2b2a2b;
+    font-size: 19px;
+}
+a:hover{
+   text-shadow: 0 0  15px #4b4d42;
+}
+
+i{
+    color: #d45640;
+}
+i:hover{
+    text-shadow: 0 0  15px #d45640;
+}
+input.join-button{
+    background: #d45640;
+    color: #2b2a2b;
+    width: 70%;
+    display: flex;
+    margin: 15px auto;
+}
+#description-of-event{
+    text-align: justify;
+    width: 80%;
+    min-width: 600px;
+    margin: 30px auto;
+}
+#content{
+    width: 65%;
+
+    float:left;
+}
+
+
+.joined h2{
+    text-align: center;
+}
+.joined > ul{
+    margin: 0 auto;
+    width: 30em;
+}
+
+.joined > ul li{
+    float: left;
+    width: 10em;
+}
+
+div.joined{
+    margin-bottom: 1em;
+}
+
+.image{
+    max-width: 1035px;
+    max-height: 300px;
+    width: 88%;
+    position: absolute;
+    top: 0;
+    right: 0;
+    height: inherit;
+}
+.image img{
+    margin: 0 auto;
+    height: 300px;
+    width: 1035px;
+}
+.background-image{
+    max-width: 1035px;
+    max-height: 300px;
+    width: 88%;
+    height: 300px;
+    background: rgba(33,33,33,0.7);
+    float: right;
+    margin: 0 auto;
+    position: relative;
+}
+#title-header{
+    float: right;
+    position: absolute;
+    top: calc(50% - 1em);
+    width: 1035px;
+    text-align: center;
+    right: 0;
+}
+#background-header{
+    position: relative;
+    margin-bottom: 60px;
+    top: 60px;
+    right: 103px;
+    height: 300px;
+}
+.info-event{
+    margin: 15px auto;
+    width: 79%;
+    display: flex;
+}
+h2#place, h2#game, h2#date {
+    float: left;
+    width: 150px;
+    margin: 15px auto;
+}
+#game a{
+    color: #d45640;
+    font-size: 24px;
+}

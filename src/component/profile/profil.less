@@ -1,0 +1,127 @@
+@import "../variables";
+
+#profile {
+  width: 80%;
+  max-width: 800px;
+
+  .short-info {
+    display: flex;
+    justify-content: space-evenly;
+
+    .avatar {
+
+      i {
+        font-size: 180px;
+        color: @red;
+      }
+    }
+
+    .personal-data {
+      width: 60%;
+
+      .nick, .email, .city {
+        display: flex;
+
+        & :first-child {
+          margin-right: 10px;
+        }
+      }
+
+    }
+  }
+  .personal-description {
+    text-align: justify;
+  }
+  .colors{
+    .background, .second-background, .third-background,.color-text, .color-link{
+      width: 15px;
+      height: 25px;
+      float: left;
+    }
+    .first, .second, .third{
+      float: left;
+      width: 75px;
+      height: 25px;
+      margin-left: 15px;
+      border:1px #788fba solid;
+    }
+    .first {
+      .background {
+        background: @dark-gray;
+      }
+
+      .second-background {
+        background: @dark-green;
+      }
+
+      .third-background {
+        background: @gray;
+      }
+
+      .color-text {
+        background: @blue;
+      }
+
+      .color-link {
+        background: @red;
+      }
+    }
+
+    .second {
+      .background {
+        background: #e2e9c0;
+      }
+
+      .second-background {
+        background: #4c514b;
+      }
+
+      .third-background {
+        background: #1d0f1c;
+      }
+
+      .color-text {
+        background: #a70020;
+      }
+
+      .color-link {
+        background: #7aa95b;
+      }
+    }
+
+    .third {
+      .background {
+        background: #2e350d;
+      }
+
+      .second-background {
+        background: #53611c;
+      }
+
+      .third-background {
+        background: #bd9151;
+      }
+
+      .color-text {
+        background: #f0c68f;
+      }
+
+      .color-link {
+        background: #7f5221;
+      }
+    }
+  }
+
+  .button{
+    clear: both;
+    padding: 15px 0;
+    input[type=button]{
+      background: @red;
+      border: transparent;
+      padding: 5px;
+      //height:  34px;
+      width: 100%;
+      border-radius: 15px;
+    }
+  }
+}

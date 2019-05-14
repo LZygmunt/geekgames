@@ -1,0 +1,102 @@
+#profile {
+  width: 80%;
+  max-width: 800px;
+}
+#profile .short-info {
+  display: flex;
+  justify-content: space-evenly;
+}
+#profile .short-info .avatar i {
+  font-size: 180px;
+  color: #d45640;
+}
+#profile .short-info .personal-data {
+  width: 60%;
+}
+#profile .short-info .personal-data .nick,
+#profile .short-info .personal-data .email,
+#profile .short-info .personal-data .city {
+  display: flex;
+}
+#profile .short-info .personal-data .nick :first-child,
+#profile .short-info .personal-data .email :first-child,
+#profile .short-info .personal-data .city :first-child {
+  margin-right: 10px;
+}
+#profile .personal-description {
+  text-align: justify;
+}
+#profile .colors .background,
+#profile .colors .second-background,
+#profile .colors .third-background,
+#profile .colors .color-text,
+#profile .colors .color-link {
+  width: 15px;
+  height: 25px;
+  float: left;
+}
+#profile .colors .first,
+#profile .colors .second,
+#profile .colors .third {
+  float: left;
+  width: 75px;
+  height: 25px;
+  margin-left: 15px;
+  border: 1px #788fba solid;
+}
+#profile .colors .first .background {
+  background: #2b2a2b;
+}
+#profile .colors .first .second-background {
+  background: #4b4d42;
+}
+#profile .colors .first .third-background {
+  background: #777a76;
+}
+#profile .colors .first .color-text {
+  background: #788fba;
+}
+#profile .colors .first .color-link {
+  background: #d45640;
+}
+#profile .colors .second .background {
+  background: #e2e9c0;
+}
+#profile .colors .second .second-background {
+  background: #4c514b;
+}
+#profile .colors .second .third-background {
+  background: #1d0f1c;
+}
+#profile .colors .second .color-text {
+  background: #a70020;
+}
+#profile .colors .second .color-link {
+  background: #7aa95b;
+}
+#profile .colors .third .background {
+  background: #2e350d;
+}
+#profile .colors .third .second-background {
+  background: #53611c;
+}
+#profile .colors .third .third-background {
+  background: #bd9151;
+}
+#profile .colors .third .color-text {
+  background: #f0c68f;
+}
+#profile .colors .third .color-link {
+  background: #7f5221;
+}
+#profile .button {
+  clear: both;
+  padding: 15px 0;
+}
+#profile .button input[type=button] {
+  background: #d45640;
+  border: transparent;
+  padding: 5px;
+  width: 100%;
+  border-radius: 15px;
+}

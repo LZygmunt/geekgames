@@ -1,0 +1,20 @@
+.comment {
+  width: 90%;
+  margin: 15px auto;
+  padding: 20px;
+  display: flex;
+  background: #383937;
+  border-radius: 15px;
+}
+.comment .comment-identification {
+  max-width: 100px;
+}
+.comment .comment-identification p {
+  text-align: center;
+}
+.comment .comment-identification img {
+  max-width: 80px;
+}
+.comment .comment-content {
+  margin: 1em;
+}

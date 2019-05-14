@@ -1,0 +1,35 @@
+.game-section {
+  width: 80%;
+  max-width: 800px;
+}
+.game-section .game-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+}
+.game-section .game-header .add-button {
+  height: 34px;
+  background: #d45640;
+  color: #2b2a2b;
+  border: transparent;
+  border-radius: 15px;
+}
+.game-section .game-header .add-button i {
+  padding-right: 2px;
+}
+.game-section .game-search input {
+  width: 100%;
+  background: #788fba;
+  color: #2b2a2b;
+  border: transparent;
+  border-radius: 15px;
+  padding: 5px;
+}
+.game-section ul {
+  display: flex;
+  flex-wrap: wrap;
+}
+.game-section ul li {
+  margin: 5px;
+  flex: 1 1 240px;
+}

@@ -1,0 +1,53 @@
+@import "../variables";
+
+
+#game{
+  width: 70%;
+
+  .game-property{
+    display: flex;
+    width: 85%;
+    margin: 0 auto;
+
+    img.game-photo {
+      width: 300px;
+    }
+
+    .game-info{
+      margin: auto;
+      display: flex;
+      width: 100%;
+      .title{
+        width: calc(100% - 170px);
+        margin: auto 10px;
+      }
+
+      button.follow-button{
+        width: 150px;
+        background: @blue;
+        border: transparent;
+        border-radius: 15px;
+        height: 40px;
+
+        i{
+          margin-right:5px;
+        }
+      }
+
+      button.remove-follow{
+        background: @red;
+        i{
+          transform: rotate(45deg);
+        }
+      }
+    }
+  }
+  .game-desc{
+    text-align: justify;
+    width: 85%;
+    min-width: 600px;
+    margin: 30px auto;
+  }
+
+
+}

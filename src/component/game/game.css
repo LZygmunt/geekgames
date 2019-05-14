@@ -1,0 +1,42 @@
+#game {
+  width: 70%;
+}
+#game .game-property {
+  display: flex;
+  width: 85%;
+  margin: 0 auto;
+}
+#game .game-property img.game-photo {
+  width: 300px;
+}
+#game .game-property .game-info {
+  margin: auto;
+  display: flex;
+  width: 100%;
+}
+#game .game-property .game-info .title {
+  width: calc(100% - 170px);
+  margin: auto 10px;
+}
+#game .game-property .game-info button.follow-button {
+  width: 150px;
+  background: #788fba;
+  border: transparent;
+  border-radius: 15px;
+  height: 40px;
+}
+#game .game-property .game-info button.follow-button i {
+  margin-right: 5px;
+}
+#game .game-property .game-info button.remove-follow {
+  background: #d45640;
+}
+#game .game-property .game-info button.remove-follow i {
+  transform: rotate(45deg);
+}
+#game .game-desc {
+  text-align: justify;
+  width: 85%;
+  min-width: 600px;
+  margin: 30px auto;
+}
