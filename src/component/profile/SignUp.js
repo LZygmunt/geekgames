@@ -1,5 +1,5 @@
 import React, { Component}  from 'react';
-// import { signUp } from "../../store/actions/authActions";
+import { signUp } from "../../store/actions/authActions";
 import { connect } from "react-redux";
 
 import "./sign-up.css"
@@ -11,7 +11,7 @@ class SignUp extends Component {
     email: "",
     password: "",
     passwordConfirm: "",
-    colorTheme: "default",
+    colorTheme: "first",
     city: "",
     avatar: ""
   };
@@ -101,14 +101,14 @@ class SignUp extends Component {
 
 const mapStateToProps = (state) => {
   return {
-    authError: state.auth.authError,
-    auth: state.firebase.auth
+    auth: state.firebase.auth,
+    authError: state.auth.authError
   }
 };
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    // signUp: (creds) => dispatch(signUp(creds))
+    signUp: (newUser) => dispatch(signUp(newUser))
   }
 };
 

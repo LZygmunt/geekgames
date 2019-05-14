@@ -3,7 +3,7 @@ import React, {Component} from "react";
 class PersonalDataSection extends Component {
   state = {
     isEdit: false,
-    theme: "first",
+    colorTheme: "first",
     nick: "User 1",
     email: "test@test.pl",
     city: "Rzeszów"
@@ -22,7 +22,6 @@ class PersonalDataSection extends Component {
         [e.dataset.switch]: (e.dataset.switch === "isEdit") ? !prevState.isEdit : e.parentElement.className
       }
     });
-    console.log(e.dataset, this.state);
   };
 
   render() {
@@ -74,26 +73,26 @@ class PersonalDataSection extends Component {
         <div className="edit-place">
           <div className="colors">
             <p>Kolory: </p>
-            <div className="first" onClick={this.handleClick} data-switch="theme">
-              <div className="background" data-switch="theme"/>
-              <div className="second-background" data-switch="theme"/>
-              <div className="third-background" data-switch="theme"/>
-              <div className="color-text" data-switch="theme"/>
-              <div className="color-link" data-switch="theme"/>
+            <div className="first" onClick={this.handleClick} data-switch="colorTheme">
+              <div className="background" data-switch="colorTheme"/>
+              <div className="second-background" data-switch="colorTheme"/>
+              <div className="third-background" data-switch="colorTheme"/>
+              <div className="color-text" data-switch="colorTheme"/>
+              <div className="color-link" data-switch="colorTheme"/>
             </div>
-            <div className="second" onClick={this.handleClick} data-switch="theme">
-              <div className="background" data-switch="theme"/>
-              <div className="second-background" data-switch="theme"/>
-              <div className="third-background" data-switch="theme"/>
-              <div className="color-text" data-switch="theme"/>
-              <div className="color-link" data-switch="theme"/>
+            <div className="second" onClick={this.handleClick} data-switch="colorTheme">
+              <div className="background" data-switch="colorTheme"/>
+              <div className="second-background" data-switch="colorTheme"/>
+              <div className="third-background" data-switch="colorTheme"/>
+              <div className="color-text" data-switch="colorTheme"/>
+              <div className="color-link" data-switch="colorTheme"/>
             </div>
-            <div className="third" onClick={this.handleClick} data-switch="theme">
-              <div className="background" data-switch="theme"/>
-              <div className="second-background" data-switch="theme"/>
-              <div className="third-background" data-switch="theme"/>
-              <div className="color-text" data-switch="theme"/>
-              <div className="color-link" data-switch="theme"/>
+            <div className="third" onClick={this.handleClick} data-switch="colorTheme">
+              <div className="background" data-switch="colorTheme"/>
+              <div className="second-background" data-switch="colorTheme"/>
+              <div className="third-background" data-switch="colorTheme"/>
+              <div className="color-text" data-switch="colorTheme"/>
+              <div className="color-link" data-switch="colorTheme"/>
             </div>
           </div>
           <div className="button" onClick={this.handleClick} data-switch="isEdit">
