@@ -100,3 +100,21 @@
   width: 100%;
   border-radius: 15px;
 }
+.registry {
+  display: flex;
+  justify-content: space-between;
+  width: 80%;
+  margin: 0 auto;
+}
+.registry #separator .up,
+.registry #separator .bottom {
+  height: 50%;
+  background: #788fba;
+  width: 3px;
+  margin: 0 auto;
+}
+.registry #separator img {
+  position: relative;
+  top: 2px;
+  width: 25px;
+}

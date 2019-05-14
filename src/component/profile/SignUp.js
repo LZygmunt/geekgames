@@ -1,5 +1,5 @@
 import React, { Component}  from 'react';
-import { signUp } from "../../store/actions/authActions";
+// import { signUp } from "../../store/actions/authActions";
 import { connect } from "react-redux";
 
 import "./sign-up.css"
@@ -108,7 +108,7 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    signUp: (creds) => dispatch(signUp(creds))
+    // signUp: (creds) => dispatch(signUp(creds))
   }
 };
 
