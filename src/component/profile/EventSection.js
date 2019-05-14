@@ -41,12 +41,6 @@ class EventSection extends Component {
         //TODO ściągnij dane
     }
 
-    toggleModal = (event) => {
-        this.setState({
-            show: event.target.name === "addEvent"
-        })
-    };
-
     render() {
         const eventList = this.state.events.map((item, index) => <li key={index}>
             <span>{item.title}</span>
@@ -57,6 +51,7 @@ class EventSection extends Component {
         return (
             <div className="event-section">
                 <div className="event-search">
+                    <h1>Obserwowane wydarzenia:</h1>
                     <input type="text" placeholder="Zacznij pisać, aby wyszukać wydarzenie" />
                 </div>
                 <ul>

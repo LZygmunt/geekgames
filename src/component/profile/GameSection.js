@@ -48,7 +48,7 @@ class GameSection extends Component {
 
   toggleModal = (event) => {
     this.setState({
-      show: event.target.name === "addGame"
+      show: event.target.dataset.name === "addGame"
     })
   };
 
@@ -58,11 +58,11 @@ class GameSection extends Component {
     return (
       <div className="game-section">
         <div className="game-header">
-          <h1>Wydarzenia w których bierzesz udział:</h1>
-          <button name="addGame"onClick={this.toggleModal}>
-            <i className="fas fa-plus"> </i>
-            <span>Dodaj grę</span>
-          </button>
+          <h1>Obserwowane gry:</h1>
+          <div data-name="addGame" onClick={this.toggleModal}>
+            <i className="fas fa-plus" data-name="addGame"> </i>
+            <span data-name="addGame">Dodaj grę</span>
+          </div>
         </div>
         <div className="game-search">
           <input type="text" placeholder="Zacznij pisać, aby wyszukać grę" />
