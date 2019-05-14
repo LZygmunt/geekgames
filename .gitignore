@@ -92,3 +92,4 @@ fabric.properties
 .idea
 geekgames.iml
 documentation
+config/fbConfig.js
