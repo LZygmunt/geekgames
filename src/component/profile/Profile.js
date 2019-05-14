@@ -8,11 +8,11 @@ import "./event-section.css"
 import "./games-section.css"
 
 const Profile = () => {
+  //todo zrobić szukajki
   return(
     <div style={{width:"70%"}}>
         <PersonalDataSection/>
         <EventSection />
-      <h1>Gry, które obserwujesz:</h1>
         <GameSection />
     </div>
   );

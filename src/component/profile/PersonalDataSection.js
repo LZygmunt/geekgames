@@ -1,81 +1,109 @@
-import React from "react";
+import React, {Component} from "react";
 
-const PersonalDataSection = () => {
+class PersonalDataSection extends Component {
+  state = {
+    isEdit: false,
+    theme: "first",
+    nick: "User 1",
+    email: "test@test.pl",
+    city: "Rzeszów"
+  };
 
-    const props ={
-        nick :"User 1",
-        email:"test@test.pl",
-        city:"Rzeszów",
-        desc:"Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet aperiam assumenda cum dicta dolore\n" +
-            "                    eveniet,\n" +
-            "                    excepturi, expedita impedit in incidunt ipsam mollitia, porro qui repellat reprehenderit sequi\n" +
-            "                    tempore vel\n" +
-            "                    vitae. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusantium aliquid amet, assumenda\n" +
-            "                    consequatur corporis cum cupiditate distinctio doloribus, eligendi, error libero nesciunt quasi quis\n" +
-            "                    repellat sapiente similique tempora totam vel?"
-    };
+  handleChange = (event) => {
+    this.setState({
+        [event.target.name]: [event.target.value]
+    })
+  };
 
-    return(
-        <div id="profile">
-           <h1>Witaj, {props.nick}!</h1>
-            <div className="short-info">
-            <div className="avatar">
-                <i className="far fa-user-circle"> </i>
+  handleClick = (event) => {
+    const e = event.target;
+    this.setState(prevState => {
+      return {
+        [e.dataset.switch]: (e.dataset.switch === "isEdit") ? !prevState.isEdit : e.parentElement.className
+      }
+    });
+    console.log(e.dataset, this.state);
+  };
+
+  render() {
+    const { nick, email, city, isEdit } = this.state;
+
+    return (
+      <div id="profile">
+        <h1>Witaj, {nick}!</h1>
+        <div className="short-info">
+          <div className="avatar">
+            <i className="far fa-user-circle"> </i>
+          </div>
+          <div className="personal-data">
+            <div className="nick">
+              <p>Nick:</p>
+              {isEdit ? <input
+                type="text"
+                name="nick"
+                placeholder="Podaj nick"
+                value={nick}
+                onChange={this.handleChange}
+              /> : <p>{nick}</p>}
             </div>
-            <div className="personal-data">
-                <div className="nick">
-                    <p>Nick:</p>
-                    <p>{props.nick}</p>
-                </div>
-                <div className="email">
-                    <p>E-mail:</p>
-                    <p>{props.email}</p>
-
-                </div>
-                <div className="city">
-                    <p>Miasto:</p>
-                    <p>{props.city}</p>
-
-                </div>
-            </div>
-            </div>
-
-            <div className="personal-description">
-                <p>Krótki opis:</p>
-                <p>{props.desc}</p>
-            </div>
-            <div className="edit-place">
-                <div className="colors">
-                    <p>Kolory: </p>
-                    <div className="first">
-                        <div className="background">&nbsp;</div>
-                        <div className="second-background"></div>
-                        <div className="third-background"></div>
-                        <div className="color-text">&nbsp;</div>
-                        <div className="color-link"></div>
-                    </div>
-                    <div className="second">
-                        <div className="background"></div>
-                        <div className="second-background"></div>
-                        <div className="third-background"></div>
-                        <div className="color-text"></div>
-                        <div className="color-link"></div>
-                    </div>
-                    <div className="third">
-                        <div className="background"></div>
-                        <div className="second-background"></div>
-                        <div className="third-background"></div>
-                        <div className="color-text"></div>
-                        <div className="color-link"></div>
-                    </div>
-                </div>
-                <div className="button">
-                    <input type="button" value="Edytuj dane" name="edit" id="edit-btn"/>
-                </div>
+            <div className="email">
+              <p>E-mail:</p>
+              {isEdit ? <input
+                type="email"
+                name="email"
+                placeholder="Podaj e-mail"
+                value={email}
+                onChange={this.handleChange}
+              /> : <p>{email}</p>}
 
             </div>
+            <div className="city">
+              <p>Miasto:</p>
+              {isEdit ? <input
+                type="text"
+                name="city"
+                placeholder="Podaj miasto"
+                value={city}
+                onChange={this.handleChange}
+              /> : <p>{city}</p>}
+
+            </div>
+          </div>
         </div>
+
+        <div className="edit-place">
+          <div className="colors">
+            <p>Kolory: </p>
+            <div className="first" onClick={this.handleClick} data-switch="theme">
+              <div className="background" data-switch="theme"/>
+              <div className="second-background" data-switch="theme"/>
+              <div className="third-background" data-switch="theme"/>
+              <div className="color-text" data-switch="theme"/>
+              <div className="color-link" data-switch="theme"/>
+            </div>
+            <div className="second" onClick={this.handleClick} data-switch="theme">
+              <div className="background" data-switch="theme"/>
+              <div className="second-background" data-switch="theme"/>
+              <div className="third-background" data-switch="theme"/>
+              <div className="color-text" data-switch="theme"/>
+              <div className="color-link" data-switch="theme"/>
+            </div>
+            <div className="third" onClick={this.handleClick} data-switch="theme">
+              <div className="background" data-switch="theme"/>
+              <div className="second-background" data-switch="theme"/>
+              <div className="third-background" data-switch="theme"/>
+              <div className="color-text" data-switch="theme"/>
+              <div className="color-link" data-switch="theme"/>
+            </div>
+          </div>
+          <div className="button" onClick={this.handleClick} data-switch="isEdit">
+            {isEdit ? "Potwierdź" : "Edytuj dane"}
+          </div>
+
+        </div>
+      </div>
     );
-};
+  }
+}
 
 export default PersonalDataSection;

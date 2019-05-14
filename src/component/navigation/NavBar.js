@@ -1,11 +1,12 @@
 import React, {Component} from "react";
+import MenuItemsData from "./MenuItemsData";
+import MenuItem from "./MenuItem";
+import GameAdd from "../game/GameAdd";
+import { Link } from "react-router-dom";
 
 import "./nav-bar.css";
 import "font-awesome/css/font-awesome.min.css";
 
-import MenuItemsData from "./MenuItemsData";
-import MenuItem from "./MenuItem";
-import GameAdd from "../game/GameAdd";
 
 class NavBar extends Component {
   state = {
@@ -50,13 +51,12 @@ class NavBar extends Component {
       <div id="nav-bar">
         <div className="top-nav">
           <div className="logo-space">
-            <img src={props.imgSrc} alt={props.altText}/>
+            <Link to="/"><img src={props.imgSrc} alt={props.altText}/></Link>
           </div>
           <div className="menu-space">
             <i onClick={this.handleClick} className="far fa-user-circle"/>
             <div id="dropdown-menu" className={"unselectable " + state.toggleMenu}>
               {MenuItems}
-
             </div>
           </div>
         </div>
