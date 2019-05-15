@@ -29,3 +29,23 @@
 #slide-event .event-mini a:hover {
   text-shadow: 0 0 15px #3c5176;
 }
+#slide-event .event-mini .info p {
+  display: flex;
+  justify-content: space-between;
+}
+.slide-button-without-bg {
+  overflow: hidden;
+}
+.slide-button-without-bg:hover span {
+  opacity: 1;
+  max-width: 200px;
+  transition: opacity 0.5s ease 0.3s;
+}
+.slide-button-without-bg span {
+  opacity: 0;
+  max-width: 0;
+}
+.slide-button-without-bg i {
+  margin-left: 5px;
+}
+/*# sourceMappingURL=event-mini.css.map */

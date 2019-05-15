@@ -1,7 +1,7 @@
 .standardInputExec(@width, @background, @color, @radius, @colorBorder, @padding){
-  background: @background;
+  background: lighten(@background, 5%);
   color: @color;
-  height: 35px;
+  min-height: 35px;
   width: @width;
   border-radius: @radius;
   border-color: @colorBorder;

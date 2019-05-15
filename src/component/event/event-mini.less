@@ -33,5 +33,28 @@
         text-shadow: 0 0 15px darken(@blue, 25%);
       }
     }
+
+    .info p{
+      display: flex;
+      justify-content: space-between;
+    }
+  }
+}
+
+
+.slide-button-without-bg{
+    overflow: hidden;
+  &:hover span{
+    opacity: 1;
+    max-width: 200px;
+    transition: opacity 0.5s ease 0.3s;
+  }
+  span{
+    opacity: 0;
+    max-width: 0;
+
+  }
+  i{
+    margin-left: 5px;
   }
 }

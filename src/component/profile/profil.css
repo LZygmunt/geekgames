@@ -89,17 +89,6 @@
 #profile .colors .third .color-link {
   background: #7f5221;
 }
-#profile .button {
-  clear: both;
-  padding: 15px 0;
-}
-#profile .button input[type=button] {
-  background: #d45640;
-  border: transparent;
-  padding: 5px;
-  width: 100%;
-  border-radius: 15px;
-}
 .registry {
   display: flex;
   justify-content: space-between;
@@ -118,3 +107,4 @@
   top: 2px;
   width: 25px;
 }
+/*# sourceMappingURL=profil.css.map */

@@ -22,9 +22,9 @@
 .modal .modal-body input[type="text"],
 .modal .modal-body input[type="date"],
 .modal .modal-body textarea {
-  background: #788fba;
+  background: #899dc3;
   color: #2b2a2b;
-  height: 35px;
+  min-height: 35px;
   width: calc(100% - 20px);
   border-radius: 15px;
   border-color: transparent;

@@ -2,22 +2,4 @@
   width: 40%;
   max-width: 500px;
 }
-#sign-up input {
-  background: #788fba;
-  color: #2b2a2b;
-  height: 35px;
-  width: calc(100% - 20px);
-  border-radius: 15px;
-  border-color: transparent;
-  padding: 0 10px;
-  margin-bottom: 30px;
-}
-#sign-up button {
-  background: #d45640;
-  color: #2b2a2b;
-  height: 35px;
-  width: 100%;
-  margin: 0 auto;
-  border-radius: 15px;
-  border-color: transparent;
-}
+/*# sourceMappingURL=sign-up.css.map */
