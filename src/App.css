@@ -20,3 +20,36 @@ a{
   display: flex;
   justify-content: space-between;
 }
+
+.slide-button {
+  overflow: hidden;
+  background: #d45640;
+  /*white-space: nowrap;*/
+  border-radius: 25px;
+  display: flex;
+  /*width: 250px;*/
+  align-items: baseline;
+  margin: 0 15px;
+  padding: 0 10px 0 13px;
+}
+.slide-button i {
+  color: #2b2a2b;
+  line-height: 1;
+  font-size: 20px;
+  margin: auto;
+}
+.slide-button span {
+  text-align: center;
+  line-height: 1;
+  opacity: 0;
+  color: #2b2a2b;
+  max-width: 0;
+  margin: auto;
+  padding-left: 3px;
+
+}
+.slide-button:hover span {
+  opacity: 1;
+  max-width: 250px ;
+  transition: max-width 1s ease-out 0.1s, opacity 0.1s ease-out 0.1s, color 0.2s;
+}

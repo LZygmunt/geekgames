@@ -55,11 +55,11 @@ class Game extends Component {
 
           <div className="game-info">
             <h1 className="title">{props.gameTitle}</h1>
-            <button className="follow-button ">
-              <i className="fas fa-plus"> </i>
+            <div className="follow-button slide-button">
+              <i className="fas fa-eye-slash"/> {/*<i className="fas fa-eye-slash"/>*/}
               <span>{props.follow ? "Nie obserwuj" : "Obserwuj"}</span>
-            </button>
-            <div className="add-button" data-name="add" onClick={this.toggleModal}>
+            </div>
+            <div className="add-button slide-button" data-name="add" onClick={this.toggleModal}>
               <i className="fas fa-plus" data-name="add"> </i>
               <span data-name="add"> Dodaj wydarzenie</span>
             </div>

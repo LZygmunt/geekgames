@@ -18,6 +18,7 @@
   font-size: 50px;
   top: 20px;
   width: 190px;
+  height: 90px;
 }
 .top-nav .menu-space i {
   font-size: 70px;
@@ -47,3 +48,4 @@
   top: -345px;
   z-index: -10;
 }
+/*# sourceMappingURL=nav-bar.css.map */
