@@ -4,21 +4,11 @@ import {connect} from "react-redux";
 class PersonalDataSection extends Component {
   state = {
     isEdit: false,
-    colorTheme: "first",
-    nick: "Tester",
-    email: "test@test.pl",
-    city: "Testowo"
+    colorTheme: "",
+    nick: "",
+    email: "",
+    city: ""
   };
-
-  componentDidMount() {
-    // this.setState({
-    //   isEdit: false,
-    //   colorTheme: this.props.profile.colorTheme,
-    //   nick: this.props.profile.nick,
-    //   email: this.props.auth.email,
-    //   city: this.props.profile.city
-    // })
-  }
 
   handleChange = (event) => {
     this.setState({
@@ -41,7 +31,7 @@ class PersonalDataSection extends Component {
     console.log("PDS -> ", this.state, this.props)
     return (
       <div id="profile">
-        <h1>Witaj, {nick}!</h1>
+        <h1>Witaj, {profile.nick}!</h1>
         <div className="short-info">
           <div className="avatar">
             <i className="far fa-user-circle"> </i>
@@ -55,7 +45,7 @@ class PersonalDataSection extends Component {
                 placeholder="Podaj nick"
                 value={nick}
                 onChange={this.handleChange}
-              /> : <p>{nick}</p>}
+              /> : <p>{profile.nick}</p>}
             </div>
             <div className="email">
               <p>E-mail:</p>
@@ -65,7 +55,7 @@ class PersonalDataSection extends Component {
                 placeholder="Podaj e-mail"
                 value={email}
                 onChange={this.handleChange}
-              /> : <p>{email}</p>}
+              /> : <p>{auth.email}</p>}
 
             </div>
             <div className="city">
@@ -76,7 +66,7 @@ class PersonalDataSection extends Component {
                 placeholder="Podaj miasto"
                 value={city}
                 onChange={this.handleChange}
-              /> : <p>{city}</p>}
+              /> : <p>{profile.city}</p>}
 
             </div>
           </div>

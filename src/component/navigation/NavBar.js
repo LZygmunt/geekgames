@@ -79,8 +79,7 @@ class NavBar extends Component {
 const mapStoreToProps = (state) => {
   // console.log(state);
   return {
-    auth: state.firebase.auth,
-    profile: state.firebase.profile
+    auth: state.firebase.auth
   }
 };
 

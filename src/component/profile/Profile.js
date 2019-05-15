@@ -33,7 +33,7 @@ const Profile = (props) => {
 };
 
 const mapStoreToProps = (state) => {
-  // console.log(state);
+  console.log(state);
   return {
     auth: state.firebase.auth,
     posts: state.firestore.ordered.post,

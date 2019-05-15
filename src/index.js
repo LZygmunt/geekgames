@@ -7,8 +7,8 @@ import { createStore, applyMiddleware, compose } from "redux";
 import {Provider} from "react-redux";
 import rootReducer from "./store/reducers/rootReducer";
 import thunk from "redux-thunk";
-import { getFirebase, reactReduxFirebase } from "react-redux-firebase";
 import { getFirestore, reduxFirestore } from "redux-firestore";
+import { getFirebase, reactReduxFirebase } from "react-redux-firebase";
 import fbConfig from "./config/fbConfig"
 
 const store = createStore(rootReducer, compose(
