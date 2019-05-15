@@ -17,7 +17,7 @@
   right: 15px;
   font-size: 50px;
   top: 20px;
-  width: 190px;
+  width: 220px;
   height: 90px;
 }
 .top-nav .menu-space i {
@@ -28,12 +28,13 @@
 .top-nav .menu-space #dropdown-menu {
   position: relative;
   transition: all ease-out 1s;
+  background: #2b2a2b;
+  transform: skewY(15deg);
 }
 .top-nav .menu-space #dropdown-menu .position-in-menu {
   background: #d45640;
   height: 35px;
   position: relative;
-  transform: skewY(15deg);
   margin-bottom: 15px;
   padding: 10px 0;
   text-align: center;
