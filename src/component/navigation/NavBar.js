@@ -4,10 +4,11 @@ import MenuItem from "./MenuItem";
 import GameAdd from "../game/GameAdd";
 import { Link } from "react-router-dom";
 import { connect } from "react-redux";
+import { signOut } from "../../store/actions/authActions";
+
 
 import "./nav-bar.css";
 import "font-awesome/css/font-awesome.min.css";
-import {signOut} from "../../store/actions/authActions";
 
 
 class NavBar extends Component {
@@ -23,12 +24,14 @@ class NavBar extends Component {
   }
 
   handleClick = (event) => {
+    if(event.target.dataset.name === "addGame") this.toggleModal(event);
+    if(event.target.dataset.name === "signOut") this.props.signOut();
     this.setState(prevState => {
       return {
-        toggleMenu: prevState.toggleMenu === "hide-dropdown" ? "show-dropdown" : "hide-dropdown",
-        // isLogged: event.target. !prevState.isLogged
+        toggleMenu: prevState.toggleMenu === "hide-dropdown" ? "show-dropdown" : "hide-dropdown"
       };
     });
+
   };
 
   toggleModal = (event) => {
@@ -37,20 +40,19 @@ class NavBar extends Component {
     })
   };
 
-
-
   render() {
     const props = this.props;
     const state = this.state;
+    console.log("NavBar -> ", props, state)
     const MenuItems = state.menuItems.map(
       item => {
-        if (item.button && state.isLogged)
+        if (item.button && !props.auth.isEmpty)
           return <div
             className="position-in-menu"
             key={item.id}
             data-name={item.buttonName}
-            onClick={(item.buttonName === "signOut") ? props.signOut: this.toggleModal}>{item.text}</div>;
-        else if (item.loggedIn === state.isLogged)
+            onClick={this.handleClick}>{item.text}</div>;
+        else if (item.loggedIn === !props.auth.isEmpty)
           return <MenuItem key={item.id} item={item}/>;
         return null
       });

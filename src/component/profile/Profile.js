@@ -14,7 +14,7 @@ import "./games-section.css";
 
 const Profile = (props) => {
   const { auth, game, post } = props;
-
+  console.log("Profile -> ",props)
   return (auth.uid) ?
     (<div style={{width:"70%"}}>
         <PersonalDataSection auth={auth}/>
@@ -36,7 +36,6 @@ const mapStoreToProps = (state) => {
   // console.log(state);
   return {
     auth: state.firebase.auth,
-    // auth: {uid: 1},
     posts: state.firestore.ordered.post,
     games: state.firestore.ordered.games
   }
