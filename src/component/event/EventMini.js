@@ -12,12 +12,22 @@ class EventMini extends Component {
     this.setState({isFollow: this.props.item.isFollow})
   }
 
-  followIt = () => {
+  followIt = (event) => {
     this.setState(prevState => {
       return{
         isFollow: !prevState.isFollow
       }
     });
+
+    // if ( event.target.childNodes[1].classList[1] === "fa-eye")
+    // event.target.childNodes[1].classList[1]="fa-eye-slash";
+    if(event.target.className==="fas fa-eye-slash")
+        event.target.className="fas fa-eye";
+    else
+        event.target.className="fas fa-eye-slash";
+    // else
+    // event.target.childNodes[1].classList[1]="fa-eye";
+
   };
 
   render() {
@@ -28,12 +38,14 @@ class EventMini extends Component {
       <div className="event-mini">
         <div className="info">
           <p>
+            <span>
             {props.dateOfEvent}
-            <span><i className="fas fa-cube"> </i></span>
+            <i className="fas fa-cube"> </i>
             {props.placeOfEvent}
-            <span onClick={this.followIt}>
-              <i className="fas fa-plus" data-name={"follow-" + props.id}> </i>
-              {isFollow && "Obserwujesz"}
+            </span>
+            <span className="slide-button-without-bg" onClick={this.followIt}>
+              <span>{(isFollow)? "Obserwujesz" : "Obserwuj"}</span>
+              <i className="fas fa-eye" data-name={"follow-" + props.id}> </i>
             </span>
           </p>
         </div>

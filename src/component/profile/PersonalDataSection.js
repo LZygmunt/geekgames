@@ -107,7 +107,8 @@ class PersonalDataSection extends Component {
               <div className="color-link" data-switch="colorTheme"/>
             </div>
           </div>
-          <div className="button" onClick={this.handleClick} data-switch="isEdit">
+
+          <div className="button" onClick={this.handleClick} data-switch="isEdit" style={{clear: "both",lineHeight: "2",marginTop: "60px"}}>
             {isEdit ? "Potwierdź" : "Edytuj dane"}
           </div>
 
