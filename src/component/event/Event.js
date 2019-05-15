@@ -1,5 +1,7 @@
 import React, { Component } from "react";
 import "./style.css";
+import { Redirect } from "react-router-dom";
+import {connect} from "react-redux";
 
 class Event extends Component{
 
@@ -21,8 +23,11 @@ class Event extends Component{
             " quisquam sed. Accusamus corporis, doloremque dolores illo magnam maxime minima, nihil nostrum odit " +
             "quidem quod rerum saepe, voluptates voluptatibus!"
         };
-        return(
-            <div id="event-content">
+
+        const { auth, post } = this.props;
+
+        return (auth.uid) ?
+          (<div id="event-content">
                 <div id="background-header">
                     <div className="image">
                         <img src="../../images/photo1.jpg" alt="bg"/>
@@ -55,9 +60,18 @@ class Event extends Component{
                     </ul>
                 </div>
 
-            </div>
-        );
+            </div>) :
+          (<Redirect to="/"/>);
     }
 }
 
-export default Event;
+const mapStateToProps = (state) => {
+  // console.log(state);
+  return {
+    auth: state.firebase.auth,
+    // auth: {uid: 1},
+    posts: state.firestore.ordered.post
+  }
+};
+
+export default connect(mapStateToProps)(Event);

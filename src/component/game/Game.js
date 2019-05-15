@@ -4,6 +4,8 @@ import "./game.css"
 import PostContainer from "../post/PostContainer";
 import logo from "./../../images/logo-geek-games.png";
 import EventAdd from "../event/EventAdd";
+import {connect} from "react-redux";
+import { Redirect } from "react-router-dom";
 
 class Game extends Component {
 
@@ -13,7 +15,7 @@ class Game extends Component {
 
   toggleModal = (event) => {
     this.setState({
-      show: event.target.name === "add"
+      show: event.target.dataset.name === "add"
     })
   };
 
@@ -40,8 +42,10 @@ class Game extends Component {
         "                repellat!"
     };
 
-    return (
-      <div id="game">
+    const { auth, games } = this.props;
+
+    return (auth.uid) ?
+      (<div id="game">
         <div className="game-property">
           <img
             className="game-photo"
@@ -55,10 +59,10 @@ class Game extends Component {
               <i className="fas fa-plus"> </i>
               <span>{props.follow ? "Nie obserwuj" : "Obserwuj"}</span>
             </button>
-            <button className="add-button" name="add" onClick={this.toggleModal}>
-              <i className="fas fa-plus"> </i>
-              <span> Dodaj wydarzenie</span>
-            </button>
+            <div className="add-button" data-name="add" onClick={this.toggleModal}>
+              <i className="fas fa-plus" data-name="add"> </i>
+              <span data-name="add"> Dodaj wydarzenie</span>
+            </div>
           </div>
         </div>
         <div className="game-desc">
@@ -66,9 +70,18 @@ class Game extends Component {
         </div>
         <PostContainer/>
         <EventAdd show={this.state.show} handleClose={this.toggleModal}/>
-      </div>
-    );
+      </div>) :
+      (<Redirect to="/"/>);
   }
 }
 
-export default Game;
+const mapStateToProps = (state) => {
+  // console.log(state);
+  return {
+    auth: state.firebase.auth,
+    // auth: {uid: 1},
+    games: state.firestore.ordered.games
+  }
+};
+
+export default connect(mapStateToProps)(Game);

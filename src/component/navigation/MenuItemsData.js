@@ -30,8 +30,8 @@ const MenuItemsData = [
     {
         id: 4,
         text: "Wyloguj się",
-        page: "",
-        button: false,
+        buttonName: "signOut",
+        button: true,
         loggedIn: true
     },
     {

@@ -26,10 +26,11 @@ class PersonalDataSection extends Component {
 
   render() {
     const { nick, email, city, isEdit } = this.state;
-
+    const { auth } = this.props;
+console.log(auth)
     return (
       <div id="profile">
-        <h1>Witaj, {nick}!</h1>
+        <h1>Witaj, {auth.uid}!</h1>
         <div className="short-info">
           <div className="avatar">
             <i className="far fa-user-circle"> </i>

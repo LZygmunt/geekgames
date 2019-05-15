@@ -17,7 +17,7 @@ const Profile = (props) => {
 
   return (auth.uid) ?
     (<div style={{width:"70%"}}>
-        <PersonalDataSection/>
+        <PersonalDataSection auth={auth}/>
         <EventSection event={post}/>
         <GameSection game={game}/>
     </div>):
@@ -33,9 +33,10 @@ const Profile = (props) => {
 };
 
 const mapStoreToProps = (state) => {
-  console.log(state);
+  // console.log(state);
   return {
     auth: state.firebase.auth,
+    // auth: {uid: 1},
     posts: state.firestore.ordered.post,
     games: state.firestore.ordered.games
   }
