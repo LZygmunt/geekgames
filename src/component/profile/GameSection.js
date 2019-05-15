@@ -59,7 +59,7 @@ class GameSection extends Component {
       <div className="game-section">
         <div className="game-header">
           <h1>Obserwowane gry:</h1>
-          <div className="slide-button" data-name="addGame" onClick={this.toggleModal} style={{whiteSpace: "nowrap"}}>
+          <div className="slide-button" data-name="addGame" onClick={this.toggleModal} style={{whiteSpace: "nowrap",padding: "5px 10px"}}>
             <i className="fas fa-plus" data-name="addGame"> </i>
             <span data-name="addGame">Dodaj grę</span>
           </div>

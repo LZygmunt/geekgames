@@ -6,14 +6,6 @@
 #comments .comment-add {
   display: flex;
 }
-#comments .comment-add input {
-  width: calc(100% - 30px);
-  padding: 5px;
-  border-radius: 15px;
-  border: transparent;
-  background: #788fba;
-  overflow: visible;
-}
 #comments .comment-add i {
   font-size: 25px;
   margin-left: 5px;
@@ -33,3 +25,4 @@
   background: #a33725;
   box-shadow: 1px 1px 5px #79291b;
 }
+/*# sourceMappingURL=comments.css.map */

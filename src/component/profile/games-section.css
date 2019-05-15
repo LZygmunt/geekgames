@@ -7,14 +7,6 @@
   justify-content: space-between;
   align-items: baseline;
 }
-.game-section .game-search input {
-  width: 100%;
-  background: #788fba;
-  color: #2b2a2b;
-  border: transparent;
-  border-radius: 15px;
-  padding: 5px;
-}
 .game-section ul {
   display: flex;
   flex-wrap: wrap;

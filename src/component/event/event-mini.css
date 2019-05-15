@@ -19,6 +19,7 @@
 }
 #slide-event .event-mini i {
   color: #d45640;
+  padding: 0 5px;
 }
 #slide-event .event-mini a {
   text-decoration: none;

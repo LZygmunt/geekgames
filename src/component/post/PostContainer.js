@@ -52,7 +52,7 @@ class PostContainer extends Component{
                     </div>
 
                     <div className="comment-extend">
-                        <input type="button" value="Więcej komentarzy..."/>
+                        <div className="button" >Więcej komentarzy...</div>
                     </div>
                 </div>
             </div>

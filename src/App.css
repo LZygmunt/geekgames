@@ -32,6 +32,10 @@ button,
   border-color: transparent;
   text-align: center;
 }
+.button {
+  line-height: 2;
+  text-align: center;
+}
 a {
   text-decoration: none;
   color: inherit;
@@ -71,5 +75,8 @@ a {
   opacity: 1;
   max-width: 250px;
   transition: max-width 1s ease-out 0.1s, opacity 0.1s ease-out 0.1s, color 0.2s;
+}
+input[type="file"] {
+  background: transparent;
 }
 /*# sourceMappingURL=App.css.map */
