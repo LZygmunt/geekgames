@@ -79,7 +79,6 @@ const mapStateToProps = (state) => {
   // console.log(state);
   return {
     auth: state.firebase.auth,
-    // auth: {uid: 1},
     games: state.firestore.ordered.games
   }
 };

@@ -1,13 +1,24 @@
 import React, {Component} from "react";
+import {connect} from "react-redux";
 
 class PersonalDataSection extends Component {
   state = {
     isEdit: false,
     colorTheme: "first",
-    nick: "User 1",
+    nick: "Tester",
     email: "test@test.pl",
-    city: "Rzeszów"
+    city: "Testowo"
   };
+
+  componentDidMount() {
+    // this.setState({
+    //   isEdit: false,
+    //   colorTheme: this.props.profile.colorTheme,
+    //   nick: this.props.profile.nick,
+    //   email: this.props.auth.email,
+    //   city: this.props.profile.city
+    // })
+  }
 
   handleChange = (event) => {
     this.setState({
@@ -26,11 +37,11 @@ class PersonalDataSection extends Component {
 
   render() {
     const { nick, email, city, isEdit } = this.state;
-    const { auth } = this.props;
-console.log(auth)
+    const { auth, profile } = this.props;
+    console.log("PDS -> ", this.state, this.props)
     return (
       <div id="profile">
-        <h1>Witaj, {auth.uid}!</h1>
+        <h1>Witaj, {nick}!</h1>
         <div className="short-info">
           <div className="avatar">
             <i className="far fa-user-circle"> </i>
@@ -106,4 +117,10 @@ console.log(auth)
   }
 }
 
-export default PersonalDataSection;
+const mapStateToProps = (state) => {
+  return {
+    profile: state.firebase.profile
+  }
+};
+
+export default connect(mapStateToProps)(PersonalDataSection);
