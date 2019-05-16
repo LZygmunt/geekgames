@@ -23,15 +23,12 @@ class NavBar extends Component {
     // console.log("state: ", this.state, " props ", this.props)
   }
 
-  handleClick = (event) => {
-    if(event.target.dataset.name === "addGame") this.toggleModal(event);
-    if(event.target.dataset.name === "signOut") this.props.signOut();
+  handleClick = () => {
     this.setState(prevState => {
       return {
         toggleMenu: prevState.toggleMenu === "hide-dropdown" ? "show-dropdown" : "hide-dropdown"
       };
     });
-
   };
 
   toggleModal = (event) => {
@@ -39,11 +36,11 @@ class NavBar extends Component {
       show: event.target.dataset.name === "addGame"
     })
   };
-
+  //TODO ustawić navbar na fixed
   render() {
     const props = this.props;
     const state = this.state;
-    console.log("NavBar -> ", props, state)
+    // console.log("NavBar -> ", props, state)
     const MenuItems = state.menuItems.map(
       item => {
         if (item.button && !props.auth.isEmpty)
@@ -51,7 +48,7 @@ class NavBar extends Component {
             className="position-in-menu"
             key={item.id}
             data-name={item.buttonName}
-            onClick={this.handleClick}>{item.text}</div>;
+            onClick={(item.buttonName === "addGame") ? this.toggleModal : this.props.signOut}>{item.text}</div>;
         else if (item.loggedIn === !props.auth.isEmpty)
           return <MenuItem key={item.id} item={item}/>;
         return null
@@ -65,7 +62,7 @@ class NavBar extends Component {
           </div>
           <div className="menu-space">
             <i onClick={this.handleClick} className="far fa-user-circle"/>
-            <div id="dropdown-menu" className={"unselectable " + state.toggleMenu}>
+            <div id="dropdown-menu" className={"unselectable " + state.toggleMenu} onClick={this.handleClick}>
               {MenuItems}
             </div>
           </div>
@@ -76,8 +73,8 @@ class NavBar extends Component {
   }
 }
 
-const mapStoreToProps = (state) => {
-  // console.log(state);
+const mapStateToProps = (state) => {
+  // console.log("Navbar log -> ",state);
   return {
     auth: state.firebase.auth
   }
@@ -89,4 +86,4 @@ const mapDispatchToProps = (dispatch) => {
   };
 };
 
-export default connect(mapStoreToProps, mapDispatchToProps)(NavBar);
+export default connect(mapStateToProps, mapDispatchToProps)(NavBar);

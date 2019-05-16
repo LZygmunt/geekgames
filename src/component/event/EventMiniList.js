@@ -1,5 +1,5 @@
 import React from "react";
-import { EventMini } from "./index";
+import { EventMini } from "./";
 import { connect } from "react-redux";
 
 const EventMiniList = (props) => {
@@ -41,7 +41,7 @@ const EventMiniList = (props) => {
   ];
 
   const eventList = data.map(item => <EventMini key={item.id} item={item}/>);
-
+  //todo ustawić mini event na fixed
   return (auth.uid) ?
     (<div id="slide-event">
       { eventList }
@@ -49,7 +49,7 @@ const EventMiniList = (props) => {
 };
 
 const mapStateToProps = (state) => {
-  // console.log(state);
+  // console.log("EventMiniList log -> ",state);
   return {
     auth: state.firebase.auth,
     // auth: {uid: 1},

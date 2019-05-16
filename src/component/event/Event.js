@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import "./style.css";
 import { Redirect } from "react-router-dom";
-import {connect} from "react-redux";
+import { connect } from "react-redux";
 
 class Event extends Component{
 
@@ -66,7 +66,7 @@ class Event extends Component{
 }
 
 const mapStateToProps = (state) => {
-  // console.log(state);
+  // console.log("Event log -> ",state);
   return {
     auth: state.firebase.auth,
     // auth: {uid: 1},

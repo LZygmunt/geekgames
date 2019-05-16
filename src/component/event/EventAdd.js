@@ -11,7 +11,7 @@ class EventAdd extends Component {
   };
 
   componentDidMount() {
-    console.log("this my date: " + this.state.date)
+    // console.log("this my date: " + this.state.date)
   }
 
   handleChange = (event) => {
@@ -51,12 +51,14 @@ class EventAdd extends Component {
             type="date"
             name="date"
             value={this.state.date}
+            onChange={this.handleChange}
           />
           <textarea
             name="body"
             value={this.state.body}
             cols="30"
             rows="10"
+            onChange={this.handleChange}
           />
           <button onClick={this.handleSubmit}>Dodaj</button>
         </form>
