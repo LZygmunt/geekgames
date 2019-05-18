@@ -23,20 +23,14 @@
     margin-bottom: 15px;
   }
   .modal-body{
-    input[type="text"],input[type="date"], textarea{
-      .standardInputExec(calc( 100% - 20px), @blue,@dark-gray, 15px, transparent, 0 10px );
-      margin-bottom: 10px;
-    }
     textarea{
+      .standardInputExec(calc( 100% - 20px), @dark-gray,@blue, 15px, transparent, 0 10px );
       margin-top: 10px;
       height: auto;
       max-height: 300px;
       max-width: 580px;
       min-width: 580px;
     }
-  }
-  button{
-    .standardButtonExec(100%, @red, @dark-gray, 15px, transparent);
   }
 }
 .show{

@@ -79,4 +79,10 @@ a {
 input[type="file"] {
   background: transparent;
 }
+.show {
+  display: block;
+}
+.hide {
+  display: none;
+}
 /*# sourceMappingURL=App.css.map */

@@ -19,38 +19,18 @@
   justify-content: space-between;
   margin-bottom: 15px;
 }
-.modal .modal-body input[type="text"],
-.modal .modal-body input[type="date"],
 .modal .modal-body textarea {
-  background: #899dc3;
-  color: #2b2a2b;
+  background: #383738;
+  color: #788fba;
   min-height: 35px;
   width: calc(100% - 20px);
   border-radius: 15px;
   border-color: transparent;
   padding: 0 10px;
-  margin-bottom: 10px;
-}
-.modal .modal-body textarea {
   margin-top: 10px;
   height: auto;
   max-height: 300px;
   max-width: 580px;
   min-width: 580px;
-}
-.modal button {
-  background: #d45640;
-  color: #2b2a2b;
-  height: 35px;
-  width: 100%;
-  margin: 0 auto;
-  border-radius: 15px;
-  border-color: transparent;
-}
-.show {
-  display: block;
-}
-.hide {
-  display: none;
 }
 /*# sourceMappingURL=modal.css.map */
