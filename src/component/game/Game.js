@@ -1,4 +1,4 @@
-import React, {Component} from "react";
+import React, { Component } from "react";
 import { PostContainer, PostAdd } from "../post";
 import logo from "./../../images/logo-geek-games.png";
 import { EventAdd } from "../event";
@@ -14,75 +14,62 @@ class Game extends Component {
     imgUrl: logo,
   };
 
-  toggleModal = (event) => {
+  toggleModal = event => {
     this.setState({
       show: event.target.dataset.name === "add"
     })
   };
 
   render() {
-    const { auth, game } = this.props;
+    const { auth } = this.props;
+    const game = this.props.game && this.props.game[this.props.match.params.id];
     const followers = { follow: false };
 
-    // console.log(this.props.post)
-
-    const p = {
-      gameTitle: game ? game.title: "",
-      gameId: this.props.match.params.id
-    };
-    //TODO zrobić tworzenie wpisu
-
-    // console.log("Game log props -> ", this.props.post );
     return (auth.uid) ? (
-      (game) ? (<div id="game">
-        <div className="game-property">
-          <img
-            className="game-photo"
-            src={(game.image === "") ? this.state.imgUrl: game.image}
-            alt={game.alt}
-          />
+        (game) ? (<div id="game">
+          <div className="game-property">
+            <img
+              className="game-photo"
+              src={ (game.image === "") ? this.state.imgUrl : game.image }
+              alt={ game.alt }
+            />
 
-          <div className="game-info">
-            <h1 className="title">{game.title}</h1>
-            <div className="follow-button slide-button">
-              <i className="fas fa-eye-slash"/>
-              <span>{followers.follow ? "Nie obserwuj" : "Obserwuj"}</span>
-            </div>
-            <div className="add-button slide-button" data-name="add" onClick={this.toggleModal}>
-              <i className="fas fa-plus" data-name="add"> </i>
-              <span data-name="add"> Dodaj wydarzenie</span>
+            <div className="game-info">
+              <h1 className="title">{ game.title }</h1>
+              <div className="follow-button slide-button">
+                <i className="fas fa-eye-slash"/>
+                <span>{ followers.follow ? "Nie obserwuj" : "Obserwuj" }</span>
+              </div>
+              <div className="add-button slide-button" data-name="add" onClick={ this.toggleModal }>
+                <i className="fas fa-plus" data-name="add"> </i>
+                <span data-name="add"> Dodaj wydarzenie</span>
+              </div>
             </div>
           </div>
-        </div>
-        <div className="game-desc">
-          <p>{game.desc}</p>
-        </div>
-        <PostAdd gameId={this.props.match.params.id}/>
-        <PostContainer posts={this.props.post} p={p}/>
-        <EventAdd show={this.state.show} handleClose={this.toggleModal}/>
-      </div>) : ( <div>Ładowanie gry...</div>)
-      ):
+          <div className="game-desc">
+            <p>{ game.desc }</p>
+          </div>
+          <PostAdd gameId={ this.props.match.params.id }/>
+          <PostContainer posts={ this.props.post }/>
+          <EventAdd show={ this.state.show } handleClose={ this.toggleModal }/>
+        </div>) : (<div>Ładowanie gry...</div>)
+      ) :
       (<Redirect to="/"/>);
   }
 }
 
-const mapStateToProps = (state, ownProps) => {
-  const id = ownProps.match.params.id;
-  // console.log("d => ", id)
-  const games = state.firestore.data.games;
-  const game = games ? games[id]: null;
-  // console.log("Game log -> ",state.firestore.data.games);
+const mapStateToProps = state => {
   return {
     auth: state.firebase.auth,
-    game: game,
+    game: state.firestore.data.games,
     post: state.firestore.ordered.posts
     // follow: state.firebase.ordered.follower
   }
 };
 
 export default compose(
-  firestoreConnect((props) => [
-    {collection: "games"},
+  firestoreConnect(props => [
+    {collection: "games", doc: props.match.params.id},
     {collection: "posts", where: ["gameId", "==", props.match.params.id]}
   ]),
   connect(mapStateToProps)

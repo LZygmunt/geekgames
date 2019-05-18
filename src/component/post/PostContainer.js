@@ -1,9 +1,9 @@
 import React from "react";
 import { PostComponent } from "./index";
 
-const PostContainer = ({posts, p}) => {
+const PostContainer = ({ posts }) => {
   return (<div>
-    {posts && posts.map(item => {return <PostComponent item={item} key={item.id}/>})}
+    { posts && posts.map(post => { return <PostComponent post={ post } key={ post.id }/> }) }
   </div>);
 };
 

@@ -39,7 +39,7 @@ export const unfollowGame = (game) => {
   return (dispatch, getState, { getFirebase, getFirestore }) => {
     const firestore = getFirestore();
     const followId = getState().followers.id;
-    const authorId = getState().firebase.auth.uid;
+    // const authorId = getState().firebase.auth.uid;
 
     firestore.collection("followers").doc(
       followId

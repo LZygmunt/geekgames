@@ -15,14 +15,12 @@ class PostComponent extends Component {
   };
 
   render() {
-    const { item } = this.props;
+    const { post } = this.props;
     const { showComment } = this.state;
 
-    //TODO zmienić listę komentarzy na zmienną
-    //TODO dorzucić możliwość dodawania postów
     return (<div className="post">
-        <PostDescribe post={item}/>
-        { showComment ? <CommentList />: <div onClick={ this.showComment }>Rozwiń</div> }
+        <PostDescribe post={post}/>
+        { showComment ? <CommentList postId={post.id}/>: <div onClick={ this.showComment }>Rozwiń</div> }
     </div>);
   }
 }

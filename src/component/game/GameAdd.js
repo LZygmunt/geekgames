@@ -55,9 +55,9 @@ class GameAdd extends Component {
   }
 }
 
-const mapDispatchToProps = (dispatch) => {
+const mapDispatchToProps = dispatch => {
   return {
-    createGame: (game) => dispatch(createGame(game))
+    createGame: game => dispatch(createGame(game))
   }
 };
 

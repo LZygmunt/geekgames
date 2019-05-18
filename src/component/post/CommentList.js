@@ -1,6 +1,9 @@
 import React, { Component } from "react";
-import logo1 from "../../images/logo-geek-games.png";
-import {Comment} from "./index";
+import { Comment } from "./index";
+import { connect } from "react-redux";
+import { firestoreConnect } from "react-redux-firebase";
+import { compose } from "redux";
+import { createComment } from "../../store/actions/postActions";
 
 class CommentList extends Component{
   state = {
@@ -14,7 +17,12 @@ class CommentList extends Component{
   };
 
   addComment = (event) => {
-    console.log("Submit -> ", this.state);
+    event.preventDefault();
+    const comment = {
+      comment: this.state.newComment,
+      postId: this.props.postId
+    };
+    this.props.createComment(comment);
   };
 
   showMore = () => {
@@ -22,36 +30,8 @@ class CommentList extends Component{
   };
 
   render() {
-    const data = [
-      {
-        id: 1,
-        imgUrl: logo1,
-        userName: "User 1",
-        commentContent: "Lorem ipsum i coś tam dalej i dalej... To jest tylko treść komentarza, " +
-          "która nie koniecznie jest ważna"
-      },
-      {
-        id: 2,
-        imgUrl: logo1,
-        userName: "User 1",
-        commentContent: "Lorem ipsum i coś tam dalej i dalej... To jest tylko treść komentarza, " +
-          "która nie koniecznie jest ważna. Lorem ipsum i coś tam dalej i dalej... To jest tylko treść " +
-          "komentarza, która nie koniecznie jest ważna. Lorem ipsum i coś tam dalej i dalej... To jest " +
-          "tylko treść komentarza, która nie koniecznie jest ważna. Lorem ipsum i coś tam dalej i dalej... " +
-          "To jest tylko treść komentarza, która nie koniecznie jest ważna. Lorem ipsum i coś tam dalej i " +
-          "dalej... To jest tylko treść komentarza, która nie koniecznie jest ważna. Lorem ipsum i coś tam " +
-          "dalej i dalej... To jest tylko treść komentarza, która nie koniecznie jest ważna. "
-      },
-      {
-        id: 3,
-        imgUrl: logo1,
-        userName: "User 1",
-        commentContent: "Lorem ipsum i coś tam dalej i dalej... To jest tylko treść komentarza, " +
-          "która nie koniecznie jest ważna"
-      },
-    ];
-
-    const commentList = data.map(item => <Comment item={item} key={item.id}/>);
+    const commentList = this.props.comments
+      && this.props.comments.map(comment => <Comment comment={ comment } key={ comment.id }/>);
 
     return (<div className="comments">
       <div className="comment-add">
@@ -59,19 +39,37 @@ class CommentList extends Component{
           type="text"
           name="newComment"
           placeholder="Zacznij pisać..."
-          value={this.state.newComment}
-          onChange={this.handleChange}
+          value={ this.state.newComment }
+          onChange={ this.handleChange }
         />
-        <i className="fas fa-paper-plane" onClick={this.addComment}/>
-      </div>{/* Dodaj komentarz */}
+        <i className="fas fa-paper-plane" onClick={ this.addComment }/>
+      </div>
       <div className="comment-list">
-        {commentList}
-      </div>{/* Lista komentarzy */}
+        { commentList }
+      </div>
       <div className="comment-extend">
-        <div className="button" onClick={this.showMore}>Więcej komentarzy...</div>
-      </div>{/* Pokaż komentarze */}
+        <div className="button" onClick={ this.showMore }>Więcej komentarzy...</div>
+      </div>
     </div>)
   }
 }
 
-export default CommentList;
+const mapStateToProps = state => {
+  console.log(state)
+  return {
+    comments: state.firestore.ordered.comments
+  }
+};
+
+const mapDispatchToProps = dispatch => {
+  return {
+    createComment: comment => dispatch(createComment(comment))
+  }
+};
+
+export default compose(
+  firestoreConnect(props => [
+    {collection: "comments", where: ["postId", "==", props.postId]}
+  ]),
+  connect(mapStateToProps, mapDispatchToProps)
+)(CommentList);
