@@ -1,9 +1,11 @@
 import React, {Component} from "react";
 import MenuItemsData from "./MenuItemsData";
 import MenuItem from "./MenuItem";
-import GameAdd from "../game/GameAdd";
+import { GameAdd } from "../game";
 import { Link } from "react-router-dom";
+import { compose } from "redux";
 import { connect } from "react-redux";
+import { firebaseConnect } from "react-redux-firebase";
 import { signOut } from "../../store/actions/authActions";
 
 
@@ -20,15 +22,31 @@ class NavBar extends Component {
   };
 
   componentDidMount() {
-    // console.log("state: ", this.state, " props ", this.props)
+    document.addEventListener("mousedown", this.handleEvent, false);
+    document.addEventListener("keydown", this.handleEvent, false);
   }
 
-  handleClick = () => {
+  componentWillUnmount() {
+    document.addEventListener("mousedown", this.handleEvent, false);
+    document.addEventListener("keydown", this.handleEvent, false);
+  }
+
+  handleEvent = (event) => {
+    if(!this.menu.contains(event.target) && this.state.toggleMenu === "show-dropdown") this.toggleMenu();
+    if(event.key === "Escape" && this.state.toggleMenu === "show-dropdown") this.toggleMenu();
+  };
+
+  toggleMenu = () => {
     this.setState(prevState => {
       return {
         toggleMenu: prevState.toggleMenu === "hide-dropdown" ? "show-dropdown" : "hide-dropdown"
       };
     });
+  };
+
+  signOutLink = () => {
+    const { firebase } = this.props;
+    this.props.signOut(firebase);
   };
 
   toggleModal = (event) => {
@@ -48,7 +66,7 @@ class NavBar extends Component {
             className="position-in-menu"
             key={item.id}
             data-name={item.buttonName}
-            onClick={(item.buttonName === "addGame") ? this.toggleModal : this.props.signOut}>{item.text}</div>;
+            onClick={(item.buttonName === "addGame") ? this.toggleModal : this.signOutLink}>{item.text}</div>;
         else if (item.loggedIn === !props.auth.isEmpty)
           return <MenuItem key={item.id} item={item}/>;
         return null
@@ -60,9 +78,9 @@ class NavBar extends Component {
           <div className="logo-space">
             <Link to="/"><img src={props.imgSrc} alt={props.altText}/></Link>
           </div>
-          <div className="menu-space">
-            <i onClick={this.handleClick} className="far fa-user-circle"/>
-            <div id="dropdown-menu" className={"unselectable " + state.toggleMenu} onClick={this.handleClick}>
+          <div className="menu-space" ref={menu => this.menu = menu}>
+            <i onClick={this.toggleMenu} className="far fa-user-circle"/>
+            <div id="dropdown-menu" className={"unselectable " + state.toggleMenu} onClick={this.toggleMenu}>
               {MenuItems}
             </div>
           </div>
@@ -82,8 +100,11 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    signOut: () => dispatch(signOut())
+    signOut: (firebase) => dispatch(signOut(firebase))
   };
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(NavBar);
+export default compose(
+  firebaseConnect(),
+  connect(mapStateToProps, mapDispatchToProps)
+)(NavBar);

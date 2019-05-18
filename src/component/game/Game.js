@@ -4,13 +4,14 @@ import logo from "./../../images/logo-geek-games.png";
 import { EventAdd } from "../event";
 import { connect } from "react-redux";
 import { Redirect } from "react-router-dom";
-
-import "./game.css"
+import { firestoreConnect } from "react-redux-firebase";
+import { compose } from "redux";
 
 class Game extends Component {
 
   state = {
-    show: false
+    show: false,
+    imgUrl: logo,
   };
 
   toggleModal = (event) => {
@@ -20,47 +21,32 @@ class Game extends Component {
   };
 
   render() {
-    const props = {
-      imgUrl: logo,
-      alt: "logo",
-      gameTitle: "Makao",
-      follow: true,
-      gameDesc: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. A, ad beatae debitis, doloremque hic in,\n" +
-        "                incidunt magnam nemo quidem reiciendis rerum sint tempora voluptas? Accusamus cupiditate facere quo quod\n" +
-        "                repellat!Lorem ipsum dolor sit amet, consectetur adipisicing elit. A, ad beatae debitis, doloremque hic in,\n" +
-        "                incidunt magnam nemo quidem reiciendis rerum sint tempora voluptas? Accusamus cupiditate facere quo quod\n" +
-        "                repellat!Lorem ipsum dolor sit amet, consectetur adipisicing elit. A, ad beatae debitis, doloremque hic in,\n" +
-        "                incidunt magnam nemo quidem reiciendis rerum sint tempora voluptas? Accusamus cupiditate facere quo quod\n" +
-        "                repellat!Lorem ipsum dolor sit amet, consectetur adipisicing elit. A, ad beatae debitis, doloremque hic in,\n" +
-        "                incidunt magnam nemo quidem reiciendis rerum sint tempora voluptas? Accusamus cupiditate facere quo quod\n" +
-        "                repellat!Lorem ipsum dolor sit amet, consectetur adipisicing elit. A, ad beatae debitis, doloremque hic in,\n" +
-        "                incidunt magnam nemo quidem reiciendis rerum sint tempora voluptas? Accusamus cupiditate facere quo quod\n" +
-        "                repellat!Lorem ipsum dolor sit amet, consectetur adipisicing elit. A, ad beatae debitis, doloremque hic in,\n" +
-        "                incidunt magnam nemo quidem reiciendis rerum sint tempora voluptas? Accusamus cupiditate facere quo quod\n" +
-        "                repellat!Lorem ipsum dolor sit amet, consectetur adipisicing elit. A, ad beatae debitis, doloremque hic in,\n" +
-        "                incidunt magnam nemo quidem reiciendis rerum sint tempora voluptas? Accusamus cupiditate facere quo quod\n" +
-        "                repellat!"
+    const { auth, game } = this.props;
+    const followers = { follow: false };
+
+    // console.log(this.props.post)
+
+    const p = {
+      gameTitle: game ? game.title: "",
+      gameId: this.props.match.params.id
     };
-
-    const { auth, games } = this.props;
-
     //TODO zrobić tworzenie wpisu
 
-    //console.log("Game log props -> ",this.props);
-    return (auth.uid) ?
-      (<div id="game">
+    // console.log("Game log props -> ", this.props.post );
+    return (auth.uid) ? (
+      (game) ? (<div id="game">
         <div className="game-property">
           <img
             className="game-photo"
-            src={props.imgUrl}
-            alt={props.alt}
+            src={(game.image === "") ? this.state.imgUrl: game.image}
+            alt={game.alt}
           />
 
           <div className="game-info">
-            <h1 className="title">{props.gameTitle}</h1>
+            <h1 className="title">{game.title}</h1>
             <div className="follow-button slide-button">
               <i className="fas fa-eye-slash"/>
-              <span>{props.follow ? "Nie obserwuj" : "Obserwuj"}</span>
+              <span>{followers.follow ? "Nie obserwuj" : "Obserwuj"}</span>
             </div>
             <div className="add-button slide-button" data-name="add" onClick={this.toggleModal}>
               <i className="fas fa-plus" data-name="add"> </i>
@@ -69,24 +55,35 @@ class Game extends Component {
           </div>
         </div>
         <div className="game-desc">
-          <p>{props.gameDesc}</p>
+          <p>{game.desc}</p>
         </div>
-        <PostAdd />
-        <PostContainer/>
-        <PostContainer/>
+        <PostAdd gameId={this.props.match.params.id}/>
+        <PostContainer posts={this.props.post} p={p}/>
         <EventAdd show={this.state.show} handleClose={this.toggleModal}/>
-      </div>) :
+      </div>) : ( <div>Ładowanie gry...</div>)
+      ):
       (<Redirect to="/"/>);
   }
 }
 
-const mapStateToProps = (state) => {
-  // console.log("Game log -> ",state);
+const mapStateToProps = (state, ownProps) => {
+  const id = ownProps.match.params.id;
+  // console.log("d => ", id)
+  const games = state.firestore.data.games;
+  const game = games ? games[id]: null;
+  // console.log("Game log -> ",state.firestore.data.games);
   return {
     auth: state.firebase.auth,
-    games: state.firestore.ordered.games,
-    tester: "hhha czy jest wszędzie?"
+    game: game,
+    post: state.firestore.ordered.posts
+    // follow: state.firebase.ordered.follower
   }
 };
 
-export default connect(mapStateToProps)(Game);
+export default compose(
+  firestoreConnect((props) => [
+    {collection: "games"},
+    {collection: "posts", where: ["gameId", "==", props.match.params.id]}
+  ]),
+  connect(mapStateToProps)
+)(Game);

@@ -1,7 +1,6 @@
-export const createPost = (post) => {
+export const createPost = (post, gameId) => {
   return (dispatch, getState, { getFirebase, getFirestore }) => {
     const firestore = getFirestore();
-    const gameId = getState().game.id;
     const authorId = getState().firebase.auth.uid;
 
     firestore.collection("posts").add({
@@ -54,7 +53,7 @@ export const followEvent = (event) => {
 export const unfollowEvent = (event) => {
   return (dispatch, getState, { getFirebase, getFirestore }) => {
     const firestore = getFirestore();
-    const eventId = getState().post.id;
+    const eventId = getState().followers.id;
 
     firestore.collection("followers").doc(
       eventId

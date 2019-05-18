@@ -1,9 +1,5 @@
 import React from "react";
-import PersonalDataSection from "./PersonalDataSection";
-import EventSection from "./EventSection";
-import GameSection from "./GameSection";
-import SignUp from "./SignUp";
-import SignIn from "./SignIn";
+import { EventSection, PersonalDataSection, GameSection, SignUp, SignIn} from "./";
 import { connect } from "react-redux";
 
 import logoSeparator from "./../../images/logo-geek-games.png"

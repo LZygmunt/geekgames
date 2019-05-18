@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from "react-redux";
+import { compose } from "redux";
+import { firebaseConnect } from "react-redux-firebase";
 import { signIn } from "../../store/actions/authActions";
 
 import "./sign-in.css"
@@ -19,7 +21,9 @@ class SignIn extends Component {
 
   handleSubmit = (event) => {
     event.preventDefault();
-    this.props.signIn(this.state);
+    const { firebase } = this.props;
+    const creds = this.state;
+    this.props.signIn(creds, firebase);
   };
 
   render() {
@@ -67,8 +71,11 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    signIn: (creds) => dispatch(signIn(creds))
+    signIn: (creds, firebase) => dispatch(signIn(creds, firebase))
   }
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(SignIn);
+export default compose(
+  firebaseConnect(),
+  connect(mapStateToProps, mapDispatchToProps)
+)(SignIn);

@@ -34,3 +34,19 @@ export const followGame = (game) => {
     });
   }
 };
+
+export const unfollowGame = (game) => {
+  return (dispatch, getState, { getFirebase, getFirestore }) => {
+    const firestore = getFirestore();
+    const followId = getState().followers.id;
+    const authorId = getState().firebase.auth.uid;
+
+    firestore.collection("followers").doc(
+      followId
+    ).delete().then(() => {
+      dispatch({ type: "UNFOLLOW_GAME", game })
+    }).catch((err) => {
+      dispatch({ type: "UNFOLLOW_GAME_ERROR", err })
+    });
+  }
+};

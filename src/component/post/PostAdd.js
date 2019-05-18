@@ -21,7 +21,8 @@ class PostAdd extends Component {
 
   handleSubmit = (event) => {
     event.preventDefault();
-    this.props.createPost({title: this.state.title, desc: this.state.desc})
+    this.props.createPost({title: this.state.title, desc: this.state.desc}, this.props.gameId);
+    this.togglePost();
   };
 
   handleChange = (event) => {
@@ -59,7 +60,7 @@ class PostAdd extends Component {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    createPost: (post) => dispatch(createPost(post))
+    createPost: (post, gameId) => dispatch(createPost(post, gameId))
   }
 };
 

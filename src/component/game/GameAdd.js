@@ -1,13 +1,15 @@
-import React, {Component} from "react";
+import React, { Component } from "react";
 import Modal from "../modal/Modal";
+import { connect } from "react-redux";
+import { createGame } from "../../store/actions/gameActions";
 
 class GameAdd extends Component {
 
   state = {
     title: "",
     image: "",
-    desc: "Opis gry",
-    follow: true
+    desc: "",
+    alt: "tekst alternatywny"
   };
 
   handleChange = (event) => {
@@ -16,7 +18,8 @@ class GameAdd extends Component {
 
   handleSubmit = (event) => {
     event.preventDefault();
-    console.log(this.state.title);
+    this.props.createGame(this.state);
+    this.props.handleClose(event);
   };
 
   render() {
@@ -35,13 +38,13 @@ class GameAdd extends Component {
           />
           <input
             type="file"
-            placeholder="Przeglądaj..."
             name="image"
             className="custom-file-input"
           />
           <textarea
             name="desc"
             value={desc}
+            placeholder="Podaj opis gry..."
             onChange={this.handleChange}
             rows="10"
           />
@@ -52,4 +55,10 @@ class GameAdd extends Component {
   }
 }
 
-export default GameAdd;
+const mapDispatchToProps = (dispatch) => {
+  return {
+    createGame: (game) => dispatch(createGame(game))
+  }
+};
+
+export default connect(null, mapDispatchToProps)(GameAdd);

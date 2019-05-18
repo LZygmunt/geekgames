@@ -1,5 +1,5 @@
 import React, {Component} from "react";
-import GameAdd from "../game/GameAdd";
+import { GameAdd } from "../game";
 
 class GameSection extends Component {
 
