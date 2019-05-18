@@ -1,27 +1,27 @@
-#comments {
+.comments {
   width: 80%;
   margin: 30px auto;
   padding: 10px;
 }
-#comments .comment-add {
+.comments .comment-add {
   display: flex;
 }
-#comments .comment-add i {
+.comments .comment-add i {
   font-size: 25px;
   margin-left: 5px;
 }
-#comments .comment-add i:hover {
+.comments .comment-add i:hover {
   color: #4e6798;
   text-shadow: 1px 1px 5px #3c5176;
 }
-#comments .comment-extend input {
+.comments .comment-extend input {
   width: 100%;
   height: 34px;
   border-radius: 15px;
   background: #d45640;
   border: transparent;
 }
-#comments .comment-extend input:hover {
+.comments .comment-extend input:hover {
   background: #a33725;
   box-shadow: 1px 1px 5px #79291b;
 }

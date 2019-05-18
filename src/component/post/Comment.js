@@ -4,18 +4,18 @@ import "./comments.css"
 
 class Comment extends Component{
     render(){
-        const cmnt = this.props;
+        const { item } = this.props;
         return(
             <div className="comment">
                 <div className="comment-identification">
                     <img
-                        src={cmnt.imgUrl}
-                        alt={cmnt.userName}
+                        src={ item.imgUrl }
+                        alt={ item.userName }
                     />
-                    <p>{cmnt.userName}</p>
+                    <p>{ item.userName }</p>
                 </div>
                 <div className="comment-content">
-                    <p>{cmnt.commentContent}</p>
+                    <p>{ item.commentContent }</p>
                 </div>
             </div>
         );

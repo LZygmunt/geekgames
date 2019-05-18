@@ -1,5 +1,5 @@
-import React, {Component} from "react";
-import {connect} from "react-redux";
+import React, { Component } from "react";
+import { connect } from "react-redux";
 
 class PersonalDataSection extends Component {
   state = {
@@ -28,7 +28,7 @@ class PersonalDataSection extends Component {
   render() {
     const { nick, email, city, isEdit } = this.state;
     const { auth, profile } = this.props;
-    console.log("PDS -> ", this.state, this.props)
+    // console.log("PDS -> ", this.state, this.props)
     return (
       <div id="profile">
         <h1>Witaj, {profile.nick}!</h1>
@@ -109,6 +109,7 @@ class PersonalDataSection extends Component {
 }
 
 const mapStateToProps = (state) => {
+  // console.log("PDS log -> ",state);
   return {
     profile: state.firebase.profile
   }

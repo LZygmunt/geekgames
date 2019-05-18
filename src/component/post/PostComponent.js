@@ -1,14 +1,14 @@
 import React from "react";
 import "./post.css"
 
-const PostComponent = (props) => {
-        return(
-            <div>
-                <h2>{props.postSubject}</h2>
-                <p>{props.createDate}</p>
-                <p style={{textAlign:"justify"}}>{props.postDesc}</p>
-            </div>
-        );
+const PostComponent = ({ post }) => {
+  return (
+    <div>
+      <h2>{ post.postSubject }</h2>
+      <p>{ post.createDate }</p>
+      <p style={{ textAlign: "justify" }}>{ post.postDesc }</p>
+    </div>
+  );
 };
 
 export default PostComponent;

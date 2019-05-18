@@ -1,11 +1,11 @@
 import React, {Component} from "react";
+import { PostContainer, PostAdd } from "../post";
+import logo from "./../../images/logo-geek-games.png";
+import { EventAdd } from "../event";
+import { connect } from "react-redux";
+import { Redirect } from "react-router-dom";
 
 import "./game.css"
-import PostContainer from "../post/PostContainer";
-import logo from "./../../images/logo-geek-games.png";
-import EventAdd from "../event/EventAdd";
-import {connect} from "react-redux";
-import { Redirect } from "react-router-dom";
 
 class Game extends Component {
 
@@ -44,6 +44,9 @@ class Game extends Component {
 
     const { auth, games } = this.props;
 
+    //TODO zrobić tworzenie wpisu
+
+    //console.log("Game log props -> ",this.props);
     return (auth.uid) ?
       (<div id="game">
         <div className="game-property">
@@ -56,7 +59,7 @@ class Game extends Component {
           <div className="game-info">
             <h1 className="title">{props.gameTitle}</h1>
             <div className="follow-button slide-button">
-              <i className="fas fa-eye-slash"/> {/*<i className="fas fa-eye-slash"/>*/}
+              <i className="fas fa-eye-slash"/>
               <span>{props.follow ? "Nie obserwuj" : "Obserwuj"}</span>
             </div>
             <div className="add-button slide-button" data-name="add" onClick={this.toggleModal}>
@@ -68,6 +71,8 @@ class Game extends Component {
         <div className="game-desc">
           <p>{props.gameDesc}</p>
         </div>
+        <PostAdd />
+        <PostContainer/>
         <PostContainer/>
         <EventAdd show={this.state.show} handleClose={this.toggleModal}/>
       </div>) :
@@ -76,10 +81,11 @@ class Game extends Component {
 }
 
 const mapStateToProps = (state) => {
-  // console.log(state);
+  // console.log("Game log -> ",state);
   return {
     auth: state.firebase.auth,
-    games: state.firestore.ordered.games
+    games: state.firestore.ordered.games,
+    tester: "hhha czy jest wszędzie?"
   }
 };
 

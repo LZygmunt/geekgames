@@ -10,7 +10,7 @@ import logo from "./images/logo.png"
 import "./App.css";
 
 class App extends Component {
-  render() {
+  render() {//TODO ożywić wszystkie guziki
     return (
       <BrowserRouter>
         <div className="App">
