@@ -20,18 +20,18 @@ class Modal extends Component {
   };
 
   render() {
-    let {show, handleClose, children, title} = this.props;
+    let { show, handleClose, children, title } = this.props;
     const toggleShow = show ? "modal show" : "modal hide";
 
     return (
-      <div className={toggleShow} >
-        <div className="modal-main" ref={modal => this.modal = modal}>
+      <div className={ toggleShow } >
+        <div className="modal-main" ref={ modal => this.modal = modal }>
           <div className="modal-head">
-            <div className="modal-title">{title}</div>
-            <div className="modal-close" onClick={handleClose}> X</div>
+            <div className="modal-title">{ title }</div>
+            <div className="modal-close" onClick={ handleClose }> X</div>
           </div>
           <div className="modal-body">
-            {children}
+            { children }
           </div>
         </div>
       </div>

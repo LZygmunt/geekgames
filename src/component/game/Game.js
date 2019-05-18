@@ -1,11 +1,12 @@
 import React, { Component } from "react";
 import { PostContainer, PostAdd } from "../post";
-import logo from "./../../images/logo-geek-games.png";
 import { EventAdd } from "../event";
 import { connect } from "react-redux";
 import { Redirect } from "react-router-dom";
 import { firestoreConnect } from "react-redux-firebase";
 import { compose } from "redux";
+
+import logo from "./../../images/logo-geek-games.png";
 
 class Game extends Component {
 
@@ -69,8 +70,8 @@ const mapStateToProps = state => {
 
 export default compose(
   firestoreConnect(props => [
-    {collection: "games", doc: props.match.params.id},
-    {collection: "posts", where: ["gameId", "==", props.match.params.id]}
+    { collection: "games", doc: props.match.params.id },
+    { collection: "posts", where: ["gameId", "==", props.match.params.id] }
   ]),
   connect(mapStateToProps)
 )(Game);

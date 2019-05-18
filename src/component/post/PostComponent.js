@@ -1,7 +1,11 @@
-import React, {Component} from "react";
+import React, { Component } from "react";
+import { CommentList, PostDescribe } from "./";
+import { compose } from "redux";
+import { firestoreConnect } from "react-redux-firebase";
+import { connect } from "react-redux";
+
 import "./post.css"
 import "./comments.css"
-import { CommentList, PostDescribe } from "./";
 
 class PostComponent extends Component {
   state = {
@@ -15,14 +19,30 @@ class PostComponent extends Component {
   };
 
   render() {
-    const { post } = this.props;
+    const { post, comments } = this.props;
     const { showComment } = this.state;
+
+    const commentsFromPost = comments && comments.filter(comm => (comm.postId === post.id) && comm);
 
     return (<div className="post">
         <PostDescribe post={post}/>
-        { showComment ? <CommentList postId={post.id}/>: <div onClick={ this.showComment }>Rozwiń</div> }
+        { showComment ?
+          <CommentList comments={ commentsFromPost } postId={ post.id }/>:
+          <div onClick={ this.showComment }>Rozwiń</div>
+        }
     </div>);
   }
 }
 
-export default PostComponent;
+const mapStateToProps = state => {
+  return {
+    comments: state.firestore.ordered.comments
+  }
+};
+
+export default compose(
+  firestoreConnect( [
+    { collection: "comments", orderBy: ["created", "desc"] }
+  ]),
+  connect(mapStateToProps)
+)(PostComponent);

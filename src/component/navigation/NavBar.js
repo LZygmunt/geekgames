@@ -8,10 +8,8 @@ import { connect } from "react-redux";
 import { firebaseConnect } from "react-redux-firebase";
 import { signOut } from "../../store/actions/authActions";
 
-
 import "./nav-bar.css";
 import "font-awesome/css/font-awesome.min.css";
-
 
 class NavBar extends Component {
   state = {
@@ -31,7 +29,7 @@ class NavBar extends Component {
     document.addEventListener("keydown", this.handleEvent, false);
   }
 
-  handleEvent = (event) => {
+  handleEvent = event => {
     if(!this.menu.contains(event.target) && this.state.toggleMenu === "show-dropdown") this.toggleMenu();
     if(event.key === "Escape" && this.state.toggleMenu === "show-dropdown") this.toggleMenu();
   };
@@ -49,7 +47,7 @@ class NavBar extends Component {
     this.props.signOut(firebase);
   };
 
-  toggleModal = (event) => {
+  toggleModal = event => {
     this.setState({
       show: event.target.dataset.name === "addGame"
     })
@@ -64,11 +62,11 @@ class NavBar extends Component {
         if (item.button && !props.auth.isEmpty)
           return <div
             className="position-in-menu"
-            key={item.id}
-            data-name={item.buttonName}
-            onClick={(item.buttonName === "addGame") ? this.toggleModal : this.signOutLink}>{item.text}</div>;
+            key={ item.id }
+            data-name={ item.buttonName }
+            onClick={ (item.buttonName === "addGame") ? this.toggleModal : this.signOutLink }>{ item.text }</div>;
         else if (item.loggedIn === !props.auth.isEmpty)
-          return <MenuItem key={item.id} item={item}/>;
+          return <MenuItem key={ item.id } item={ item }/>;
         return null
       });
 
@@ -76,31 +74,30 @@ class NavBar extends Component {
       <div id="nav-bar">
         <div className="top-nav">
           <div className="logo-space">
-            <Link to="/"><img src={props.imgSrc} alt={props.altText}/></Link>
+            <Link to="/"><img src={ props.imgSrc } alt={ props.altText }/></Link>
           </div>
           <div className="menu-space" ref={menu => this.menu = menu}>
             <i onClick={this.toggleMenu} className="far fa-user-circle"/>
-            <div id="dropdown-menu" className={"unselectable " + state.toggleMenu} onClick={this.toggleMenu}>
-              {MenuItems}
+            <div id="dropdown-menu" className={ "unselectable " + state.toggleMenu } onClick={this.toggleMenu}>
+              { MenuItems }
             </div>
           </div>
         </div>
-        <GameAdd show={this.state.show} handleClose={this.toggleModal}/>
+        <GameAdd show={ this.state.show } handleClose={ this.toggleModal }/>
       </div>
     );
   }
 }
 
-const mapStateToProps = (state) => {
-  // console.log("Navbar log -> ",state);
+const mapStateToProps = state => {
   return {
     auth: state.firebase.auth
   }
 };
 
-const mapDispatchToProps = (dispatch) => {
+const mapDispatchToProps = dispatch => {
   return {
-    signOut: (firebase) => dispatch(signOut(firebase))
+    signOut: firebase => dispatch(signOut(firebase))
   };
 };
 

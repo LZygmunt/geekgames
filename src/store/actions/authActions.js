@@ -12,7 +12,7 @@ export const signIn = (credentials, firebase) => (dispatch, getState) => {
   };
 
 
-export const signOut = (firebase) => (dispatch, getState, { getFirebase }) => {
+export const signOut = firebase => (dispatch, getState, { getFirebase }) => {
     // const firebase = getFirebase();
 
     firebase.auth().signOut().then(() => {

@@ -9,7 +9,7 @@ class EventMini extends Component {
   };
 
   componentDidMount() {
-    this.setState({isFollow: this.props.item.isFollow})
+    this.setState({ isFollow: this.props.item.isFollow })
   }
 
   followIt = (event) => {
@@ -19,15 +19,10 @@ class EventMini extends Component {
       }
     });
 
-    // if ( event.target.childNodes[1].classList[1] === "fa-eye")
-    // event.target.childNodes[1].classList[1]="fa-eye-slash";
     if(event.target.className==="fas fa-eye-slash")
         event.target.className="fas fa-eye";
     else
         event.target.className="fas fa-eye-slash";
-    // else
-    // event.target.childNodes[1].classList[1]="fa-eye";
-
   };
 
   render() {
@@ -39,27 +34,27 @@ class EventMini extends Component {
         <div className="info">
           <p>
             <span>
-            {props.dateOfEvent}
+            { props.dateOfEvent }
             <i className="fas fa-cube"> </i>
-            {props.placeOfEvent}
+            { props.placeOfEvent }
             </span>
-            <span className="slide-button-without-bg" onClick={this.followIt}>
-              <span>{(isFollow)? "Obserwujesz" : "Obserwuj"}</span>
-              <i className="fas fa-eye" data-name={"follow-" + props.id}> </i>
+            <span className="slide-button-without-bg" onClick={ this.followIt }>
+              <span>{ (isFollow)? "Obserwujesz" : "Obserwuj" }</span>
+              <i className="fas fa-eye" data-name={ "follow-" + props.id }> </i>
             </span>
           </p>
         </div>
         <div className="game info">
           <p>
             <a href="#">
-              {props.gameOfEvent}
+              { props.gameOfEvent }
             </a>
           </p>
         </div>
         <div className="title info">
           <p>
             <a href="#">
-              {props.titleOfEvent}
+              { props.titleOfEvent }
             </a>
           </p>
         </div>

@@ -1,4 +1,4 @@
-import React, {Component} from "react";
+import React, { Component } from "react";
 import { GameAdd } from "../game";
 
 class GameSection extends Component {
@@ -53,13 +53,13 @@ class GameSection extends Component {
   };
 
   render() {
-    const gameList = this.state.games.map((item, index) => <li key={index}>{item.title}</li>);
+    const gameList = this.state.games.map((item, index) => <li key={ index }>{ item.title }</li>);
 
     return (
       <div className="game-section">
         <div className="game-header">
           <h1>Obserwowane gry:</h1>
-          <div className="slide-button" data-name="addGame" onClick={this.toggleModal} style={{whiteSpace: "nowrap",padding: "5px 10px"}}>
+          <div className="slide-button" data-name="addGame" onClick={this.toggleModal} style={{ whiteSpace: "nowrap",padding: "5px 10px" }}>
             <i className="fas fa-plus" data-name="addGame"> </i>
             <span data-name="addGame">Dodaj grę</span>
           </div>
@@ -67,9 +67,9 @@ class GameSection extends Component {
         <div className="game-search">
           <input type="text" placeholder="Zacznij pisać, aby wyszukać grę" />
         </div>
-        <GameAdd show={this.state.show} handleClose={this.toggleModal}/>
+        <GameAdd show={ this.state.show } handleClose={ this.toggleModal }/>
         <ul>
-          {gameList}
+          { gameList }
         </ul>
       </div>
     );

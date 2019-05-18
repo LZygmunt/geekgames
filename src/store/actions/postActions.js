@@ -16,7 +16,7 @@ export const createPost = (post, gameId) => {
   }
 };
 
-export const createComment = (comment) => {
+export const createComment = comment => {
   return (dispatch, getState, { getFirebase, getFirestore }) => {
     const firestore = getFirestore();
     const authorId = getState().firebase.auth.uid;
@@ -33,7 +33,7 @@ export const createComment = (comment) => {
   }
 };
 
-export const followEvent = (event) => {
+export const followEvent = event => {
   return (dispatch, getState, { getFirebase, getFirestore }) => {
     const firestore = getFirestore();
     const authorId = getState().firebase.auth.uid;
@@ -50,7 +50,7 @@ export const followEvent = (event) => {
   }
 };
 
-export const unfollowEvent = (event) => {
+export const unfollowEvent = event => {
   return (dispatch, getState, { getFirebase, getFirestore }) => {
     const firestore = getFirestore();
     const eventId = getState().followers.id;

@@ -6,20 +6,20 @@ import { firestoreConnect } from "react-redux-firebase";
 
 const EventContainer = ({ events, auth }) => {
   return (auth.uid) ? (
-    <EventList events={events}/>
+    <EventList events={ events }/>
   ): (<div/>);
 };
 
-const mapStoreToProps = (state) => {
+const mapStoreToProps = state => {
   return {
     auth: state.firebase.auth,
-    // events: state.firestore.posts.filter(item => {if(item.place !== "") return item } )
+    // events: state.firestore.posts
   }
 };
 
 export default compose(
   connect(mapStoreToProps),
   firestoreConnect([
-    {collection: "posts", orderBy: ["created"]}
+    { collection: "posts", orderBy: ["created"], where: [] }
   ])
 )(EventContainer);
