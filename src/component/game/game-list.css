@@ -1,0 +1,69 @@
+.sticky {
+  position: fixed;
+  top: 0;
+  background: #2b2a2b;
+}
+.sticky input {
+  margin-bottom: 0;
+}
+.sticky .game-item {
+  padding: 5px;
+}
+.game-list {
+  width: 70%;
+}
+.game-list input {
+  max-width: 980px;
+}
+.game-list .game-element {
+  display: flex;
+  flex-direction: column;
+}
+.game-list .game-element :hover {
+  background: #1e1d1e;
+  transition: background 0.3s ease;
+}
+.game-list .game-element a {
+  border-bottom: 2px solid #788fba;
+  max-width: 1000px;
+}
+.game-list .game-item {
+  margin-top: 15px;
+  margin-bottom: 15px;
+  width: 1000px;
+  display: flex;
+  justify-content: space-between;
+}
+.game-list .game-item .title {
+  width: 250px;
+}
+.game-list .game-item .create-date {
+  width: 115px;
+  text-align: center;
+}
+.game-list .game-item .author {
+  text-align: center;
+}
+.game-list .game-item .num-of-user {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+}
+.game-list .game-item .num-of-user-more {
+  background: #3e3f36;
+  border-radius: 50px;
+  padding: 3px;
+  margin: 0;
+  width: 20px;
+}
+.game-list .game-item .num-of-post,
+.game-list .game-item .num-of-event {
+  width: 50px;
+  text-align: center;
+}
+.game-list .game-item .author,
+.game-list .game-item .num-of-user,
+.game-list .game-item .num-of-event {
+  width: 100px;
+}
+/*# sourceMappingURL=game-list.css.map */
