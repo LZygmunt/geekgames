@@ -54,19 +54,19 @@
   border: 1px #788fba solid;
 }
 #profile .colors .first .background {
-  background: var(--first-bg);
+  background: #2b2a2b;
 }
 #profile .colors .first .second-background {
-  background: var(--second-bg);
+  background: #4b4d42;
 }
 #profile .colors .first .third-background {
-  background: var(--third-bg);
+  background: #777a76;
 }
 #profile .colors .first .color-text {
-  background: var(--blue);
+  background: #788fba;
 }
 #profile .colors .first .color-link {
-  background: var(--red);
+  background: #d45640;
 }
 #profile .colors .second .background {
   background: #e2e9c0;
