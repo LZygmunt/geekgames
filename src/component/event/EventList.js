@@ -1,6 +1,6 @@
 import React from 'react';
 
-const EventList = (props) => {
+const EventList = props => {
   return (
     <div></div>
   );

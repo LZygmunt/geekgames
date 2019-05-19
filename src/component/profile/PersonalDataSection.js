@@ -14,17 +14,17 @@ class PersonalDataSection extends Component {
     city: ""
   };
 
-  handleChange = (event) => {
-    this.setState({
-        [event.target.name]: [event.target.value]
-    })
+  handleChange = event => {
+    this.setState({ [event.target.name]: [event.target.value] })
   };
 
-  handleClick = (event) => {
-    const e = event.target;
+  handleClick = event => {
     this.setState(prevState => {
       return {
-        [e.dataset.switch]: (e.dataset.switch === "isEdit") ? !prevState.isEdit : e.parentElement.className
+        [event.target.dataset.switch]:
+          (event.target.dataset.switch === "isEdit") ?
+            !prevState.isEdit:
+            event.target.parentElement.className
       }
     });
   };
@@ -32,10 +32,10 @@ class PersonalDataSection extends Component {
   render() {
     const { nick, email, city, isEdit } = this.state;
     const { auth, profile } = this.props;
-    // console.log("PDS -> ", this.state, this.props)
+    //TODO wybieranie kolorów zrobić i zmiana na żywo
     return (
       <div id="profile">
-        <h1>Witaj, {profile.nick}!</h1>
+        <h1>Witaj, { profile.nick }!</h1>
         <div className="short-info">
           <div className="avatar">
             <i className="far fa-user-circle"> </i>
@@ -43,34 +43,34 @@ class PersonalDataSection extends Component {
           <div className="personal-data">
             <div className="nick">
               <p>Nick:</p>
-              {isEdit ? <input
+              { isEdit ? <input
                 type="text"
                 name="nick"
                 placeholder="Podaj nick"
-                value={nick}
-                onChange={this.handleChange}
-              /> : <p>{profile.nick}</p>}
+                value={ nick }
+                onChange={this.handleChange }
+              /> : <p>{ profile.nick }</p> }
             </div>
             <div className="email">
               <p>E-mail:</p>
-              {isEdit ? <input
+              { isEdit ? <input
                 type="email"
                 name="email"
                 placeholder="Podaj e-mail"
-                value={email}
-                onChange={this.handleChange}
-              /> : <p>{auth.email}</p>}
+                value={ email }
+                onChange={ this.handleChange }
+              /> : <p>{ auth.email }</p> }
 
             </div>
             <div className="city">
               <p>Miasto:</p>
-              {isEdit ? <input
+              { isEdit ? <input
                 type="text"
                 name="city"
                 placeholder="Podaj miasto"
-                value={city}
-                onChange={this.handleChange}
-              /> : <p>{profile.city}</p>}
+                value={ city }
+                onChange={ this.handleChange }
+              /> : <p>{ profile.city }</p> }
 
             </div>
           </div>
@@ -79,21 +79,21 @@ class PersonalDataSection extends Component {
         <div className="edit-place">
           <div className="colors">
             <p>Kolory: </p>
-            <div className="first" onClick={this.handleClick} data-switch="colorTheme">
+            <div className="first" onClick={ this.handleClick } data-switch="colorTheme">
               <div className="background" data-switch="colorTheme"/>
               <div className="second-background" data-switch="colorTheme"/>
               <div className="third-background" data-switch="colorTheme"/>
               <div className="color-text" data-switch="colorTheme"/>
               <div className="color-link" data-switch="colorTheme"/>
             </div>
-            <div className="second" onClick={this.handleClick} data-switch="colorTheme">
+            <div className="second" onClick={ this.handleClick } data-switch="colorTheme">
               <div className="background" data-switch="colorTheme"/>
               <div className="second-background" data-switch="colorTheme"/>
               <div className="third-background" data-switch="colorTheme"/>
               <div className="color-text" data-switch="colorTheme"/>
               <div className="color-link" data-switch="colorTheme"/>
             </div>
-            <div className="third" onClick={this.handleClick} data-switch="colorTheme">
+            <div className="third" onClick={ this.handleClick } data-switch="colorTheme">
               <div className="background" data-switch="colorTheme"/>
               <div className="second-background" data-switch="colorTheme"/>
               <div className="third-background" data-switch="colorTheme"/>
@@ -102,8 +102,8 @@ class PersonalDataSection extends Component {
             </div>
           </div>
 
-          <div className="button" onClick={this.handleClick} data-switch="isEdit" style={{clear: "both",lineHeight: "2",marginTop: "60px"}}>
-            {isEdit ? "Potwierdź" : "Edytuj dane"}
+          <div className="button" onClick={ this.handleClick } data-switch="isEdit" style={{ clear: "both",lineHeight: "2",marginTop: "60px" }}>
+            { isEdit ? "Potwierdź" : "Edytuj dane" }
           </div>
 
         </div>
@@ -112,8 +112,7 @@ class PersonalDataSection extends Component {
   }
 }
 
-const mapStateToProps = (state) => {
-  // console.log("PDS log -> ",state);
+const mapStateToProps = state => {
   return {
     profile: state.firebase.profile
   }

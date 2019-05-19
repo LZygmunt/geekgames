@@ -13,13 +13,11 @@ class SignIn extends Component {
     password: ""
   };
 
-  handleChange = (event) => {
-    this.setState({
-      [event.target.name]: event.target.value
-    })
+  handleChange = event => {
+    this.setState({ [event.target.name]: event.target.value })
   };
 
-  handleSubmit = (event) => {
+  handleSubmit = event => {
     event.preventDefault();
     const { firebase } = this.props;
     const creds = this.state;
@@ -32,14 +30,14 @@ class SignIn extends Component {
       <div id="sign-in">
           <h1>Witaj ponownie!</h1>
           <p>Użyj tego formularza, aby przejść na swój profil:</p>
-        <form onSubmit={this.handleSubmit}>
+        <form onSubmit={ this.handleSubmit }>
           <div>
             <input
               type="email"
               name="email"
               placeholder="Podaj e-mail"
-              value={this.state.email}
-              onChange={this.handleChange}
+              value={ this.state.email }
+              onChange={ this.handleChange }
             />
           </div>
           <div>
@@ -47,8 +45,8 @@ class SignIn extends Component {
               type="password"
               name="password"
               placeholder="Podaj hasło"
-              value={this.state.password}
-              onChange={this.handleChange}
+              value={ this.state.password }
+              onChange={ this.handleChange }
             />
           </div>
           <div>
@@ -61,7 +59,7 @@ class SignIn extends Component {
   }
 }
 
-const mapStateToProps = (state) => {
+const mapStateToProps = state => {
   // console.log("SignIn log -> ",state);
   return {
     authError: state.auth.authError,
@@ -69,7 +67,7 @@ const mapStateToProps = (state) => {
   }
 };
 
-const mapDispatchToProps = (dispatch) => {
+const mapDispatchToProps = dispatch => {
   return {
     signIn: (creds, firebase) => dispatch(signIn(creds, firebase))
   }

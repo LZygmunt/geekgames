@@ -18,13 +18,11 @@ class SignUp extends Component {
     avatar: ""
   };
 
-  handleChange = (event) => {
-    this.setState({
-      [event.target.name]: event.target.value
-    });
+  handleChange = event => {
+    this.setState({ [event.target.name]: event.target.value });
   };
 
-  handleSubmit = (event) => {
+  handleSubmit = event => {
     event.preventDefault();
     this.props.signUp(this.state, this.props.firebase);
   };
@@ -32,18 +30,19 @@ class SignUp extends Component {
   render() {
     const { authError } = this.props;
     //todo zrobić dodawanie obrazka
+    //TODO sprawdzanie hasła
     return (
       <div id="sign-up">
           <h1>Witaj!</h1>
           <p>Użyj tego formularza, aby zacząć korzystać ze wszystkich możliwości naszego portalu:</p>
-        <form onSubmit={this.handleSubmit} name="signUp">
+        <form onSubmit={ this.handleSubmit } name="signUp">
           <div>
             <input
               type="text"
               name="nick"
               placeholder="Podaj nick"
-              value={this.state.nick}
-              onChange={this.handleChange}
+              value={ this.state.nick }
+              onChange={ this.handleChange }
             />
           </div>
           <div>
@@ -51,16 +50,16 @@ class SignUp extends Component {
               type="text"
               name="city"
               placeholder="Podaj miejscowość"
-              value={this.state.city}
-              onChange={this.handleChange}
+              value={ this.state.city }
+              onChange={ this.handleChange }
             />
           </div>
           {/*<div>*/}
           {/*  <input*/}
           {/*    type="text"*/}
           {/*    name="avatar"*/}
-          {/*    value={this.state.avatar}*/}
-          {/*    onChange={this.handleChange}*/}
+          {/*    value={ this.state.avatar }*/}
+          {/*    onChange={ this.handleChange }*/}
           {/*  />*/}
           {/*</div>*/}
           <div>
@@ -68,8 +67,8 @@ class SignUp extends Component {
               type="email"
               name="email"
               placeholder="Podaj e-mail"
-              value={this.state.email}
-              onChange={this.handleChange}
+              value={ this.state.email }
+              onChange={this.handleChange }
             />
           </div>
           <div>
@@ -77,8 +76,8 @@ class SignUp extends Component {
               type="password"
               name="password"
               placeholder="Podaj hasło"
-              value={this.state.password}
-              onChange={this.handleChange}
+              value={ this.state.password }
+              onChange={ this.handleChange }
             />
           </div>
           <div>
@@ -86,14 +85,14 @@ class SignUp extends Component {
               type="password"
               name="passwordConfirm"
               placeholder="Potwierdź hasło"
-              value={this.state.passwordConfirm}
-              onChange={this.handleChange}
-              onMouseOver={(event) => {event.target.background = "yellow"}}
+              value={ this.state.passwordConfirm }
+              onChange={ this.handleChange }
+              onMouseOver={(event) => { event.target.background = "yellow" }}
             />
           </div>
           <div>
             <button name="signUp">Zarejsetruj</button>
-            {authError && <p>{authError}</p>}
+            { authError && <p>{ authError }</p> }
           </div>
         </form>
       </div>
@@ -101,7 +100,7 @@ class SignUp extends Component {
   }
 }
 
-const mapStateToProps = (state) => {
+const mapStateToProps = state => {
   // console.log("SignUp log -> ",state);
   return {
     auth: state.firebase.auth,
@@ -109,7 +108,7 @@ const mapStateToProps = (state) => {
   }
 };
 
-const mapDispatchToProps = (dispatch) => {
+const mapDispatchToProps = dispatch => {
   return {
     signUp: (newUser, firebase) => dispatch(signUp(newUser, firebase))
   }

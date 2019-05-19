@@ -1,4 +1,4 @@
-export const createGame = (game) => {
+export const createGame = game => {
   return (dispatch, getState, { getFirebase, getFirestore }) => {
     const firestore = getFirestore();
     const profile = getState().firebase.profile;
@@ -18,7 +18,7 @@ export const createGame = (game) => {
   }
 };
 
-export const followGame = (game) => {
+export const followGame = game => {
   return (dispatch, getState, { getFirebase, getFirestore }) => {
     const firestore = getFirestore();
     const authorId = getState().firebase.auth.uid;
@@ -35,7 +35,7 @@ export const followGame = (game) => {
   }
 };
 
-export const unfollowGame = (game) => {
+export const unfollowGame = game => {
   return (dispatch, getState, { getFirebase, getFirestore }) => {
     const firestore = getFirestore();
     const followId = getState().followers.id;

@@ -8,19 +8,19 @@ import "./game.css"
 import "./game-list.css"
 
 const GameContainer = ({ games, auth, followers }) => {
-  console.log(games);
-    window.onscroll = function(){
-        var header = document.getElementById("game-header-table");
-        if(header!=null) {
-            var sticky = header.offsetTop;
+  window.onscroll = function(){
+    const header = document.getElementById("game-header-table");
+    if(header!=null) {
+      const sticky = header.offsetTop;
 
-            if (window.pageYOffset > sticky) {
-                header.className = "sticky";
-            } else {
-                header.className = "";
-            }
-        }
-    };
+      if (window.pageYOffset > sticky) {
+        header.className = "sticky";
+      } else {
+        header.className = "";
+      }
+    }
+  };
+
   return (auth.uid) ? (
     <div className="game-list">
         <div id="game-header-table">
@@ -39,25 +39,22 @@ const GameContainer = ({ games, auth, followers }) => {
             <div className="num-of-event">Wydarzenia</div>
         </div>
         </div>
-      <GameList games={games} followers={followers}/>
+      <GameList games={ games } followers={ followers }/>
     </div>
   ): (<div/>);
 };
 
-const mapStoreToProps = (state) => {
-  console.log("state ordered -> ", state.firestore);
+const mapStoreToProps = state => {
   return {
     auth: state.firebase.auth,
     games: state.firestore.ordered.games
   }
 };
 
-
-
 export default compose(
   connect(mapStoreToProps),
   firestoreConnect([
-    {collection: "games", orderBy: ["created"]},
-    {collection: "followers"}
+    { collection: "games", orderBy: ["created"] },
+    { collection: "followers" }
   ])
 )(GameContainer);

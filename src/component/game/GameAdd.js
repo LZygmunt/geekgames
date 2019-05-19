@@ -12,11 +12,11 @@ class GameAdd extends Component {
     alt: "tekst alternatywny"
   };
 
-  handleChange = (event) => {
-    this.setState({[event.target.name]: event.target.value})
+  handleChange = event => {
+    this.setState({ [event.target.name]: event.target.value })
   };
 
-  handleSubmit = (event) => {
+  handleSubmit = event => {
     event.preventDefault();
     this.props.createGame(this.state);
     this.props.handleClose(event);
@@ -27,14 +27,14 @@ class GameAdd extends Component {
     const { title, desc, image } = this.state;
 
     return (
-      <Modal show={show} title="Dodaj grę" handleClose={handleClose}>
+      <Modal show={ show } title="Dodaj grę" handleClose={ handleClose }>
         <form>
           <input
             type="text"
             placeholder="Nazwa gry"
             name="title"
-            value={title}
-            onChange={this.handleChange}
+            value={ title }
+            onChange={ this.handleChange }
           />
           <input
             type="file"
@@ -43,12 +43,12 @@ class GameAdd extends Component {
           />
           <textarea
             name="desc"
-            value={desc}
+            value={ desc }
             placeholder="Podaj opis gry..."
-            onChange={this.handleChange}
+            onChange={ this.handleChange }
             rows="10"
           />
-          <button onClick={this.handleSubmit}>Dodaj</button>
+          <button onClick={ this.handleSubmit }>Dodaj</button>
         </form>
       </Modal>
     )

@@ -1,8 +1,6 @@
 import React, { Component } from "react";
 import { Comment } from "./index";
 import { connect } from "react-redux";
-import { firestoreConnect } from "react-redux-firebase";
-import { compose } from "redux";
 import { createComment } from "../../store/actions/postActions";
 
 class CommentList extends Component{
@@ -33,7 +31,7 @@ class CommentList extends Component{
     const commentList = this.props.comments
       && this.props.comments.map(comment => <Comment comment={ comment } key={ comment.id }/>);
 
-    return (<div className="comments">
+    return (<div className={ "comments " + this.props.showComment }>
       <div className="comment-add">
         <input
           type="text"
@@ -54,22 +52,10 @@ class CommentList extends Component{
   }
 }
 
-const mapStateToProps = state => {
-  console.log(state)
-  return {
-    comments: state.firestore.ordered.comments
-  }
-};
-
 const mapDispatchToProps = dispatch => {
   return {
     createComment: comment => dispatch(createComment(comment))
   }
 };
 
-export default compose(
-  firestoreConnect(props => [
-    {collection: "comments", where: ["postId", "==", props.postId]}
-  ]),
-  connect(mapStateToProps, mapDispatchToProps)
-)(CommentList);
+export default connect(null, mapDispatchToProps)(CommentList);

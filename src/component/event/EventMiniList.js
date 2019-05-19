@@ -40,7 +40,7 @@ const EventMiniList = (props) => {
     }
   ];
 
-  const eventList = data.map(item => <EventMini key={item.id} item={item}/>);
+  const eventList = data.map(item => <EventMini key={ item.id } item={ item } />);
   //todo ustawić mini event na fixed
   return (auth.uid) ?
     (<div id="slide-event">
@@ -48,7 +48,7 @@ const EventMiniList = (props) => {
     </div>) : null
 };
 
-const mapStateToProps = (state) => {
+const mapStateToProps = state => {
   // console.log("EventMiniList log -> ",state);
   return {
     auth: state.firebase.auth,
