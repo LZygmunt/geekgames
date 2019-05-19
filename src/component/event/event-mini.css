@@ -17,9 +17,17 @@
   padding: 15px 15px 25px;
   margin: 15px;
 }
+#slide-event .event-mini span {
+  color: #777a76;
+}
 #slide-event .event-mini i {
   color: #d45640;
   padding: 0 5px;
+  margin-top: 5px;
+}
+#slide-event .event-mini i span {
+  margin-left: 3px;
+  color: #777a76;
 }
 #slide-event .event-mini a {
   text-decoration: none;
@@ -33,9 +41,12 @@
 #slide-event .event-mini .info p {
   display: flex;
   justify-content: space-between;
+  flex-direction: column;
 }
 .slide-button-without-bg {
   overflow: hidden;
+  width: 100%;
+  text-align: right;
 }
 .slide-button-without-bg:hover span {
   opacity: 1;

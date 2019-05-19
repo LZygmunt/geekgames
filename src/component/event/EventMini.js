@@ -35,15 +35,14 @@ class EventMini extends Component {
       <div className="event-mini">
         <div className="info">
           <p>
-            <span>
-            { event.startDate } - { event.endDate }
-            <i className="fas fa-cube"> </i>
-            { event.place }
-            </span>
             <span className="slide-button-without-bg" onClick={ this.followIt }>
               <span>{ (isFollow)? "Obserwujesz" : "Obserwuj" }</span>
               <i className="fas fa-eye" data-name={ "follow-" + event.id }> </i>
             </span>
+              <i className="fas fa-calendar-alt"><span>{ event.startDate } - { event.endDate }</span></i>
+              <i className="fas fa-cube"><span>{ event.place }</span></i>
+
+
           </p>
         </div>
         <div className="game info">

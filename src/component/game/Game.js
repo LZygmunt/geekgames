@@ -37,10 +37,12 @@ class Game extends Component {
 
             <div className="game-info">
               <h1 className="title">{ game.title }</h1>
+
               <div className="follow-button slide-button">
                 <i className="fas fa-eye-slash"/>
                 <span>{ followers.follow ? "Nie obserwuj" : "Obserwuj" }</span>
               </div>
+
               <div className="add-button slide-button" data-name="add" onClick={ this.toggleModal }>
                 <i className="fas fa-plus" data-name="add"> </i>
                 <span data-name="add"> Dodaj wydarzenie</span>
