@@ -1,19 +1,19 @@
-.post {
+.post-add {
   max-height: 480px;
 }
-.post i {
+.post-add i {
   transform: rotateZ(45deg);
   max-width: 14px;
   width: 14px;
   transition: all 1s linear;
 }
-.post i.rotate-plus {
+.post-add i.rotate-plus {
   transform: rotateZ(-90deg);
   max-width: 837px;
   width: 100%;
   text-align: center;
 }
-.post textarea {
+.post-add textarea {
   background: #383738;
   color: #788fba;
   min-height: 35px;

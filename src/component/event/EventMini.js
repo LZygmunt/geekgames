@@ -19,6 +19,8 @@ class EventMini extends Component {
       }
     });
 
+    if (event.target.textContent ==="Obserwujesz" ||  event.target.textContent ==="Obserwuj")
+      event.target = event.target.nextSibling;
     if(event.target.className==="fas fa-eye-slash")
         event.target.className="fas fa-eye";
     else

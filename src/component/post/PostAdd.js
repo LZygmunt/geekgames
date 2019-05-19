@@ -48,7 +48,7 @@ class PostAdd extends Component {
 
   render() {
     return (
-      <div className="post">
+      <div className="post post-add">
         <i className={"fas fa-plus " + this.state.rotatePlus} onClick={this.togglePost}/>
         <div className={this.state.toggleForm}>
           <form onSubmit={this.handleSubmit} id="post-form" style={{display:"none"}}>
