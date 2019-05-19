@@ -34,7 +34,7 @@ class PostComponent extends Component {
   }
 }
 
-const mapStateToProps = state => {
+const mapStoreToProps = state => {
   return {
     comments: state.firestore.ordered.comments
   }
@@ -44,5 +44,5 @@ export default compose(
   firestoreConnect( [
     { collection: "comments", orderBy: ["created", "desc"] }
   ]),
-  connect(mapStateToProps)
+  connect(mapStoreToProps)
 )(PostComponent);

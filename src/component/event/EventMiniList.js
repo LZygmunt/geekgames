@@ -1,46 +1,13 @@
 import React from "react";
 import { EventMini } from "./";
 import { connect } from "react-redux";
+import { compose } from "redux";
+import { firestoreConnect } from "react-redux-firebase";
 
 const EventMiniList = (props) => {
-  const { auth } = props;
+  const { auth, events } = props;
 
-  const data = [
-    {
-      id: 0,
-      dateOfEvent: "2012-05-29",
-      placeOfEvent: "Place",
-      gameOfEvent: "Go to page game",
-      titleOfEvent: "Title of event... Go to page event",
-      isFollow: true
-    },
-    {
-      id: 1,
-      dateOfEvent: "2000-10-02",
-      placeOfEvent: "Place",
-      gameOfEvent: "Go to page game",
-      titleOfEvent: "Title of event... Go to page event",
-      isFollow: false
-    },
-    {
-      id: 2,
-      dateOfEvent: "1000-10-01",
-      placeOfEvent: "Place",
-      gameOfEvent: "Go to page game",
-      titleOfEvent: "Title of event... Go to page event",
-      isFollow: false
-    },
-    {
-      id: 3,
-      dateOfEvent: "1000-10-01",
-      placeOfEvent: "Place",
-      gameOfEvent: "Go to page game",
-      titleOfEvent: "Title of event... Go to page event",
-      isFollow: true
-    }
-  ];
-
-  const eventList = data.map(item => <EventMini key={ item.id } item={ item } />);
+  const eventList = events && events.map(event => <EventMini key={ event.id } event={ event } />);
   //todo ustawić mini event na fixed
   return (auth.uid) ?
     (<div id="slide-event">
@@ -48,13 +15,16 @@ const EventMiniList = (props) => {
     </div>) : null
 };
 
-const mapStateToProps = state => {
-  // console.log("EventMiniList log -> ",state);
+const mapStoreToProps = state => {
   return {
     auth: state.firebase.auth,
-    // auth: {uid: 1},
-    posts: state.firestore.ordered.post
+    events: state.firestore.ordered.events
   }
 };
 
-export default connect(mapStateToProps)(EventMiniList);
+export default compose(
+  firestoreConnect([
+    { collection: "events",  limit: 5}
+  ]),
+  connect(mapStoreToProps)
+)(EventMiniList);

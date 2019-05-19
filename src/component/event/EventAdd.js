@@ -1,23 +1,38 @@
 import React, { Component } from "react";
 import Modal from "../modal/Modal";
+import { connect } from "react-redux";
+import { createEvent } from "../../store/actions/postActions";
 
 class EventAdd extends Component {
 
   state = {
     title: "",
     place: "",
-    body: "Opis wydarzenia"
+    desc: "",
+    startDate: "",
+    endDate: ""
   };
 
   handleChange = event => {
-    this.setState({ title: event.target.value })
+    this.setState({ [event.target.name]: event.target.value })
   };
 
-  handleSubmit = () => {
-    console.log(this.state.title);
+  handleSubmit = event => {
+    event.preventDefault();
+    this.props.createEvent(this.state, this.props.gameId);
+    this.props.handleClose(event);
+    this.setState({
+      title: "",
+      place: "",
+      desc: "",
+      startDate: "",
+      endDate: ""
+    })
   };
 
   render() {
+    //TODO zrobić od do w datach
+    const { title, place, desc, startDate, endDate } = this.state;
     return (
       <Modal title="Dodaj wydarzenie" handleClose={ this.props.handleClose } show={ this.props.show }>
         <form>
@@ -25,32 +40,32 @@ class EventAdd extends Component {
             type="text"
             placeholder="Nazwa wydarzenia"
             name="title"
-            value={ this.state.title }
-            onChange={ this.handleChange }
-          />
-          <input
-            type="text"
-            placeholder="Nazwa gry"
-            name="title"
-            value={ this.state.title }
+            value={ title }
             onChange={ this.handleChange }
           />
           <input
             type="text"
             placeholder="Miejsce"
             name="place"
-            value={ this.state.place }
+            value={ place }
             onChange={ this.handleChange }
           />
           <input
             type="date"
-            name="date"
-            value={ this.state.date }
+            name="startDate"
+            value={ startDate }
+            onChange={ this.handleChange }
+          />
+          <input
+            type="date"
+            name="endDate"
+            value={ endDate }
             onChange={ this.handleChange }
           />
           <textarea
-            name="body"
-            value={ this.state.body }
+            name="desc"
+            value={ desc }
+            placeholder={ "Wprowadź opis wydarzenia..." }
             cols="30"
             rows="10"
             onChange={ this.handleChange }
@@ -62,4 +77,10 @@ class EventAdd extends Component {
   }
 }
 
-export default EventAdd;
+const mapDispatchToProps = dispatch => {
+  return {
+    createEvent: (event, gameId) => dispatch(createEvent(event, gameId))
+  }
+};
+
+export default connect(null, mapDispatchToProps)(EventAdd);

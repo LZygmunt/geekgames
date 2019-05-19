@@ -20,6 +20,6 @@ const mapStoreToProps = state => {
 export default compose(
   connect(mapStoreToProps),
   firestoreConnect([
-    { collection: "posts", orderBy: ["created"], where: [] }
+    { collection: "posts", orderBy: ["created"], where: ["isEvent", "==", true] }
   ])
 )(EventContainer);

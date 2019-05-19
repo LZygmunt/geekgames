@@ -22,7 +22,7 @@ class Game extends Component {
   };
 
   render() {
-    const { auth } = this.props;
+    const { auth, post, match } = this.props;
     const game = this.props.game && this.props.game[this.props.match.params.id];
     const followers = { follow: false };
 
@@ -50,9 +50,9 @@ class Game extends Component {
           <div className="game-desc">
             <p>{ game.desc }</p>
           </div>
-          <PostAdd gameId={ this.props.match.params.id }/>
-          <PostContainer posts={ this.props.post }/>
-          <EventAdd show={ this.state.show } handleClose={ this.toggleModal }/>
+          <PostAdd gameId={ match.params.id }/>
+          <PostContainer posts={ post }/>
+          <EventAdd show={ this.state.show } handleClose={ this.toggleModal } gameId={ match.params.id }/>
         </div>) : (<div>Ładowanie gry...</div>)
       ) :
       (<Redirect to="/"/>);

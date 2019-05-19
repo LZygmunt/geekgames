@@ -20,7 +20,7 @@ class Modal extends Component {
   };
 
   render() {
-    let { show, handleClose, children, title } = this.props;
+    const { show, handleClose, children, title } = this.props;
     const toggleShow = show ? "modal show" : "modal hide";
 
     return (

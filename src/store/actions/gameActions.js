@@ -21,10 +21,13 @@ export const createGame = game => {
 export const followGame = game => {
   return (dispatch, getState, { getFirebase, getFirestore }) => {
     const firestore = getFirestore();
+    const profile = getState().firebase.profile;
     const authorId = getState().firebase.auth.uid;
 
     firestore.collection("followers").add({
       authorId: authorId,
+      authorNick: profile.nick,
+      authorAvatar: profile.avatar,
       gameId: game.id,
       created: new Date()
     }).then(() => {

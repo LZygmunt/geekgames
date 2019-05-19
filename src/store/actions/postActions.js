@@ -1,11 +1,14 @@
 export const createPost = (post, gameId) => {
   return (dispatch, getState, { getFirebase, getFirestore }) => {
     const firestore = getFirestore();
+    const profile = getState().firebase.profile;
     const authorId = getState().firebase.auth.uid;
 
     firestore.collection("posts").add({
       ...post,
       authorId: authorId,
+      authorNick: profile.nick,
+      authorAvatar: profile.avatar,
       gameId: gameId,
       created: new Date()
     }).then(() => {
@@ -15,15 +18,38 @@ export const createPost = (post, gameId) => {
     });
   }
 };
+export const createEvent = (event, gameId) => {
+  return (dispatch, getState, { getFirebase, getFirestore }) => {
+    const firestore = getFirestore();
+    const profile = getState().firebase.profile;
+    const authorId = getState().firebase.auth.uid;
+
+    firestore.collection("events").add({
+      ...event,
+      authorId: authorId,
+      authorNick: profile.nick,
+      authorAvatar: profile.avatar,
+      gameId: gameId,
+      created: new Date()
+    }).then(() => {
+      dispatch({ type: "CREATE_POST", event })
+    }).catch((err) => {
+      dispatch({ type: "CREATE_POST_ERROR", err })
+    });
+  }
+};
 
 export const createComment = comment => {
   return (dispatch, getState, { getFirebase, getFirestore }) => {
     const firestore = getFirestore();
+    const profile = getState().firebase.profile;
     const authorId = getState().firebase.auth.uid;
 
     firestore.collection("comments").add({
       ...comment,
       authorId: authorId,
+      authorNick: profile.nick,
+      authorAvatar: profile.avatar,
       created: new Date()
     }).then(() => {
       dispatch({ type: "CREATE_COMMENT", comment })
@@ -36,10 +62,13 @@ export const createComment = comment => {
 export const followEvent = event => {
   return (dispatch, getState, { getFirebase, getFirestore }) => {
     const firestore = getFirestore();
+    const profile = getState().firebase.profile;
     const authorId = getState().firebase.auth.uid;
 
     firestore.collection("followers").add({
       authorId: authorId,
+      authorNick: profile.nick,
+      authorAvatar: profile.avatar,
       eventId: event.id,
       created: new Date()
     }).then(() => {

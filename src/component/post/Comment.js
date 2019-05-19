@@ -6,6 +6,9 @@ import "./comments.css"
 import logo from "../../images/logo-geek-games.png"
 
 class Comment extends Component {
+
+
+
   render() {
     const { comment } = this.props;
     return (

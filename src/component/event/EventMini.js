@@ -9,7 +9,7 @@ class EventMini extends Component {
   };
 
   componentDidMount() {
-    this.setState({ isFollow: this.props.item.isFollow })
+    this.setState({ isFollow: this.props.event.isFollow })
   }
 
   followIt = (event) => {
@@ -28,7 +28,7 @@ class EventMini extends Component {
   };
 
   render() {
-    const props = this.props.item;
+    const { event } = this.props;
     const { isFollow } = this.state;
 
     return (
@@ -36,27 +36,27 @@ class EventMini extends Component {
         <div className="info">
           <p>
             <span>
-            { props.dateOfEvent }
+            { event.startDate } - { event.endDate }
             <i className="fas fa-cube"> </i>
-            { props.placeOfEvent }
+            { event.place }
             </span>
             <span className="slide-button-without-bg" onClick={ this.followIt }>
               <span>{ (isFollow)? "Obserwujesz" : "Obserwuj" }</span>
-              <i className="fas fa-eye" data-name={ "follow-" + props.id }> </i>
+              <i className="fas fa-eye" data-name={ "follow-" + event.id }> </i>
             </span>
           </p>
         </div>
         <div className="game info">
           <p>
             <a href="#">
-              { props.gameOfEvent }
+              { event.gameId }
             </a>
           </p>
         </div>
         <div className="title info">
           <p>
             <a href="#">
-              { props.titleOfEvent }
+              { event.title }
             </a>
           </p>
         </div>

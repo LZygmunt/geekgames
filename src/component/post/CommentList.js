@@ -27,7 +27,7 @@ class CommentList extends Component{
     alert("Za duuuużo i zwiększyła");
   };
 
-  render() {
+  render() {//TODO spróbować wywalić wszystkie rzeczy o autorze oprócz id i wstawić je z innej kolekcji
     const commentList = this.props.comments
       && this.props.comments.map(comment => <Comment comment={ comment } key={ comment.id }/>);
 
