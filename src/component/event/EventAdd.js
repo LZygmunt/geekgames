@@ -9,8 +9,9 @@ class EventAdd extends Component {
     title: "",
     place: "",
     desc: "",
-    startDate: "",
-    endDate: ""
+    startDate: new Date().toJSON().slice(0,10),
+    endDate: new Date().toJSON().slice(0,10),
+    image: ""
   };
 
   handleChange = event => {
@@ -19,14 +20,15 @@ class EventAdd extends Component {
 
   handleSubmit = event => {
     event.preventDefault();
-    this.props.createEvent(this.state, this.props.gameId);
+    this.props.createEvent({...this.state, ...this.props.game});
     this.props.handleClose(event);
     this.setState({
       title: "",
       place: "",
       desc: "",
-      startDate: "",
-      endDate: ""
+      startDate: new Date().toJSON().slice(0,10),
+      endDate: new Date().toJSON().slice(0,10),
+      image: ""
     })
   };
 
@@ -79,7 +81,7 @@ class EventAdd extends Component {
 
 const mapDispatchToProps = dispatch => {
   return {
-    createEvent: (event, gameId) => dispatch(createEvent(event, gameId))
+    createEvent: (event) => dispatch(createEvent(event))
   }
 };
 

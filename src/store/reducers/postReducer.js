@@ -8,6 +8,12 @@ const postReducer = (state = initState, action) => {
     case "CREATE_POST_ERROR":
       console.log("created post error: ", action.err.message);
       return state;
+    case "CREATE_EVENT":
+      console.log("created post: ", action.evt);
+      return state;
+    case "CREATE_EVENT_ERROR":
+      console.log("created post error: ", action.err.message);
+      return state;
     case "CREATE_COMMENT":
       console.log("created comment: ", action.comment);
       return state;
@@ -15,13 +21,13 @@ const postReducer = (state = initState, action) => {
       console.log("created comment error: ", action.err.message);
       return state;
     case "FOLLOW_EVENT":
-      console.log("followed event: ", action.event);
+      console.log("followed event: ", action.evt);
       return state;
     case "FOLLOW_EVENT_ERROR":
       console.log("followed event error: ", action.err.message);
       return state;
     case "UNFOLLOW_EVENT":
-      console.log("unfollowed event: ", action.event);
+      console.log("unfollowed event: ", action.evt);
       return state;
     case "UNFOLLOW_EVENT_ERROR":
       console.log("unfollowed event error: ", action.err.message);

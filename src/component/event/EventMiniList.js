@@ -6,9 +6,9 @@ import { firestoreConnect } from "react-redux-firebase";
 
 const EventMiniList = (props) => {
   const { auth, events } = props;
+  const eventList = events && events.map(event => <EventMini key={ event.id } event={ event }/>);
 
-  const eventList = events && events.map(event => <EventMini key={ event.id } event={ event } />);
-  //todo ustawić mini event na fixed
+//todo ustawić mini event na fixed
   return (auth.uid) ?
     (<div id="slide-event">
       { eventList }
@@ -18,13 +18,19 @@ const EventMiniList = (props) => {
 const mapStoreToProps = state => {
   return {
     auth: state.firebase.auth,
-    events: state.firestore.ordered.events
+    events: state.firestore.ordered.eventMiniList
   }
 };
 
 export default compose(
   firestoreConnect([
-    { collection: "events",  limit: 5}
+    {
+      collection: "events",
+      where: ["startDate", ">=", new Date().toJSON().slice(0,10)],
+      orderBy: ["startDate", "asc"],
+      limit: 5,
+      storeAs: "eventMiniList"
+    }
   ]),
   connect(mapStoreToProps)
 )(EventMiniList);

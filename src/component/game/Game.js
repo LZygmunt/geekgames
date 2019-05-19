@@ -23,7 +23,7 @@ class Game extends Component {
 
   render() {
     const { auth, post, match } = this.props;
-    const game = this.props.game && this.props.game[this.props.match.params.id];
+    const game = this.props.game && this.props.game[match.params.id];
     const followers = { follow: false };
 
     return (auth.uid) ? (
@@ -54,14 +54,18 @@ class Game extends Component {
           </div>
           <PostAdd gameId={ match.params.id }/>
           <PostContainer posts={ post }/>
-          <EventAdd show={ this.state.show } handleClose={ this.toggleModal } gameId={ match.params.id }/>
+          <EventAdd
+            show={ this.state.show }
+            handleClose={ this.toggleModal }
+            game={{ gameId: match.params.id, gameTitle: game.title }}
+          />
         </div>) : (<div>Ładowanie gry...</div>)
       ) :
       (<Redirect to="/"/>);
   }
 }
 
-const mapStateToProps = state => {
+const mapStoreToProps = state => {
   return {
     auth: state.firebase.auth,
     game: state.firestore.data.games,
@@ -75,5 +79,5 @@ export default compose(
     { collection: "games", doc: props.match.params.id },
     { collection: "posts", where: ["gameId", "==", props.match.params.id] }
   ]),
-  connect(mapStateToProps)
+  connect(mapStoreToProps)
 )(Game);

@@ -21,7 +21,7 @@ class PostAdd extends Component {
     });
 
     if (this.state.toggleForm === "show-post-add"){
-      console.log(document.getElementsByClassName("show-post-add")[0]);
+      // console.log(document.getElementsByClassName("show-post-add")[0]);
       document.getElementsByClassName("show-post-add")[0].style.background="all 1s linear";
       // setTimeout(function () {
         document.getElementById("post-form").style.display = "none";

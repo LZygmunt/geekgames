@@ -1,4 +1,5 @@
-import React, {Component} from "react";
+import React, { Component } from "react";
+import { Link } from "react-router-dom";
 
 import "./event-mini.css";
 
@@ -41,22 +42,20 @@ class EventMini extends Component {
             </span>
               <i className="fas fa-calendar-alt"><span>{ event.startDate } - { event.endDate }</span></i>
               <i className="fas fa-cube"><span>{ event.place }</span></i>
-
-
           </p>
         </div>
         <div className="game info">
           <p>
-            <a href="#">
-              { event.gameId }
-            </a>
+            <Link to={ "/game/" + event.gameId }>
+              { event.gameTitle }
+            </Link>
           </p>
         </div>
         <div className="title info">
           <p>
-            <a href="#">
+            <Link to={ "/event/" + event.id }>
               { event.title }
-            </a>
+            </Link>
           </p>
         </div>
       </div>

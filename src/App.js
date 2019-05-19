@@ -13,7 +13,10 @@ import logo from "./images/logo.png"
 import "./App.css";
 
 class App extends Component {
-  render() {//TODO ożywić wszystkie guziki
+  render() {
+    //TODO ożywić wszystkie guziki
+    //TODO Wprowadzić system powiadomień
+    //TODO po wysyłaniu formularzy wymazywać ich stan
     const { auth } = this.props;
 
     if(auth.isLoaded) return (

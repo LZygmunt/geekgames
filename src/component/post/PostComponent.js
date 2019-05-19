@@ -25,7 +25,7 @@ class PostComponent extends Component {
     const commentsFromPost = comments && comments.filter(comm => (comm.postId === post.id) && comm);
 
     return (<div className="post">
-        <PostDescribe post={post}/>
+        <PostDescribe post={post} showComment={ showComment }/>
         { showComment ?
           <CommentList comments={ commentsFromPost } postId={ post.id }/>:
           <div onClick={ this.showComment }>Rozwiń</div>

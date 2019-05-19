@@ -13,13 +13,13 @@ const EventContainer = ({ events, auth }) => {
 const mapStoreToProps = state => {
   return {
     auth: state.firebase.auth,
-    // events: state.firestore.posts
+    events: state.firestore.ordered.events
   }
 };
 
 export default compose(
   connect(mapStoreToProps),
   firestoreConnect([
-    { collection: "posts", orderBy: ["created"], where: ["isEvent", "==", true] }
+    { collection: "events", orderBy: ["created"] }
   ])
 )(EventContainer);

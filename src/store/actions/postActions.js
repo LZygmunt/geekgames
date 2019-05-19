@@ -18,23 +18,22 @@ export const createPost = (post, gameId) => {
     });
   }
 };
-export const createEvent = (event, gameId) => {
+export const createEvent = evt => {
   return (dispatch, getState, { getFirebase, getFirestore }) => {
     const firestore = getFirestore();
     const profile = getState().firebase.profile;
     const authorId = getState().firebase.auth.uid;
 
     firestore.collection("events").add({
-      ...event,
+      ...evt,
       authorId: authorId,
       authorNick: profile.nick,
       authorAvatar: profile.avatar,
-      gameId: gameId,
       created: new Date()
     }).then(() => {
-      dispatch({ type: "CREATE_POST", event })
+      dispatch({ type: "CREATE_EVENT", evt })
     }).catch((err) => {
-      dispatch({ type: "CREATE_POST_ERROR", err })
+      dispatch({ type: "CREATE_EVENT_ERROR", err })
     });
   }
 };
@@ -59,7 +58,7 @@ export const createComment = comment => {
   }
 };
 
-export const followEvent = event => {
+export const followEvent = evt => {
   return (dispatch, getState, { getFirebase, getFirestore }) => {
     const firestore = getFirestore();
     const profile = getState().firebase.profile;
@@ -69,25 +68,24 @@ export const followEvent = event => {
       authorId: authorId,
       authorNick: profile.nick,
       authorAvatar: profile.avatar,
-      eventId: event.id,
+      followThingId: evt,
       created: new Date()
     }).then(() => {
-      dispatch({ type: "FOLLOW_EVENT", event })
+      dispatch({ type: "FOLLOW_EVENT", evt })
     }).catch((err) => {
       dispatch({ type: "FOLLOW_EVENT_ERROR", err })
     });
   }
 };
 
-export const unfollowEvent = event => {
+export const unfollowEvent = evt => {
   return (dispatch, getState, { getFirebase, getFirestore }) => {
     const firestore = getFirestore();
-    const eventId = getState().followers.id;
-
+console.log(evt)
     firestore.collection("followers").doc(
-      eventId
+      evt
     ).delete().then(() => {
-      dispatch({ type: "UNFOLLOW_EVENT", event })
+      dispatch({ type: "UNFOLLOW_EVENT", evt })
     }).catch((err) => {
       dispatch({ type: "UNFOLLOW_EVENT_ERROR", err })
     });

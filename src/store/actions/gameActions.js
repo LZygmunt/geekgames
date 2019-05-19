@@ -28,7 +28,7 @@ export const followGame = game => {
       authorId: authorId,
       authorNick: profile.nick,
       authorAvatar: profile.avatar,
-      gameId: game.id,
+      followThingId: game.id,
       created: new Date()
     }).then(() => {
       dispatch({ type: "FOLLOW_GAME", game })
