@@ -1,3 +1,13 @@
+:root {
+  --first-bg: #2b2a2b;
+  --lighten-first-bg-5: #383738;
+  --darkenen-first-bg-5: #1e1d1e;
+  --second-bg: #4b4d42;
+  --third-bg: #777a76;
+  --darken-third-bg-25: #383937;
+  --red: #d45640;
+  --blue: #788fba;
+}
 .comments {
   width: 80%;
   margin: 30px auto;
@@ -10,19 +20,11 @@
   font-size: 25px;
   margin-left: 5px;
 }
-.comments .comment-add i:hover {
-  color: #4e6798;
-  text-shadow: 1px 1px 5px #3c5176;
-}
 .comments .comment-extend input {
   width: 100%;
   height: 34px;
   border-radius: 15px;
-  background: #d45640;
+  background: var(--red);
   border: transparent;
-}
-.comments .comment-extend input:hover {
-  background: #a33725;
-  box-shadow: 1px 1px 5px #79291b;
 }
 /*# sourceMappingURL=comments.css.map */
