@@ -36,4 +36,10 @@
 .modal .modal-close {
   cursor: pointer;
 }
+.show {
+  display: block;
+}
+.hide {
+  display: none;
+}
 /*# sourceMappingURL=modal.css.map */

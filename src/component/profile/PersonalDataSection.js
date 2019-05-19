@@ -1,6 +1,10 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 
+
+/*
+* TODO \to na samym kocu\ zmiana kolorów
+* */
 class PersonalDataSection extends Component {
   state = {
     isEdit: false,

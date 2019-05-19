@@ -2,21 +2,36 @@ import React, {Component} from 'react';
 import { createPost } from "../../store/actions/postActions";
 import {connect} from "react-redux";
 
+
+import "./post-add.css";
+
 class PostAdd extends Component {
   state = {
-    rotatePlus: "",
-    toggleForm: "hide",
+    rotatePlus: "rotate-plus",
+    toggleForm: "hide-post-add",
     title: "",
     desc: ""
   };
-  //todo plusa przesunąć na środek oraz gdy jest odwrócony przesunąć go na prawo
   togglePost = () => {
     this.setState(prevState => {
       return {
-        toggleForm: (prevState.toggleForm === "hide") ? "show": "hide",
-        rotatePlus: (prevState.toggleForm === "hide") ? "" : "rotate-plus"
+        toggleForm: (prevState.toggleForm === "hide-post-add") ? "show-post-add" : "hide-post-add",
+        rotatePlus: (prevState.toggleForm === "hide-post-add") ? "" : "rotate-plus"
       }
     });
+
+    if (this.state.toggleForm === "show-post-add"){
+      console.log(document.getElementsByClassName("show-post-add")[0]);
+      document.getElementsByClassName("show-post-add")[0].style.background="all 1s linear";
+      // setTimeout(function () {
+        document.getElementById("post-form").style.display = "none";
+      // }, 1000);
+  }else {
+      document.getElementsByClassName("hide-post-add")[0].style.transition="all 1s linear";
+      setTimeout(function () {
+        document.getElementById("post-form").style.display = "block";
+      }, 1000);
+    }
   };
 
   handleSubmit = (event) => {
@@ -36,7 +51,7 @@ class PostAdd extends Component {
       <div className="post">
         <i className={"fas fa-plus " + this.state.rotatePlus} onClick={this.togglePost}/>
         <div className={this.state.toggleForm}>
-          <form onSubmit={this.handleSubmit}>
+          <form onSubmit={this.handleSubmit} id="post-form" style={{display:"none"}}>
             <input
               type="text"
               name="title"

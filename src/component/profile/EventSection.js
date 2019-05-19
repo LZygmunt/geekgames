@@ -1,5 +1,10 @@
 import React, {Component} from "react";
 
+/*
+* TODO 1 obserwowane wydarzenia dla danego użytkownika
+* TODO 2 wyszukiwarka wydarzeń obesrowanych
+* */
+
 class EventSection extends Component {
     state = {
         show: false,

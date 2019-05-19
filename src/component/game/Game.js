@@ -7,6 +7,10 @@ import { Redirect } from "react-router-dom";
 import { firestoreConnect } from "react-redux-firebase";
 import { compose } from "redux";
 
+
+/*
+* TODO Obsewacja gry
+* */
 class Game extends Component {
 
   state = {

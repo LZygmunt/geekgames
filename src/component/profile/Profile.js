@@ -8,6 +8,9 @@ import "./profil.css";
 import "./event-section.css";
 import "./games-section.css";
 
+/*
+* TODO nie działa edycja danych!!!!
+* */
 const Profile = (props) => {
   const { auth, game, post } = props;
   // console.log("Profile -> ",props)

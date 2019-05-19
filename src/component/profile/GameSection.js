@@ -1,6 +1,11 @@
 import React, {Component} from "react";
 import { GameAdd } from "../game";
 
+
+/*
+* TODO 1 obserwowane gry dla danego użytkownika
+* TODO 2 wyszukiwarka gry
+* */
 class GameSection extends Component {
 
   state = {
