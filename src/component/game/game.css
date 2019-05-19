@@ -1,3 +1,12 @@
+:root {
+  --first-bg: #2b2a2b;
+  --lighten-first-bg-5: #383738;
+  --second-bg: #4b4d42;
+  --third-bg: #777a76;
+  --darken-third-bg-25: #383937;
+  --red: #d45640;
+  --blue: #788fba;
+}
 #game {
   width: 70%;
 }
@@ -20,7 +29,7 @@
 }
 #game .game-property .game-info button.follow-button {
   width: 150px;
-  background: #788fba;
+  background: var(--blue);
   border: transparent;
   border-radius: 15px;
   height: 40px;
@@ -29,7 +38,7 @@
   margin-right: 5px;
 }
 #game .game-property .game-info button.remove-follow {
-  background: #d45640;
+  background: var(--red);
 }
 #game .game-property .game-info button.remove-follow i {
   transform: rotate(45deg);
@@ -40,3 +49,4 @@
   min-width: 600px;
   margin: 30px auto;
 }
+/*# sourceMappingURL=game.css.map */

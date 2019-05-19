@@ -1,8 +1,19 @@
-@gray: #777a76;
-@gray-transparent: rgba(119, 122, 118, 0.34);
-@dark-green: #4b4d42;
-@dark-gray: #2b2a2b;
-@red: #d45640;
-@blue: #788fba;
+:root{
+  --first-bg:#2b2a2b;
+  --lighten-first-bg-5:lighten(#2b2a2b, 5%);
+  --second-bg:#4b4d42;
+  --third-bg:#777a76;
+  --darken-third-bg-25:darken(#777a76, 25%);
+  --red:#d45640;
+  --blue:#788fba;
+}
+
+@gray: var(--third-bg);
+@dark-green: var(--second-bg);
+@dark-gray: var(--first-bg);
+@red: var(--red) ;
+@blue: var(--blue);
+
 @transparent-border: 1px solid transparent;
 @first-size: 19px;
+

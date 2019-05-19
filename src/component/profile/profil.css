@@ -1,3 +1,12 @@
+:root {
+  --first-bg: #2b2a2b;
+  --lighten-first-bg-5: #383738;
+  --second-bg: #4b4d42;
+  --third-bg: #777a76;
+  --darken-third-bg-25: #383937;
+  --red: #d45640;
+  --blue: #788fba;
+}
 #profile {
   width: 80%;
   max-width: 800px;
@@ -8,7 +17,7 @@
 }
 #profile .short-info .avatar i {
   font-size: 180px;
-  color: #d45640;
+  color: var(--red);
 }
 #profile .short-info .personal-data {
   width: 60%;
@@ -45,19 +54,19 @@
   border: 1px #788fba solid;
 }
 #profile .colors .first .background {
-  background: #2b2a2b;
+  background: var(--first-bg);
 }
 #profile .colors .first .second-background {
-  background: #4b4d42;
+  background: var(--second-bg);
 }
 #profile .colors .first .third-background {
-  background: #777a76;
+  background: var(--third-bg);
 }
 #profile .colors .first .color-text {
-  background: #788fba;
+  background: var(--blue);
 }
 #profile .colors .first .color-link {
-  background: #d45640;
+  background: var(--red);
 }
 #profile .colors .second .background {
   background: #e2e9c0;
@@ -98,7 +107,7 @@
 .registry #separator .up,
 .registry #separator .bottom {
   height: 50%;
-  background: #788fba;
+  background: var(--blue);
   width: 3px;
   margin: 0 auto;
 }

@@ -1,7 +1,16 @@
+:root {
+  --first-bg: #2b2a2b;
+  --lighten-first-bg-5: #383738;
+  --second-bg: #4b4d42;
+  --third-bg: #777a76;
+  --darken-third-bg-25: #383937;
+  --red: #d45640;
+  --blue: #788fba;
+}
 .top-nav {
   max-height: 110px;
-  background: #2b2a2b;
-  box-shadow: 0 5px 4px #788fba;
+  background: var(--first-bg);
+  box-shadow: 0 5px 4px var(--blue);
   z-index: 5;
 }
 .top-nav .logo-space {
@@ -22,13 +31,13 @@
 }
 .top-nav .menu-space i {
   font-size: 70px;
-  color: #d45640;
+  color: var(--red);
   margin-left: 60px;
 }
 .top-nav .menu-space #dropdown-menu {
   position: relative;
   transition: all ease-out 1s;
-  background: #2b2a2b;
+  background: var(--first-bg);
   transform: skewY(15deg);
 }
 .top-nav .menu-space #dropdown-menu .position-in-menu {
@@ -38,7 +47,7 @@
   margin-bottom: 15px;
   padding: 10px 0;
   text-align: center;
-  color: #2b2a2b;
+  color: var(--first-bg);
   font-size: 20px;
 }
 .show-dropdown {

@@ -1,5 +1,14 @@
+:root {
+  --first-bg: #2b2a2b;
+  --lighten-first-bg-5: #383738;
+  --second-bg: #4b4d42;
+  --third-bg: #777a76;
+  --darken-third-bg-25: #383937;
+  --red: #d45640;
+  --blue: #788fba;
+}
 body {
-  background: #2b2a2b;
+  background: var(--first-bg);
   margin: 0;
   color: #788fba;
   min-height: calc(100vh + 500px);
@@ -12,8 +21,8 @@ body {
   user-select: none;
 }
 input {
-  background: #383738;
-  color: #788fba;
+  background: var(--lighten-first-bg-5);
+  color: var(--blue);
   min-height: 35px;
   width: calc(100% - 20px);
   border-radius: 15px;
@@ -23,8 +32,8 @@ input {
 }
 button,
 .button {
-  background: #d45640;
-  color: #2b2a2b;
+  background: var(--red);
+  color: var(--first-bg);
   height: 35px;
   width: 100%;
   margin: 0 auto;

@@ -1,3 +1,12 @@
+:root {
+  --first-bg: #2b2a2b;
+  --lighten-first-bg-5: #383738;
+  --second-bg: #4b4d42;
+  --third-bg: #777a76;
+  --darken-third-bg-25: #383937;
+  --red: #d45640;
+  --blue: #788fba;
+}
 #event-content {
   width: 70%;
 }
@@ -48,7 +57,7 @@
   margin: 15px auto;
 }
 #event-content .event-info h2 a {
-  color: #d45640;
+  color: var(--red);
   font-size: 24px;
   text-decoration: none;
 }
@@ -59,8 +68,8 @@
   margin: 30px auto;
 }
 #event-content input.join-button {
-  background: #d45640;
-  color: #2b2a2b;
+  background: var(--red);
+  color: var(--first-bg);
   width: 70%;
   height: 34px;
   display: flex;
@@ -83,3 +92,4 @@
   float: left;
   width: 10em;
 }
+/*# sourceMappingURL=style.css.map */

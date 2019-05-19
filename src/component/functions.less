@@ -1,6 +1,8 @@
-.standardInputExec(@width, @background, @color, @radius, @colorBorder, @padding){
-  background: lighten(@background, 5%);
-  color: @color;
+@import "./variables";
+
+.standardInputExec(@width, @radius, @colorBorder, @padding){
+  background: var(--lighten-first-bg-5);
+  color: var(--blue);
   min-height: 35px;
   width: @width;
   border-radius: @radius;
