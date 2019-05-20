@@ -10,21 +10,21 @@ const EventList = ({ events }) => {
       <div className="game-item">
         <div className="title">Nazwa wydarzenia</div>
         <div className="place">Miejsce</div>
+        <div className="game-title">Nazwa gry</div>
         <div className="start-date">Data rozpoczęcia</div>
-        <div className="end-date">Data zakończenia</div>
         <div className="author">Nick autora</div>
         <div className="num-of-user">Obserwujący</div>
       </div>
     </div>
     { events && events.map(event => {
-      return (<div className="game-element" key={event.id}>
-        <Link to={"/event/" + event.id}>
+      return (<div className="game-element" key={ event.id }>
+        <Link to={ "/event/" + event.id }>
           <div className="game-item">
-            <div className="title"> {event.title} </div>
+            <div className="title"> { event.title } </div>
             <div className="place"> {event.place} </div>
+            <div className="game-title">{ event.gameTitle }</div>
             <div className="start-date"> {event.startDate}</div>
-            <div className="end-date"> {event.endDate}</div>
-            <div className="author"> {event.authorNick}</div>
+            <div className="author"> { event.authorNick }</div>
             <div className="num-of-user">
               <i className="far fa-user-circle"/>
               <i className="far fa-user-circle"/>
@@ -34,7 +34,7 @@ const EventList = ({ events }) => {
           </div>
         </Link>
       </div>)
-    })}
+  })}
   </div>);
 };
 

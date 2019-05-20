@@ -81,7 +81,7 @@ export const followEvent = evt => {
 export const unfollowEvent = evt => {
   return (dispatch, getState, { getFirebase, getFirestore }) => {
     const firestore = getFirestore();
-console.log(evt)
+
     firestore.collection("followers").doc(
       evt
     ).delete().then(() => {

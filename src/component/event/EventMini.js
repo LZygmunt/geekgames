@@ -1,44 +1,27 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
+import { connect } from "react-redux";
+import { followEvent, unfollowEvent } from "../../store/actions/postActions";
 
 import "./event-mini.css";
 
 class EventMini extends Component {
-
-  state = {
-    isFollow: false
-  };
-
-  componentDidMount() {
-    this.setState({ isFollow: this.props.event.isFollow })
-  }
-
-  followIt = (event) => {
-    this.setState(prevState => {
-      return{
-        isFollow: !prevState.isFollow
-      }
-    });
-
-    if (event.target.textContent ==="Obserwujesz" ||  event.target.textContent ==="Obserwuj")
-      event.target = event.target.nextSibling;
-    if(event.target.className==="fas fa-eye-slash")
-        event.target.className="fas fa-eye";
-    else
-        event.target.className="fas fa-eye-slash";
+  followIt = () => {
+    (this.props.isFollow.length) ?
+      this.props.unfollowMini(this.props.isFollow[0].id):
+      this.props.followMini(this.props.event.id);
   };
 
   render() {
-    const { event } = this.props;
-    const { isFollow } = this.state;
+    const { event, isFollow } = this.props;
 
     return (
       <div className="event-mini">
         <div className="info">
           <p>
             <span className="slide-button-without-bg" onClick={ this.followIt }>
-              <span>{ (isFollow)? "Obserwujesz" : "Obserwuj" }</span>
-              <i className="fas fa-eye" data-name={ "follow-" + event.id }> </i>
+              <span>{ (isFollow && isFollow.length) ? "Obserwujesz" : "Obserwuj" }</span>
+              <i className={ this.props.isFollow && (this.props.isFollow.length ? "fas fa-eye-slash": "fas fa-eye") }> </i>
             </span>
               <i className="fas fa-calendar-alt"><span>{ event.startDate } - { event.endDate }</span></i>
               <i className="fas fa-cube"><span>{ event.place }</span></i>
@@ -63,4 +46,17 @@ class EventMini extends Component {
   }
 }
 
-export default EventMini;
+const mapStateToProps = (state, ownProps) => {
+  return {
+    auth: state.firebase.auth,
+    isFollow: ownProps.follow && ownProps.follow.filter(follow => follow.authorId === state.firebase.auth.uid)
+  }
+};
+const mapDispatchToProps = dispatch => {
+  return {
+    followMini: follow => dispatch(followEvent(follow)),
+    unfollowMini: follow => dispatch(unfollowEvent(follow))
+  }
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(EventMini);

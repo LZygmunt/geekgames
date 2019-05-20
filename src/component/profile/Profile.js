@@ -10,7 +10,7 @@ import "./games-section.css";
 
 const Profile = props => {
   const { auth, game, post } = props;
-
+ //TODO Sprawdzanie hasła oraz czyszczenie state
   return (auth.uid) ?
     (<div style={{width:"70%"}}>
         <PersonalDataSection auth={ auth }/>
