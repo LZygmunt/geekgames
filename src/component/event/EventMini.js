@@ -20,8 +20,8 @@ class EventMini extends Component {
         <div className="info">
           <p>
             <span className="slide-button-without-bg" onClick={ this.followIt }>
-              <span>{ (isFollow && isFollow.length) ? "Obserwujesz" : "Obserwuj" }</span>
-              <i className={ this.props.isFollow && (this.props.isFollow.length ? "fas fa-eye-slash": "fas fa-eye") }> </i>
+              <span>{ isFollow && (isFollow.length ? "Obserwujesz" : "Obserwuj") }</span>
+              <i className={ isFollow && (isFollow.length ? "fas fa-eye-slash": "fas fa-eye") }> </i>
             </span>
               <i className="fas fa-calendar-alt"><span>{ event.startDate } - { event.endDate }</span></i>
               <i className="fas fa-cube"><span>{ event.place }</span></i>

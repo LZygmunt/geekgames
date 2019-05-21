@@ -2,6 +2,8 @@ import React, { Component } from "react";
 import { Comment } from "./index";
 import { connect } from "react-redux";
 import { createComment } from "../../store/actions/postActions";
+import {compose} from "redux";
+import {firestoreConnect} from "react-redux-firebase";
 
 class CommentList extends Component{
   state = {
@@ -14,13 +16,16 @@ class CommentList extends Component{
     })
   };
 
-  addComment = (event) => {
+  addComment = event => {
     event.preventDefault();
     const comment = {
       comment: this.state.newComment,
       postId: this.props.postId
     };
     this.props.createComment(comment);
+    this.setState({
+      newComment: ""
+    })
   };
 
   showMore = () => {
@@ -28,8 +33,11 @@ class CommentList extends Component{
   };
 
   render() {
-    const commentList = this.props.comments
-      && this.props.comments.map(comment => <Comment comment={ comment } key={ comment.id }/>);
+    const { comments, postId } = this.props;
+    // const commentsFromPost = comments && comments.filter(comm => (comm.postId === postId) && comm);
+
+    const commentList = comments
+      && comments.map(comment => <Comment comment={ comment } key={ comment.id }/>);
 
     return (<div className={ "comments " + this.props.showComment }>
       <div className="comment-add">
@@ -52,10 +60,21 @@ class CommentList extends Component{
   }
 }
 
+const mapStoreToProps = state => {
+  return {
+    comments: state.firestore.ordered.comments
+  }
+};
+
 const mapDispatchToProps = dispatch => {
   return {
     createComment: comment => dispatch(createComment(comment))
   }
 };
 
-export default connect(null, mapDispatchToProps)(CommentList);
+export default compose(
+  firestoreConnect( props => [
+    { collection: "comments",  where: ["postId", "==", props.postId] }
+  ]),
+  connect(mapStoreToProps, mapDispatchToProps)
+)(CommentList);

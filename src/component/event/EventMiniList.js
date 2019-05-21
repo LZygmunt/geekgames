@@ -11,7 +11,7 @@ const EventMiniList = (props) => {
     event={ event }
     follow={ followers && followers.filter(follow => follow.followThingId === event.id && follow) }
   />);
-console.log(props)
+
 //todo ustawić mini event na fixed
   return (auth.uid) ?
     (<div id="slide-event">

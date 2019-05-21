@@ -6,7 +6,19 @@ const gameReducer = (state = initState, action) => {
       console.log("created game", action.game);
       return state;
     case "CREATE_GAME_ERROR":
-      console.log("created game", action.game);
+      console.log("created game error", action.game);
+      return state;
+    case "UNFOLLOW_GAME":
+      console.log("unfollowed game", action.game);
+      return state;
+    case "UNFOLLOW_GAME_ERROR":
+      console.log("unfollowed game error", action.game);
+      return state;
+    case "FOLLOW_GAME":
+      console.log("followed game", action.game);
+      return state;
+    case "FOLLOW_GAME_ERROR":
+      console.log("followed game error", action.game);
       return state;
     default:
       return state;

@@ -28,7 +28,7 @@ export const followGame = game => {
       authorId: authorId,
       authorNick: profile.nick,
       authorAvatar: profile.avatar,
-      followThingId: game.id,
+      followThingId: game,
       created: new Date()
     }).then(() => {
       dispatch({ type: "FOLLOW_GAME", game })
@@ -41,11 +41,10 @@ export const followGame = game => {
 export const unfollowGame = game => {
   return (dispatch, getState, { getFirebase, getFirestore }) => {
     const firestore = getFirestore();
-    const followId = getState().followers.id;
     // const authorId = getState().firebase.auth.uid;
 
     firestore.collection("followers").doc(
-      followId
+      game
     ).delete().then(() => {
       dispatch({ type: "UNFOLLOW_GAME", game })
     }).catch((err) => {
