@@ -31,7 +31,7 @@ class Game extends Component {
   render() {
     const { auth, post, match, follow } = this.props;
     const game = this.props.game && this.props.game[match.params.id];
-    console.log(follow)
+    // console.log(follow)
     return (auth.uid) ? (
         (game) ? (<div id="game">
           <div className="game-property">

@@ -14,7 +14,7 @@ const EventMiniList = (props) => {
 
 //todo ustawić mini event na fixed
   return (auth.uid) ?
-    (<div id="slide-event">
+    (<div>
       { eventList }
     </div>) : null
 };

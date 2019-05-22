@@ -28,14 +28,29 @@ class CommentList extends Component{
     })
   };
 
-  showMore = () => {
-    alert("Za duuuużo i zwiększyła");
+  showMore = async () => {
+    // let first = db.collection("cities")
+    //   .orderBy("population")
+    //   .limit(25);
+    //
+    // return first.get().then(function (documentSnapshots) {
+    //   // Get the last visible document
+    //   var lastVisible = documentSnapshots.docs[documentSnapshots.docs.length-1];
+    //   console.log("last", lastVisible);
+    //
+    //   // Construct a new query starting at this document,
+    //   // get the next 25 cities.
+    //   var next = db.collection("cities")
+    //     .orderBy("population")
+    //     .startAfter(lastVisible)
+    //     .limit(25);
+    // });
+
   };
 
   render() {
-    const { comments, postId } = this.props;
-    // const commentsFromPost = comments && comments.filter(comm => (comm.postId === postId) && comm);
-
+    const { comments} = this.props;
+// console.log(this.props)
     const commentList = comments
       && comments.map(comment => <Comment comment={ comment } key={ comment.id }/>);
 
@@ -60,9 +75,11 @@ class CommentList extends Component{
   }
 }
 
-const mapStoreToProps = state => {
+const mapStoreToProps = (state, ownProps) => {
+  console.log(state)
   return {
-    comments: state.firestore.ordered.comments
+    comments: state.firestore.ordered[`comments-${ownProps.postId}`],
+    last: state.firestore.ordered[`comments-${ownProps.postId}`] && state.firestore.ordered[`comments-${ownProps.postId}`][4]
   }
 };
 
@@ -74,7 +91,12 @@ const mapDispatchToProps = dispatch => {
 
 export default compose(
   firestoreConnect( props => [
-    { collection: "comments",  where: ["postId", "==", props.postId] }
+    {
+      collection: "comments",
+      orderBy: ["created", "desc"],
+      where: ["postId", "==", props.postId],
+      storeAs: `comments-${props.postId}`
+    }
   ]),
   connect(mapStoreToProps, mapDispatchToProps)
 )(CommentList);
