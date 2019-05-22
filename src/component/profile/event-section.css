@@ -1,36 +1,26 @@
-:root {
-  --first-bg: #2b2a2b;
-  --lighten-first-bg-5: #383738;
-  --darkenen-first-bg-5: #1e1d1e;
-  --second-bg: #4b4d42;
-  --third-bg: #777a76;
-  --darken-third-bg-25: #383937;
-  --red: #d45640;
-  --blue: #788fba;
-}
 .event-section {
-  width: 80%;
-  max-width: 800px;
+    width: 80%;
+    max-width: 800px;
 }
 .event-section ul {
-  padding: 0;
+    padding: 0;
 }
 .event-section li {
-  display: flex;
-  justify-content: space-between;
-  padding: 3px;
+    display: flex;
+    justify-content: space-between;
+    padding: 3px;
 }
 .event-section li:nth-child(2n) {
-  background-color: var(--darken-first-bg-5);
+    background-color: var(--darken-first-bg-5);
 }
 .event-section li span {
-  margin: 5px 0;
+    margin: 5px 0;
 }
 .event-section li span:first-child {
-  width: 150px;
+    width: 150px;
 }
 .event-section li span:nth-child(2n) {
-  max-width: 250px;
-  text-align: center;
+    max-width: 250px;
+    text-align: center;
 }
 /*# sourceMappingURL=event-section.css.map */

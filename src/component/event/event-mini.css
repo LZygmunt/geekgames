@@ -1,63 +1,63 @@
 #slide-event {
-  margin: 10px auto 15px auto;
-  width: 25%;
-  max-width: 400px;
+    margin: 10px auto 15px auto;
+    width: 25%;
+    max-width: 400px;
 }
 #slide-event h1,
 #slide-event h2 {
-  text-align: left;
+    text-align: left;
 }
 #slide-event .event-mini {
-  color: var(--first-bg);
-  text-align: left;
-  max-width: 300px;
-  background: #444644;
-  border: 1px solid transparent;
-  border-radius: 15px;
-  padding: 15px 15px 25px;
-  margin: 15px;
+    color: var(--first-bg);
+    text-align: left;
+    max-width: 300px;
+    background: #444644;
+    border: 1px solid transparent;
+    border-radius: 15px;
+    padding: 15px 15px 25px;
+    margin: 15px;
 }
 #slide-event .event-mini span {
-  color: #777a76;
+    color: #777a76;
 }
 #slide-event .event-mini i {
-  color: #d45640;
-  padding: 0 5px;
-  margin-top: 5px;
+    color: #d45640;
+    padding: 0 5px;
+    margin-top: 5px;
 }
 #slide-event .event-mini i span {
-  margin-left: 3px;
-  color: #777a76;
+    margin-left: 3px;
+    color: #777a76;
 }
 #slide-event .event-mini a {
-  text-decoration: none;
-  font-weight: bold;
-  color: #788fba;
-  font-size: 19px;
+    text-decoration: none;
+    font-weight: bold;
+    color: #788fba;
+    font-size: 19px;
 }
 #slide-event .event-mini a:hover {
-  text-shadow: 0 0 15px #3c5176;
+    text-shadow: 0 0 15px #3c5176;
 }
 #slide-event .event-mini .info p {
-  display: flex;
-  justify-content: space-between;
-  flex-direction: column;
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
 }
 .slide-button-without-bg {
-  overflow: hidden;
-  width: 100%;
-  text-align: right;
+    overflow: hidden;
+    width: 100%;
+    text-align: right;
 }
 .slide-button-without-bg:hover span {
-  opacity: 1;
-  max-width: 200px;
-  transition: opacity 0.5s ease 0.3s;
+    opacity: 1;
+    max-width: 200px;
+    transition: opacity 0.5s ease 0.3s;
 }
 .slide-button-without-bg span {
-  opacity: 0;
-  max-width: 0;
+    opacity: 0;
+    max-width: 0;
 }
 .slide-button-without-bg i {
-  margin-left: 5px;
+    margin-left: 5px;
 }
 /*# sourceMappingURL=event-mini.css.map */

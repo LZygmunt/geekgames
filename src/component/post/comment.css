@@ -1,31 +1,21 @@
-:root {
-  --first-bg: #2b2a2b;
-  --lighten-first-bg-5: #383738;
-  --darkenen-first-bg-5: #1e1d1e;
-  --second-bg: #4b4d42;
-  --third-bg: #777a76;
-  --darken-third-bg-25: #383937;
-  --red: #d45640;
-  --blue: #788fba;
-}
 .comment {
-  width: 90%;
-  margin: 15px auto;
-  padding: 20px;
-  display: flex;
-  background: var(--darken-third-bg-25);
-  border-radius: 15px;
+    width: 90%;
+    margin: 15px auto;
+    padding: 20px;
+    display: flex;
+    background: var(--darken-third-bg-25);
+    border-radius: 15px;
 }
 .comment .comment-identification {
-  max-width: 100px;
+    max-width: 100px;
 }
 .comment .comment-identification p {
-  text-align: center;
+    text-align: center;
 }
 .comment .comment-identification img {
-  max-width: 80px;
+    max-width: 80px;
 }
 .comment .comment-content {
-  margin: 1em;
+    margin: 1em;
 }
 /*# sourceMappingURL=comment.css.map */
