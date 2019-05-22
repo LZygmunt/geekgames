@@ -1,7 +1,8 @@
 import React, { Component } from "react";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
 import NavBar from "./component/navigation/NavBar";
-import { Event, EventContainer, EventMiniList } from "./component/event";
+import { Event, EventContainer } from "./component/event";
+import { ShortInfo } from "./component/dashboard"
 import { Profile } from "./component/profile";
 import { Game, GameContainer } from "./component/game";
 import { compose } from "redux";
@@ -24,7 +25,7 @@ class App extends Component {
         <div className="App">
           <NavBar imgSrc={ logo } altText={ "GeekGames logo" }/>
           <div id="content">
-            <EventMiniList />
+            <ShortInfo />
             <Switch>
               <Route exact path="/" component={ Profile }/>
               <Route path="/games" component={ GameContainer }/>

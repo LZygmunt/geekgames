@@ -7,7 +7,7 @@ import logo from "../../images/logo-geek-games.png"
 
 class Comment extends Component {
 
-
+  //TODO wysyłanie formularzy enterem
 
   render() {
     const { comment } = this.props;
@@ -22,6 +22,9 @@ class Comment extends Component {
         </div>
         <div className="comment-content">
           <p>{ comment.comment }</p>
+        </div>
+        <div className="comment-created">
+          <p>{ comment.created.toDate().toLocaleString() }</p>
         </div>
       </div>
     );
