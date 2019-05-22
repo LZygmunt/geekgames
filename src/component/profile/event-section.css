@@ -11,7 +11,7 @@
     padding: 3px;
 }
 .event-section li:nth-child(2n) {
-    background-color: var(--darken-first-bg-5);
+    background-color: var(--darkenen-first-bg-5);
 }
 .event-section li span {
     margin: 5px 0;

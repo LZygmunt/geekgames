@@ -1,5 +1,5 @@
 .post {
-    background: #444644;
+    background: var(--lighten-third-bg);
     border-radius: 15px;
     width: 75%;
     padding: 20px;

@@ -11,32 +11,32 @@
     color: var(--first-bg);
     text-align: left;
     max-width: 300px;
-    background: #444644;
+    background: var(--lighten-third-bg);
     border: 1px solid transparent;
     border-radius: 15px;
     padding: 15px 15px 25px;
     margin: 15px;
 }
 #slide-event .event-mini span {
-    color: #777a76;
+    color: var( --third-bg);
 }
 #slide-event .event-mini i {
-    color: #d45640;
+    color: var(--red);
     padding: 0 5px;
     margin-top: 5px;
 }
 #slide-event .event-mini i span {
     margin-left: 3px;
-    color: #777a76;
+    color: var( --third-bg);
 }
 #slide-event .event-mini a {
     text-decoration: none;
     font-weight: bold;
-    color: #788fba;
+    color: var(--blue);
     font-size: 19px;
 }
 #slide-event .event-mini a:hover {
-    text-shadow: 0 0 15px #3c5176;
+    text-shadow: 0 0 15px var(--dark-blue);
 }
 #slide-event .event-mini .info p {
     display: flex;
@@ -60,4 +60,3 @@
 .slide-button-without-bg i {
     margin-left: 5px;
 }
-/*# sourceMappingURL=event-mini.css.map */

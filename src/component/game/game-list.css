@@ -1,7 +1,7 @@
 .sticky {
     position: fixed;
     top: 0;
-    background: #2b2a2b;
+    background: var(--first-bg);
 }
 .sticky input {
     margin-bottom: 0;
@@ -20,11 +20,11 @@
     flex-direction: column;
 }
 .game-list .game-element :hover {
-    background: #1e1d1e;
+    background:  var(--darkenen-first-bg-5);
     transition: background 0.3s ease;
 }
 .game-list .game-element a {
-    border-bottom: 2px solid #788fba;
+    border-bottom: 2px solid var(--blue);
     max-width: 1000px;
 }
 .game-list .game-item {
@@ -50,7 +50,7 @@
     justify-content: space-between;
 }
 .game-list .game-item .num-of-user-more {
-    background: #3e3f36;
+    background: var(--darkenen-first-bg-5);
     border-radius: 50px;
     padding: 3px;
     margin: 0;

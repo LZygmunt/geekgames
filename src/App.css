@@ -4,9 +4,11 @@
     --darkenen-first-bg-5: #1e1d1e;
     --second-bg: #4b4d42;
     --third-bg: #777a76;
+    --lighten-third-bg: #444644;
     --darken-third-bg-25: #383937;
     --red: #d45640;
     --blue: #788fba;
+    --dark-blue: #3c5176;
 }
 body {
     background: var(--first-bg);

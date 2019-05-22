@@ -42,8 +42,10 @@
     width: 75px;
     height: 25px;
     margin-left: 15px;
-    border: 1px #788fba solid;
+    border: 1px var(--blue) solid;
 }
+
+/*STAŁE KOLORY - NIE ZMIENIAĆ*/
 #profile .colors .first .background {
     background: #2b2a2b;
 }
@@ -89,6 +91,8 @@
 #profile .colors .third .color-link {
     background: #7f5221;
 }
+/*KONIEC STAŁYCH KOLORÓW*/
+
 .registry {
     display: flex;
     justify-content: space-between;
