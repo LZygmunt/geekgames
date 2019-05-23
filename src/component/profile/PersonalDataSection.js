@@ -22,10 +22,9 @@ class PersonalDataSection extends Component {
     const target = event.target;
     this.setState(prevState => {
       return {
-        [target.dataset.switch]:
-          (target.dataset.switch === "isEdit") ?
-            !prevState.isEdit:
-            target.parentElement.className
+        [target.dataset.switch]: (target.dataset.switch === "isEdit") ?
+          !prevState.isEdit:
+          target.parentElement.className
       }
     });
   };
@@ -33,7 +32,7 @@ class PersonalDataSection extends Component {
   render() {
     const { nick, email, city, isEdit } = this.state;
     const { auth, profile } = this.props;
-    //TODO edycja danych
+    //TODO edycja danych oraz potwierdź
     //TODO resetowanie state
     //TODO wybieranie kolorów zrobić i zmiana na żywo
     return (

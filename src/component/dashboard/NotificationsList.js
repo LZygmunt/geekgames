@@ -6,6 +6,7 @@ import { compose } from "redux";
 
 const NotificationsList = ({ notifications }) => {
   const notification = (notifications && notifications.length) ? notifications: false;
+
   return (
     <div className="notification-list">
       { notification ?
