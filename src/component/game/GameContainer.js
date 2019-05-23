@@ -6,6 +6,7 @@ import { firestoreConnect } from "react-redux-firebase";
 
 import "./game.css"
 import "./game-list.css"
+import "./game-responsive.css"
 
 const GameContainer = ({ games, auth, followers }) => {
   window.onscroll = function(){

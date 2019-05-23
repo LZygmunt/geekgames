@@ -1,0 +1,52 @@
+@media screen and (max-width: 1200px) {
+  .game-list {
+    width: 100%;
+  }
+  .game-list .game-item {
+    width: 100%;
+  }
+  .game-list .game-item .num-of-event {
+    display: none;
+  }
+  .game-list .game-item .title,
+  .game-list .game-item .author,
+  .game-list .game-item .create-date,
+  .game-list .game-item .num-of-user,
+  .game-list .game-item .num-of-post {
+    display: block;
+    width: 50%;
+  }
+}
+@media screen and (max-width: 900px) {
+  .game-list .game-item .num-of-user,
+  .game-list .game-item .num-of-post,
+  .game-list .game-item .num-of-event {
+    display: none;
+  }
+  .game-list .game-item .title,
+  .game-list .game-item .author,
+  .game-list .game-item .create-date {
+    display: block;
+    width: 50%;
+  }
+}
+@media screen and (max-width: 480px) {
+  .game-list .game-element .game-item .create-date,
+  .game-list #game-header-table .game-item .create-date,
+  .game-list .game-element .game-item .num-of-user,
+  .game-list #game-header-table .game-item .num-of-user,
+  .game-list .game-element .game-item .num-of-post,
+  .game-list #game-header-table .game-item .num-of-post,
+  .game-list .game-element .game-item .num-of-event,
+  .game-list #game-header-table .game-item .num-of-event {
+    display: none;
+  }
+  .game-list .game-element .game-item .title,
+  .game-list #game-header-table .game-item .title,
+  .game-list .game-element .game-item .author,
+  .game-list #game-header-table .game-item .author {
+    display: block;
+    width: 50%;
+  }
+}
+/*# sourceMappingURL=game-responsive.css.map */

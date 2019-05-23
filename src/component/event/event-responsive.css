@@ -1,0 +1,69 @@
+@media screen and (max-width: 1200px) {
+  .game-list {
+    width: 100%;
+  }
+  .game-list .game-item {
+    width: 100%;
+  }
+  .game-list .game-item .author,
+  .game-list .game-item .num-of-user {
+    display: none !important;
+  }
+  .game-list .game-item .title,
+  .game-list .game-item .place,
+  .game-list .game-item .start-date,
+  .game-list .game-item .game-title {
+    display: block !important;
+    width: 25% !important;
+  }
+}
+@media screen and (max-width: 900px) {
+  .game-list .game-item .game-title,
+  .game-list .game-item .author,
+  .game-list .game-item .num-of-user {
+    display: none !important;
+  }
+  .game-list .game-item .title,
+  .game-list .game-item .place,
+  .game-list .game-item .start-date {
+    display: block !important;
+    width: 33% !important;
+  }
+}
+@media screen and (max-width: 768px) {
+  .game-list .game-item .game-title,
+  .game-list .game-item .author,
+  .game-list .game-item .num-of-user {
+    display: none !important;
+  }
+  .game-list .game-item .title,
+  .game-list .game-item .place,
+  .game-list .game-item .start-date {
+    display: block !important;
+    width: 33% !important;
+  }
+}
+@media screen and (max-width: 480px) {
+  .game-list .game-element .game-item .game-title,
+  .game-list #game-header-table .game-item .game-title,
+  .game-list .game-element .game-item .start-date,
+  .game-list #game-header-table .game-item .start-date,
+  .game-list .game-element .game-item .author,
+  .game-list #game-header-table .game-item .author,
+  .game-list .game-element .game-item .num-of-user,
+  .game-list #game-header-table .game-item .num-of-user {
+    display: none !important;
+  }
+  .game-list .game-element .game-item .title,
+  .game-list #game-header-table .game-item .title,
+  .game-list .game-element .game-item .place,
+  .game-list #game-header-table .game-item .place {
+    display: block !important;
+    width: 50% !important;
+  }
+  .game-list .game-element .game-item .place,
+  .game-list #game-header-table .game-item .place {
+    text-align: right;
+  }
+}
+/*# sourceMappingURL=event-responsive.css.map */

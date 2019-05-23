@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 
 const GameList = ({ games }) => {
   return (<div className="game-list">
-    <div id="game-header-table">
+    <div id="game-header-table" style={{width:"100%"}}>
       <div className="game-search">
         <input type="text" placeholder="Zacznij pisać, aby wyszukać grę" />
       </div>
