@@ -1,9 +1,9 @@
 import React from "react";
 
-const Notifications = (props) => {
+const Notifications = ({ message }) => {
   return (
     <div className="notification">
-      <p>Notification</p>
+      <p>{ message }</p>
     </div>
   )
 };

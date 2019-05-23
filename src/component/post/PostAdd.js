@@ -21,11 +21,8 @@ class PostAdd extends Component {
     });
 
     if (this.state.toggleForm === "show-post-add"){
-      // console.log(document.getElementsByClassName("show-post-add")[0]);
       document.getElementsByClassName("show-post-add")[0].style.background="all 1s linear";
-      // setTimeout(function () {
         document.getElementById("post-form").style.display = "none";
-      // }, 1000);
   }else {
       document.getElementsByClassName("hide-post-add")[0].style.transition="all 1s linear";
       setTimeout(function () {
@@ -36,7 +33,14 @@ class PostAdd extends Component {
 
   handleSubmit = (event) => {
     event.preventDefault();
-    this.props.createPost({title: this.state.title, desc: this.state.desc}, this.props.gameId);
+    const post = {
+      title: this.state.title,
+      desc: this.state.desc,
+      gameId: this.props.game.id,
+      gameTitle: this.props.game.title
+    };
+
+    this.props.createPost(post);
     this.togglePost();
   };
 
@@ -75,7 +79,7 @@ class PostAdd extends Component {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    createPost: (post, gameId) => dispatch(createPost(post, gameId))
+    createPost: post => dispatch(createPost(post))
   }
 };
 

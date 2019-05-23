@@ -20,7 +20,11 @@ class CommentList extends Component{
     event.preventDefault();
     const comment = {
       comment: this.state.newComment,
-      postId: this.props.postId
+      postId: (this.props.postId) ? this.props.postId: "",
+      eventId: (this.props.eventId) ? this.props.eventId: "",
+      appearTitle: this.props.game.title,
+      message: (this.props.eventId) ? "event": "post",
+      gameId: this.props.game.id
     };
     this.props.createComment(comment);
     this.setState({
@@ -49,12 +53,12 @@ class CommentList extends Component{
   };
 
   render() {
-    const { comments} = this.props;
+    const { comments } = this.props;
 // console.log(this.props)
     const commentList = comments
       && comments.map(comment => <Comment comment={ comment } key={ comment.id }/>);
 
-    return (<div className={ "comments " + this.props.showComment }>
+    return (<div className={ "comments " }>
       <div className="comment-add">
         <input
           type="text"
@@ -76,10 +80,12 @@ class CommentList extends Component{
 }
 
 const mapStoreToProps = (state, ownProps) => {
-  console.log(state)
+  const id = (ownProps.postId) ? ownProps.postId: ownProps.eventId;
+  // console.log(state.firestore.ordered[`comments-${id}`] && state.firestore.ordered[`comments-${id}`][4])
+
   return {
-    comments: state.firestore.ordered[`comments-${ownProps.postId}`],
-    last: state.firestore.ordered[`comments-${ownProps.postId}`] && state.firestore.ordered[`comments-${ownProps.postId}`][4]
+    comments: state.firestore.ordered[`comments-${id}`],
+    last: state.firestore.ordered[`comments-${id}`] && state.firestore.ordered[`comments-${id}`][4]
   }
 };
 

@@ -16,14 +16,14 @@ class PostComponent extends Component {
   };
 
   render() {
-    const { post } = this.props;
+    const { post, game } = this.props;
     const { showComment } = this.state;
 
 
     return (<div className="post">
         <PostDescribe post={post} showComment={ showComment }/>
         { showComment ?
-          <CommentList postId={ post.id }/>:
+          <CommentList postId={ post.id } game={ game }/>:
           <div onClick={ this.showComment }>Rozwiń</div>
         }
     </div>);
