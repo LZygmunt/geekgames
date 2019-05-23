@@ -9,6 +9,7 @@ import { firebaseConnect } from "react-redux-firebase";
 import { signOut } from "../../store/actions/authActions";
 
 import "./nav-bar.css";
+import "./nav-bar-responsive.css";
 import "font-awesome/css/font-awesome.min.css";
 
 class NavBar extends Component {
@@ -74,7 +75,9 @@ class NavBar extends Component {
       <div id="nav-bar">
         <div className="top-nav">
           <div className="logo-space">
-            <Link to="/"><img src={ props.imgSrc } alt={ props.altText }/></Link>
+            <Link to="/">
+              <img src={ props.imgSrc } alt={ props.altText }/>
+            </Link>
           </div>
           <div className="menu-space" ref={menu => this.menu = menu}>
             <i onClick={this.toggleMenu} className="far fa-user-circle"/>

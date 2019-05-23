@@ -57,6 +57,9 @@ class EventSection extends Component {
         </div>
         <ul>
           { eventList }
+          <li >
+            <span style={{textAlign:"center", width:"100%"}}> Załaduj więcej...</span>
+          </li>
         </ul>
       </div>
     );

@@ -10,6 +10,7 @@ import { firebaseConnect } from "react-redux-firebase";
 import { connect } from "react-redux";
 
 import logo from "./images/logo.png"
+import logoMini from "./images/logo-geek-games.png"
 
 import "./App.css";
 
@@ -23,7 +24,7 @@ class App extends Component {
     if(auth.isLoaded) return (
       <BrowserRouter>
         <div className="App">
-          <NavBar imgSrc={ logo } altText={ "GeekGames logo" }/>
+          <NavBar imgSrc={ (window.innerWidth <= 580 )? logoMini : logo } altText={ "GeekGames logo" }/>
           <div id="content">
             <ShortInfo />
             <Switch>

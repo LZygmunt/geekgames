@@ -32,17 +32,6 @@ class GameSection extends Component {
       { title:"Fifa 19"},
       { title:"Dark Souls"},
       { title:"Dark Souls II"},
-      { title:"Dark Souls III"},
-      { title:"Makao"},
-      { title:"Poker"},
-      { title:"Assasin Creed II"},
-      { title:"Wiedźmin"},
-      { title:"Wiedźmin II"},
-      { title:"Wiedźmin III"},
-      { title:"The Sims 4"},
-      { title:"Fifa 19"},
-      { title:"Dark Souls"},
-      { title:"Dark Souls II"},
       { title:"Dark Souls III"}
     ]
   };
@@ -76,6 +65,7 @@ class GameSection extends Component {
         <ul>
           { gameList }
         </ul>
+        <div style={{textAlign:"center"}}> Załaduj więcej...</div>
       </div>
     );
   }

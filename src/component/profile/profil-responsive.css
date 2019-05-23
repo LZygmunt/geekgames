@@ -1,0 +1,57 @@
+@media screen and (max-width: 768px) {
+    #profile {
+        width: 100%;
+    }
+    #profile h1 {
+        text-align: center;
+    }
+    #profile .short-info {
+        flex-direction: column;
+    }
+    #profile .short-info .avatar,
+    #profile .short-info .personal-data {
+        width: 200px;
+        margin: 15px auto;
+    }
+    .event-section,
+    .game-section {
+        width: 100%;
+    }
+}
+@media screen and (max-width: 480px), (max-width: 580px) {
+    #content .registry {
+        flex-direction: column;
+    }
+    #content .registry #sign-in,
+    #content .registry #sign-up {
+        width: 100%;
+    }
+    #content .registry #separator {
+        display: flex;
+        align-items: baseline;
+        margin-top: 20px;
+    }
+    #content .registry #separator img {
+        width: 50px;
+    }
+    #content .registry #separator div {
+        width: 50%;
+        height: 3px;
+        margin: auto;
+    }
+}
+@media screen and (max-width: 320px) {
+    .event-section .event-search {
+        text-align: center;
+    }
+    .event-section ul li {
+        flex-direction: column;
+    }
+    .event-section ul li span,
+    .event-section ul li span:first-child,
+    .event-section ul li span:nth-child(2n) {
+        width: 310px;
+        max-width: 310px;
+        text-align: center;
+    }
+}

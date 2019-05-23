@@ -19,12 +19,13 @@ class PersonalDataSection extends Component {
   };
 
   handleClick = event => {
+    const target = event.target;
     this.setState(prevState => {
       return {
-        [event.target.dataset.switch]:
-          (event.target.dataset.switch === "isEdit") ?
+        [target.dataset.switch]:
+          (target.dataset.switch === "isEdit") ?
             !prevState.isEdit:
-            event.target.parentElement.className
+            target.parentElement.className
       }
     });
   };

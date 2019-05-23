@@ -97,4 +97,20 @@ input[type="file"] {
 .hide {
     display: none;
 }
-/*# sourceMappingURL=App.css.map */
+
+@media screen and (max-width: 768px) {
+    #slide-event{
+        display: none;
+    }
+    .profile-segment{
+        width: 99%;
+        margin: 0 auto;
+    }
+}
+
+@media screen and (max-width: 480px){
+    .profile-segment{
+        width: 99%;
+        margin: 0 auto;
+    }
+}

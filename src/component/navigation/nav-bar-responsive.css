@@ -1,0 +1,9 @@
+@media screen and (max-width: 480px), (max-width: 580px) {
+  .top-nav .logo-space img {
+    width: 7em;
+  }
+
+  .top-nav .menu-space {
+    width: 140px;
+  }
+}
