@@ -18,6 +18,11 @@ class PersonalDataSection extends Component {
     this.setState({ [event.target.name]: [event.target.value] })
   };
 
+  changeColorSet = event => {
+    document.body.className=event.target.dataset.theme;
+// console.log(event.target.dataset.theme);
+  };
+
   handleClick = event => {
     const target = event.target;
     this.setState(prevState => {
@@ -82,26 +87,26 @@ class PersonalDataSection extends Component {
         <div className="edit-place">
           <div className="colors">
             <p>Kolory: </p>
-            <div className="first" onClick={ this.handleClick } data-switch="colorTheme">
-              <div className="background" data-switch="colorTheme"/>
-              <div className="second-background" data-switch="colorTheme"/>
-              <div className="third-background" data-switch="colorTheme"/>
-              <div className="color-text" data-switch="colorTheme"/>
-              <div className="color-link" data-switch="colorTheme"/>
+            <div className="first" onClick={ this.changeColorSet } data-switch="colorTheme" data-theme="first-set">
+              <div className="background" data-switch="colorTheme" data-theme="first-set"/>
+              <div className="second-background" data-switch="colorTheme" data-theme="first-set"/>
+              <div className="third-background" data-switch="colorTheme" data-theme="first-set"/>
+              <div className="color-text" data-switch="colorTheme" data-theme="first-set"/>
+              <div className="color-link" data-switch="colorTheme" data-theme="first-set"/>
             </div>
-            <div className="second" onClick={ this.handleClick } data-switch="colorTheme">
-              <div className="background" data-switch="colorTheme"/>
-              <div className="second-background" data-switch="colorTheme"/>
-              <div className="third-background" data-switch="colorTheme"/>
-              <div className="color-text" data-switch="colorTheme"/>
-              <div className="color-link" data-switch="colorTheme"/>
+            <div className="second" onClick={ this.changeColorSet } data-switch="colorTheme" data-theme="second-set">
+              <div className="background" data-switch="colorTheme" data-theme="second-set"/>
+              <div className="second-background" data-switch="colorTheme" data-theme="second-set"/>
+              <div className="third-background" data-switch="colorTheme" data-theme="second-set"/>
+              <div className="color-text" data-switch="colorTheme" data-theme="second-set"/>
+              <div className="color-link" data-switch="colorTheme" data-theme="second-set"/>
             </div>
-            <div className="third" onClick={ this.handleClick } data-switch="colorTheme">
-              <div className="background" data-switch="colorTheme"/>
-              <div className="second-background" data-switch="colorTheme"/>
-              <div className="third-background" data-switch="colorTheme"/>
-              <div className="color-text" data-switch="colorTheme"/>
-              <div className="color-link" data-switch="colorTheme"/>
+            <div className="third" onClick={ this.changeColorSet } data-switch="colorTheme" data-theme="third-set">
+              <div className="background" data-switch="colorTheme" data-theme="third-set"/>
+              <div className="second-background" data-switch="colorTheme" data-theme="third-set"/>
+              <div className="third-background" data-switch="colorTheme" data-theme="third-set"/>
+              <div className="color-text" data-switch="colorTheme" data-theme="third-set"/>
+              <div className="color-link" data-switch="colorTheme" data-theme="third-set"/>
             </div>
           </div>
 
