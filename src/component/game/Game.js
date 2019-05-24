@@ -23,9 +23,10 @@ class Game extends Component {
   };
 
   followIt = () => {
+    console.log(this.props.follow);
     (this.props.follow.length) ?
-      this.props.unfollowGame(this.props.follow[0].id):
-      this.props.followGame(this.props.match.params.id);
+      this.props.unfollowGame(this.props.follow[0].id, this.props.game[this.props.match.params.id].title):
+      this.props.followGame(this.props.match.params.id, this.props.game[this.props.match.params.id].title);
   };
 
   render() {
@@ -58,8 +59,8 @@ class Game extends Component {
           <div className="game-desc">
             <p>{ game.desc }</p>
           </div>
-          <PostAdd gameId={ match.params.id }/>
-          <PostContainer posts={ post }/>
+          <PostAdd game={{ id: match.params.id, title: game.title }}/>
+          <PostContainer posts={ post } game={{ id: match.params.id, title: game.title }}/>
           <EventAdd
             show={ this.state.show }
             handleClose={ this.toggleModal }
@@ -86,15 +87,18 @@ const mapStoreToProps = state => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    followGame: follow => dispatch(followGame(follow)),
-    unfollowGame: follow => dispatch(unfollowGame(follow))
+    followGame: (idToFollow, followTitle) => dispatch(followGame(idToFollow, followTitle)),
+    unfollowGame: (idToFollow, followTitle) => dispatch(unfollowGame(idToFollow, followTitle))
   }
 };
 
 export default compose(
   firestoreConnect(props => [
     { collection: "games", doc: props.match.params.id },
-    { collection: "posts", where: ["gameId", "==", props.match.params.id] }
+    {
+      collection: "posts",
+      where: ["gameId", "==", props.match.params.id],
+      orderBy: ["created", "desc"] }
   ]),
   connect(mapStoreToProps,mapDispatchToProps)
 )(Game);

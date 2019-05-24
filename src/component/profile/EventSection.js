@@ -1,4 +1,8 @@
 import React, { Component } from "react";
+import { connect } from "react-redux";
+import { compose } from "redux";
+import { firestoreConnect } from "react-redux-firebase";
+import { Link } from "react-router-dom";
 
 /*
 * TODO 1 obserwowane wydarzenia dla danego użytkownika
@@ -6,48 +10,16 @@ import React, { Component } from "react";
 * */
 
 class EventSection extends Component {
-  state = {
-    show: false,
-    events: [
-      {
-        title: "Zabierz swoją talię. Zabierz swoją talię. Zabierz swoją talię.",
-        place: "Rzeszów",
-        date: "2019-12-24"
-      },
-      {
-        title: "Kim jest twój król trefl",
-        place: "Krosno",
-        date: "2019-11-25"
-      },
-      {
-        title: "Wspólna gra w parku",
-        place: "Rzeszów",
-        date: "2019-11-25"
-      },
-      {
-        title: "Zabierz swoją talię",
-        place: "Rzeszów",
-        date: "2019-12-24"
-      },
-      {
-        title: "Kim jest twój król trefl",
-        place: "Krosno",
-        date: "2019-11-25"
-      },
-      {
-        title: "Anonimowi gracze",
-        place: "Rzeszów",
-        date: "2019-08-21"
-      }
-    ]
-  };
-
   render() {
-    const eventList = this.state.events.map((item, index) => <li key={ index }>
-      <span>{ item.title }</span>
-      <span>{ item.place }</span>
-      <span>{ item.date }</span>
-    </li>);
+    const eventList = this.props.followsEvent && this.props.followsEvent.map(event =>
+      this.props.follows && this.props.follows.map(follow =>
+        (follow.followThingId === event.id) && <Link to={ `/event/${ event.id }` } key={ event.id }>
+        <li>
+          <span>{ event.title }</span>
+          <span>{ event.place }</span>
+          <span>{ event.startDate } - { event.endDate }</span>
+        </li>
+      </Link>));
 
     return (
       <div className="event-section">
@@ -57,13 +29,26 @@ class EventSection extends Component {
         </div>
         <ul>
           { eventList }
-          <li >
-            <span style={{textAlign:"center", width:"100%"}}> Załaduj więcej...</span>
-          </li>
         </ul>
       </div>
     );
   }
 }
 
-export default EventSection;
+const mapStoreToProps = state => {
+  return {
+    followsEvent: state.firestore.ordered.followsEvent
+  }
+};
+
+export default compose(
+  firestoreConnect([
+    {
+      collection: "events",
+      where: ["startDate", ">=", new Date().toJSON().slice(0,10)],
+      orderBy: ["startDate", "asc"],
+      storeAs: "followsEvent"
+    }
+  ]),
+  connect(mapStoreToProps)
+)(EventSection);

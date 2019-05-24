@@ -11,10 +11,10 @@ class Event extends Component {
 
   followIt = event => {
     event.target.dataset.follower === "false" ?
-      this.props.followEvent(this.props.match.params.id):
-      this.props.unfollowEvent(this.props.followThis[0].id)
+      this.props.followEvent(this.props.match.params.id, this.props.event[this.props.match.params.id].title):
+      this.props.unfollowEvent(this.props.followThis[0].id, this.props.event[this.props.match.params.id].title)
   };
-
+//TODO Dodać sekcję komentarzy
   render() {
     const { auth, match, followers, followThis } = this.props;
     const event = this.props.event && this.props.event[match.params.id];
@@ -60,8 +60,8 @@ class Event extends Component {
 
 const mapDispatchToProps = dispatch => {
   return {
-    followEvent: event => dispatch(followEvent(event)),
-    unfollowEvent: event => dispatch(unfollowEvent(event))
+    followEvent: (eventId, eventTitle) => dispatch(followEvent(eventId, eventTitle)),
+    unfollowEvent: (followId, eventTitle) => dispatch(unfollowEvent(followId, eventTitle))
   }
 };
 

@@ -1,12 +1,30 @@
 import React from "react";
 import { Notifications } from "./";
+import { connect } from "react-redux";
+import { firestoreConnect } from "react-redux-firebase";
+import { compose } from "redux";
 
-const NotificationsList = (props) => {
+const NotificationsList = ({ notifications }) => {
+  const notification = (notifications && notifications.length) ? notifications: false;
+
   return (
     <div className="notification-list">
-      <Notifications />
+      { notification ?
+        notification.map(notification => <Notifications message={ notification.content } key={ notification.id }/>) :
+        <Notifications message="Brak powiadomień"/> }
     </div>
   )
 };
 
-export default NotificationsList;
+const mapStoreToProps = state => {
+  return {
+    notifications: state.firestore.ordered.notifications
+  }
+};
+
+export default compose(
+  firestoreConnect([
+    { collection: "notifications", orderBy: ["created", "desc"] }
+  ]),
+  connect(mapStoreToProps)
+)(NotificationsList);

@@ -18,7 +18,7 @@ export const createGame = game => {
   }
 };
 
-export const followGame = game => {
+export const followGame = (gameId, gameTitle) => {
   return (dispatch, getState, { getFirebase, getFirestore }) => {
     const firestore = getFirestore();
     const profile = getState().firebase.profile;
@@ -28,25 +28,27 @@ export const followGame = game => {
       authorId: authorId,
       authorNick: profile.nick,
       authorAvatar: profile.avatar,
-      followThingId: game,
+      followThingId: gameId,
+      message: "Gra",
+      followTitle: gameTitle,
       created: new Date()
     }).then(() => {
-      dispatch({ type: "FOLLOW_GAME", game })
+      dispatch({ type: "FOLLOW_GAME", gameId, gameTitle })
     }).catch((err) => {
       dispatch({ type: "FOLLOW_GAME_ERROR", err })
     });
   }
 };
 
-export const unfollowGame = game => {
+export const unfollowGame = (followId, gameTitle) => {
   return (dispatch, getState, { getFirebase, getFirestore }) => {
     const firestore = getFirestore();
     // const authorId = getState().firebase.auth.uid;
 
     firestore.collection("followers").doc(
-      game
+      followId
     ).delete().then(() => {
-      dispatch({ type: "UNFOLLOW_GAME", game })
+      dispatch({ type: "UNFOLLOW_GAME", followId, gameTitle })
     }).catch((err) => {
       dispatch({ type: "UNFOLLOW_GAME_ERROR", err })
     });

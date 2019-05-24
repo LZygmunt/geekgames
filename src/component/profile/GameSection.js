@@ -1,5 +1,9 @@
 import React, { Component } from "react";
 import { GameAdd } from "../game";
+import { compose } from "redux";
+import { firestoreConnect } from "react-redux-firebase";
+import { connect } from "react-redux";
+import { Link } from "react-router-dom";
 
 
 /*
@@ -7,38 +11,9 @@ import { GameAdd } from "../game";
 * TODO 2 wyszukiwarka gry
 * */
 class GameSection extends Component {
-
   state = {
-    show: false,
-    games: [
-      { title:"Makao"},
-      { title:"Poker"},
-      { title:"Assasin Creed II"},
-      { title:"Wiedźmin"},
-      { title:"Wiedźmin II"},
-      { title:"Wiedźmin III"},
-      { title:"The Sims 4"},
-      { title:"Fifa 19"},
-      { title:"Dark Souls"},
-      { title:"Dark Souls II"},
-      { title:"Dark Souls III"},
-      { title:"Makao"},
-      { title:"Poker"},
-      { title:"Assasin Creed II"},
-      { title:"Wiedźmin"},
-      { title:"Wiedźmin II"},
-      { title:"Wiedźmin III"},
-      { title:"The Sims 4"},
-      { title:"Fifa 19"},
-      { title:"Dark Souls"},
-      { title:"Dark Souls II"},
-      { title:"Dark Souls III"}
-    ]
+    show: false
   };
-
-  componentDidMount() {
-    //TODO ściągnij dane
-  }
 
   toggleModal = (event) => {
     this.setState({
@@ -47,7 +22,11 @@ class GameSection extends Component {
   };
 
   render() {
-    const gameList = this.state.games.map((item, index) => <li key={ index }>{ item.title }</li>);
+    const gameList = this.props.followsGame && this.props.followsGame.map(game =>
+      this.props.follows && this.props.follows.map(follow =>
+        (follow.followThingId === game.id) && <li key={ game.id }>
+        <Link to={ `/game/${game.id}` }>{ game.title }</Link>
+      </li>));
 
     return (
       <div className="game-section">
@@ -71,4 +50,19 @@ class GameSection extends Component {
   }
 }
 
-export default GameSection;
+const mapStoreToProps = state => {
+  return {
+    followsGame: state.firestore.ordered.followsGame
+  }
+};
+
+export default compose(
+  firestoreConnect([
+    {
+      collection: "games",
+      orderBy: ["title"],
+      storeAs: "followsGame"
+    }
+  ]),
+  connect(mapStoreToProps)
+)(GameSection);
