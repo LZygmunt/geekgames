@@ -1,10 +1,8 @@
 #game {
-    width: 70%;
+    width: 80%;
 }
 #game .game-property {
     display: flex;
-    width: 85%;
-    margin: 0 auto;
 }
 #game .game-property img.game-photo {
     width: 300px;
@@ -37,7 +35,12 @@
 #game .game-desc {
     text-align: justify;
     width: 85%;
-    min-width: 600px;
     margin: 30px auto;
+}
+
+@media screen and (max-width: 480px) {
+    #game {
+        width: 100%;
+    }
 }
 /*# sourceMappingURL=game.css.map */

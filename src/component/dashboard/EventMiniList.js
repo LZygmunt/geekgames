@@ -14,7 +14,7 @@ const EventMiniList = (props) => {
 
 //todo ustawić mini event na fixed
   return (auth.uid) ?
-    (<div>
+    (<div style={{ marginTop:"20px",height: "400px",overflowY: "auto"}}>
       { eventList }
     </div>) : null
 };

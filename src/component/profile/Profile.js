@@ -15,7 +15,7 @@ const Profile = props => {
   const { auth, follows } = props;
  //TODO Sprawdzanie hasła oraz czyszczenie state
   return (auth.uid) ?
-    (<div style={{width:"70%"}}>
+    (<div>
         <PersonalDataSection auth={ auth }/>
         <EventSection follows={ follows }/>
         <GameSection follows={ follows }/>

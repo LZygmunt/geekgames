@@ -22,17 +22,13 @@ class Event extends Component {
     return (auth.uid) ? (
       (event) ? (<div id="event-content">
         <div id="background-header">
-          <div className="image">
-            <img src="../../images/photo1.jpg" alt="bg"/>
-          </div>
-          <div className="background-image"/>
-          <h2 id="title-header">{ event.title }</h2>
+          <h1 id="title-header">{ event.title }</h1>
         </div>
 
         <div className="event-info">
           <h2 id="place">{ event.place }</h2>
           <h2 id="game"><Link to={ "/game/" + event.gameId }> { event.gameTitle }</Link></h2>
-          <h2 id="date">{ event.startDate } - { event.endDate }</h2>
+          <h2 id="date">{ event.startDate }<br/>{ event.endDate }</h2>
         </div>
         <div id="event-description">{ event.desc }</div>
 

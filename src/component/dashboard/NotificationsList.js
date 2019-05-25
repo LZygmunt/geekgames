@@ -4,14 +4,19 @@ import { connect } from "react-redux";
 import { firestoreConnect } from "react-redux-firebase";
 import { compose } from "redux";
 
+
+import "./notifications.css";
+
 const NotificationsList = ({ notifications }) => {
   const notification = (notifications && notifications.length) ? notifications: false;
 
   return (
-    <div className="notification-list">
+    <div style={{height: "200px",overflowY: "auto"}}>
+      <div className="notification-list">
       { notification ?
         notification.map(notification => <Notifications message={ notification.content } key={ notification.id }/>) :
         <Notifications message="Brak powiadomień"/> }
+    </div>
     </div>
   )
 };

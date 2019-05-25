@@ -10,6 +10,18 @@
     --blue: #788fba;
     --dark-blue: #3c5176;
 }
+
+.first-set{
+    --first-bg: #de45ab;
+}
+
+.second-set{
+    --first-bg: #00de12;
+}
+.third-set{
+    --first-bg: #3b00de;
+}
+
 body {
     background: var(--first-bg);
     margin: 0;
@@ -43,6 +55,7 @@ button,
     border-radius: 15px;
     border-color: transparent;
     text-align: center;
+    cursor: pointer;
 }
 .button {
     line-height: 2;
@@ -97,8 +110,14 @@ input[type="file"] {
 .hide {
     display: none;
 }
-
+#right-side{
+    width:70%;
+}
 @media screen and (max-width: 768px) {
+
+    #right-side{
+        width: 100%;
+    }
     #slide-event{
         display: none;
     }
@@ -108,9 +127,11 @@ input[type="file"] {
     }
 }
 
+
 @media screen and (max-width: 480px){
     .profile-segment{
         width: 99%;
         margin: 0 auto;
     }
 }
+

@@ -44,6 +44,20 @@
   }
 }
 @media screen and (max-width: 480px) {
+  #event-content {
+    width: 90%;
+    margin: auto;
+  }
+  #event-content .event-info {
+    flex-direction: column;
+  }
+  #event-content .event-info h2 {
+    text-align: center;
+  }
+  #event-content #event-description {
+    width: 100% !important;
+    min-width: 0;
+  }
   .game-list .game-element .game-item .game-title,
   .game-list #game-header-table .game-item .game-title,
   .game-list .game-element .game-item .start-date,

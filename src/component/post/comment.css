@@ -8,14 +8,24 @@
 }
 .comment .comment-identification {
     max-width: 100px;
+    margin: 0 auto;
 }
+.comment .comment-identification .comment-created {
+    font-size: 9px;
+}
+
 .comment .comment-identification p {
     text-align: center;
 }
 .comment .comment-identification img {
-    max-width: 80px;
+    max-width: 60px;
 }
 .comment .comment-content {
     margin: 1em;
 }
-/*# sourceMappingURL=comment.css.map */
+
+@media screen and (max-width: 768px){
+    .comment{
+        flex-direction: column;
+    }
+}

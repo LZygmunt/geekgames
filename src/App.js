@@ -19,14 +19,22 @@ class App extends Component {
     //TODO ożywić wszystkie guziki
     //TODO Wprowadzić system powiadomień
     //TODO po wysyłaniu formularzy wymazywać ich stan
+
+
+
+    //todo Madziu -  ustawić sety dla poszczególnych zestawów
+
+    //todo wprowadzenie loadera
+
     const { auth } = this.props;
 
     if(auth.isLoaded) return (
       <BrowserRouter>
-        <div className="App">
+        <div className="App" >
           <NavBar imgSrc={ (window.innerWidth <= 580 )? logoMini : logo } altText={ "GeekGames logo" }/>
           <div id="content">
             <ShortInfo />
+            <div id="right-side">
             <Switch>
               <Route exact path="/" component={ Profile }/>
               <Route path="/games" component={ GameContainer }/>
@@ -34,6 +42,7 @@ class App extends Component {
               <Route path="/events" component={ EventContainer }/>
               <Route path="/event/:id" component={ Event }/>
             </Switch>
+            </div>
           </div>
         </div>
       </BrowserRouter>

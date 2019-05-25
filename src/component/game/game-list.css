@@ -30,7 +30,7 @@
 .game-list .game-item {
     margin-top: 15px;
     margin-bottom: 15px;
-    width: 1000px;
+    /*width: 1000px;*/
     display: flex;
     justify-content: space-between;
 }

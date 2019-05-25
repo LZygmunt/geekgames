@@ -19,13 +19,14 @@ class Comment extends Component {
             alt={ comment.authorNick }
           />
           <p>{ comment.authorNick }</p>
+            <div className="comment-created">
+                <p>{ comment.created.toDate().toLocaleString() }</p>
+            </div>
         </div>
         <div className="comment-content">
           <p>{ comment.comment }</p>
         </div>
-        <div className="comment-created">
-          <p>{ comment.created.toDate().toLocaleString() }</p>
-        </div>
+
       </div>
     );
   }
