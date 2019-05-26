@@ -13,16 +13,14 @@ import logo from "./images/logo.png"
 import logoMini from "./images/logo-geek-games.png"
 
 import "./App.css";
+import Loader from "./component/dashboard/Loader";
 
 class App extends Component {
   render() {
     //TODO ożywić wszystkie guziki
     //TODO Wprowadzić system powiadomień
     //TODO po wysyłaniu formularzy wymazywać ich stan
-
-
-
-    //todo Madziu -  ustawić sety dla poszczególnych zestawów
+    
 
     //todo wprowadzenie loadera
 
@@ -30,21 +28,22 @@ class App extends Component {
 
     if(auth.isLoaded) return (
       <BrowserRouter>
-        <div className="App" >
-          <NavBar imgSrc={ (window.innerWidth <= 580 )? logoMini : logo } altText={ "GeekGames logo" }/>
-          <div id="content">
-            <ShortInfo />
-            <div id="right-side">
-            <Switch>
-              <Route exact path="/" component={ Profile }/>
-              <Route path="/games" component={ GameContainer }/>
-              <Route path="/game/:id" component={ Game }/>
-              <Route path="/events" component={ EventContainer }/>
-              <Route path="/event/:id" component={ Event }/>
-            </Switch>
-            </div>
-          </div>
-        </div>
+        {/*<div className="App" >*/}
+        {/*  <NavBar imgSrc={ (window.innerWidth <= 580 )? logoMini : logo } altText={ "GeekGames logo" }/>*/}
+        {/*  <div id="content">*/}
+        {/*    <ShortInfo />*/}
+        {/*    <div id="right-side">*/}
+        {/*    <Switch>*/}
+        {/*      <Route exact path="/" component={ Profile }/>*/}
+        {/*      <Route path="/games" component={ GameContainer }/>*/}
+        {/*      <Route path="/game/:id" component={ Game }/>*/}
+        {/*      <Route path="/events" component={ EventContainer }/>*/}
+        {/*      <Route path="/event/:id" component={ Event }/>*/}
+        {/*    </Switch>*/}
+        {/*    </div>*/}
+        {/*  </div>*/}
+        {/*</div>*/}
+        <Loader/>
       </BrowserRouter>
     );
     return null;
