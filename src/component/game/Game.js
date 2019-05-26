@@ -9,6 +9,7 @@ import {followGame, unfollowGame} from "../../store/actions/gameActions";
 
 import logo from "./../../images/logo-geek-games.png";
 import "./game-responsive.css"
+import Loader from "../dashboard/Loader";
 
 class Game extends Component {
 
@@ -69,7 +70,7 @@ class Game extends Component {
                                 game={{gameId: match.params.id, gameTitle: game.title}}
                             />
                         </div>
-                    ) : (<div>Ładowanie gry...</div>)
+                    ) : (<Loader/>)
             ) :
             (<Redirect to="/"/>);
     }
