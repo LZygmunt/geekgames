@@ -10,8 +10,7 @@ class EventAdd extends Component {
     place: "",
     desc: "",
     startDate: new Date().toJSON().slice(0,10),
-    endDate: new Date().toJSON().slice(0,10),
-    image: ""
+    endDate: new Date().toJSON().slice(0,10)
   };
 
   handleChange = event => {
@@ -20,15 +19,14 @@ class EventAdd extends Component {
 
   handleSubmit = event => {
     event.preventDefault();
-    this.props.createEvent({...this.state, ...this.props.game});
+    this.props.createEvent({...this.state, ...this.props.game, titleToLowerCase: this.state.title.toLowerCase()});
     this.props.handleClose(event);
     this.setState({
       title: "",
       place: "",
       desc: "",
       startDate: new Date().toJSON().slice(0,10),
-      endDate: new Date().toJSON().slice(0,10),
-      image: ""
+      endDate: new Date().toJSON().slice(0,10)
     })
   };
 

@@ -29,7 +29,7 @@ const mapStoreToProps = state => {
 
 export default compose(
   firestoreConnect([
-    { collection: "notifications", orderBy: ["created", "desc"] }
+    { collection: "notifications", orderBy: ["created", "desc"], limit: 5 }
   ]),
   connect(mapStoreToProps)
 )(NotificationsList);

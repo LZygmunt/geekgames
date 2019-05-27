@@ -4,6 +4,18 @@ const initState = {
 
 const authReducer = (state = initState, action) => {
   switch (action.type) {
+    case "UPDATE_USER":
+      console.log("user update success");
+      return {
+        ...state,
+        authError: null
+      };
+    case "UPDATE_USER_ERROR":
+      console.log("user update error");
+      return {
+        ...state,
+        authError: action.err.message
+      };
     case "LOGIN_ERROR":
       console.log("login error");
       return {

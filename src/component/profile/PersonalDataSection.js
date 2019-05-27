@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-
-
+import { updateUserProfile } from "../../store/actions/authActions";
+import { storage } from "../../config/fbConfig";
 /*
 * TODO \to na samym kocu\ zmiana kolorów
 * */
@@ -11,32 +11,89 @@ class PersonalDataSection extends Component {
     colorTheme: "",
     nick: "",
     email: "",
-    city: ""
-  };
-
-  handleChange = event => {
-    this.setState({ [event.target.name]: [event.target.value] })
+    city: "",
+    avatar: "",
+    imageFile: null,
+    progress: 0
   };
 
   changeColorSet = event => {
-    document.body.className=event.target.dataset.theme;
-// console.log(event.target.dataset.theme);
+    this.setState({ colorTheme: event.target.dataset.theme });
+    //TODO jeśli został kliknięty to nadaj klasę active
   };
 
+  uploadFile = () => {
+    let user = {
+      nick: this.state.nick,
+      city: this.state.city,
+      colorTheme: this.state.colorTheme
+    };
+    if( this.state.imageFile === null) {
+      this.props.updateUserProfile({...user, avatar: this.state.avatar});
+      this.setState({
+        nick: "",
+        avatar: "",
+        imageFile: null,
+        city: "",
+        colorTheme: "",
+        isEdit: false
+      });
+    } else {
+      const upload = storage.ref(`images/${this.state.imageFile.name}`).put(this.state.imageFile);
+      upload.on("state_changed",
+        snapshot => {
+          this.setState({progress: Math.round(snapshot.bytesTransferred / snapshot.totalBytes * 100)});
+        },
+        error => {
+          console.log(error)
+        },
+        () => {
+          storage.ref("images").child(this.state.imageFile.name).getDownloadURL().then(url => {
+            this.setState({avatar: url});
+            this.props.updateUserProfile({...user, avatar: this.state.avatar});
+            this.setState({
+              nick: "",
+              avatar: "",
+              imageFile: null,
+              city: "",
+              colorTheme: "",
+              isEdit: false
+            });
+          })
+      });
+    }
+  };
+
+  handleChange = event => {
+    this.setState({ [event.target.name]: event.target.files ? event.target.files[0] : event.target.value })
+  };
+//TODO ograniczyć nazwę użytkownika
   handleClick = event => {
     const target = event.target;
-    this.setState(prevState => {
-      return {
-        [target.dataset.switch]: (target.dataset.switch === "isEdit") ?
-          !prevState.isEdit:
-          target.parentElement.className
-      }
-    });
+    if (this.state.isEdit && target.className === "button"){
+      this.uploadFile();
+    } else {
+      this.setState(prevState => {
+        return {
+          [target.dataset.switch]: (target.dataset.switch === "isEdit") ?
+            !prevState.isEdit:
+            target.dataset.theme,
+          nick: this.props.profile.nick,
+          email: this.props.auth.email,
+          city: this.props.profile.city
+        }
+      });
+    }
+
   };
 
   render() {
     const { nick, email, city, isEdit } = this.state;
     const { auth, profile } = this.props;
+    // console.log(this.state)
+    const avatar = (profile.avatar === "") ? <i className="far fa-user-circle"/> : <img src={ profile.avatar } alt={ profile.nick } width="280px"/>;
+    // console.log(avatar)
+
     //TODO edycja danych oraz potwierdź
     //TODO resetowanie state
     //TODO wybieranie kolorów zrobić i zmiana na żywo
@@ -45,7 +102,15 @@ class PersonalDataSection extends Component {
         <h1>Witaj, { profile.nick }!</h1>
         <div className="short-info">
           <div className="avatar">
-            <i className="far fa-user-circle"> </i>
+            <input
+              style={{ display: "none" }}
+              type="file"
+              name="imageFile"
+              onChange={ this.handleChange }
+              ref={ inputFile => this.inputFile = inputFile }
+            />
+            { isEdit ? <div onClick={ () => this.inputFile.click() } >{ avatar }</div>: avatar }
+
           </div>
           <div className="personal-data">
             <div className="nick">
@@ -66,6 +131,7 @@ class PersonalDataSection extends Component {
                 placeholder="Podaj e-mail"
                 value={ email }
                 onChange={ this.handleChange }
+                disabled={ true }
               /> : <p>{ auth.email }</p> }
 
             </div>
@@ -125,4 +191,10 @@ const mapStateToProps = state => {
   }
 };
 
-export default connect(mapStateToProps)(PersonalDataSection);
+const mapDisptachToProps = dispatch => {
+  return {
+    updateUserProfile: user => dispatch(updateUserProfile(user))
+  }
+};
+
+export default connect(mapStateToProps, mapDisptachToProps)(PersonalDataSection);

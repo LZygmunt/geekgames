@@ -2,29 +2,54 @@ import React, { Component } from "react";
 import Modal from "../modal/Modal";
 import { connect } from "react-redux";
 import { createGame } from "../../store/actions/gameActions";
+import { storage } from "../../config/fbConfig";
 
 class GameAdd extends Component {
 
   state = {
     title: "",
     image: "",
+    imageFile: null,
     desc: "",
-    alt: "tekst alternatywny"
+    alt: "tekst alternatywny",
+    progress: 0
   };
 
   handleChange = event => {
-    this.setState({ [event.target.name]: event.target.value })
+    this.setState({ [event.target.name]: event.target.files ? event.target.files[0] : event.target.value });
   };
 
   handleSubmit = event => {
     event.preventDefault();
-    this.props.createGame(this.state);
-    this.props.handleClose(event);
+    let game = {
+
+    };
+    const upload = storage.ref(`images/${ this.state.imageFile.name }`).put(this.state.imageFile);
+    upload.on("state_changed",
+      snapshot => {
+        this.setState({ progress: Math.round(snapshot.bytesTransferred / snapshot.totalBytes * 100) });
+      },
+      error => {
+        console.log(error)
+      },
+      () => {
+        storage.ref("images").child(this.state.imageFile.name).getDownloadURL().then(url => {
+          this.setState({ image: url });
+          this.props.createGame({...game, image: this.state.image});
+          this.setState({
+            title: "",
+            image: "",
+            imageFile: null,
+            desc: "",
+            alt: "tekst alternatywny"
+          });
+        })
+      });
   };
 
   render() {
     const { show, handleClose } = this.props;
-    const { title, desc, image } = this.state;
+    const { title, desc, progress, imageFile } = this.state;
 
     return (
       <Modal show={ show } title="Dodaj grę" handleClose={ handleClose }>
@@ -38,9 +63,11 @@ class GameAdd extends Component {
           />
           <input
             type="file"
-            name="image"
+            name="imageFile"
             className="custom-file-input"
+            onChange={ this.handleChange }
           />
+          <progress value={ progress } max="100" style={{ width: "80%" }}/> { progress === 100 && " Dodano grę." }
           <textarea
             name="desc"
             value={ desc }
@@ -48,7 +75,7 @@ class GameAdd extends Component {
             onChange={ this.handleChange }
             rows="10"
           />
-          <button onClick={ this.handleSubmit }>Dodaj</button>
+          <button onClick={ this.handleSubmit } disabled={ imageFile === null}>Dodaj</button>
         </form>
       </Modal>
     )
