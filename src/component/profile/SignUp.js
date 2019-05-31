@@ -97,9 +97,8 @@ class SignUp extends Component {
 
   render() {
     const { authError } = this.props;
-    console.log(Object.values(this.state.errorMsg).filter(val => val).length === 0 && true)
-    //todo zrobić dodawanie obrazka
-    //TODO sprawdzanie hasła
+    //TODO ostylowanie error-msg <- Madzia
+    //TODO ostylować button i inputy gdy jest disabled <- Madzia
     return (
       <div id="sign-up">
           <h1>Witaj!</h1>
@@ -185,7 +184,6 @@ class SignUp extends Component {
 }
 
 const mapStateToProps = state => {
-  // console.log("SignUp log -> ",state);
   return {
     auth: state.firebase.auth,
     authError: state.auth.authError

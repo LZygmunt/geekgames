@@ -2,9 +2,7 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import { updateUserProfile } from "../../store/actions/authActions";
 import { storage } from "../../config/fbConfig";
-/*
-* TODO \to na samym kocu\ zmiana kolorów
-* */
+
 class PersonalDataSection extends Component {
   state = {
     isEdit: false,
@@ -17,19 +15,37 @@ class PersonalDataSection extends Component {
     progress: 0
   };
 
+  componentDidUpdate(prevProps, prevState, snapshot) {
+    if(this.props.profile.colorTheme !== prevProps.profile.colorTheme) {
+      document.body.className = this.props.profile.colorTheme;
+    }
+    if(this.state.colorTheme !== prevState.colorTheme){
+      document.body.className = this.state.colorTheme;
+    }
+  }
+
   changeColorSet = event => {
-    this.setState({ colorTheme: event.target.dataset.theme });
-    //TODO jeśli został kliknięty to nadaj klasę active
+    if (this.state.isEdit) {
+      const tgt = event.target;
+      this.setState({ colorTheme: tgt.dataset.theme });
+      const active = document.querySelector(".colors > .active");
+      active.className = active.classList[0];
+      if(tgt.classList[0] !== "first" || tgt.classList[0] !== "second" || tgt.classList[0] !== "third") {
+        tgt.parentElement.className += " active";
+      }
+    }
+    //TODO ostylować klasę active <- Madzia
   };
 
   uploadFile = () => {
     let user = {
       nick: this.state.nick,
       city: this.state.city,
-      colorTheme: this.state.colorTheme
+      colorTheme: this.state.colorTheme,
+      avatar: this.state.avatar
     };
     if( this.state.imageFile === null) {
-      this.props.updateUserProfile({...user, avatar: this.state.avatar});
+      this.props.updateUserProfile(user);
       this.setState({
         nick: "",
         avatar: "",
@@ -49,7 +65,7 @@ class PersonalDataSection extends Component {
         },
         () => {
           storage.ref("images").child(this.state.imageFile.name).getDownloadURL().then(url => {
-            this.setState({avatar: url});
+            this.setState({ avatar: url });
             this.props.updateUserProfile({...user, avatar: this.state.avatar});
             this.setState({
               nick: "",
@@ -67,7 +83,7 @@ class PersonalDataSection extends Component {
   handleChange = event => {
     this.setState({ [event.target.name]: event.target.files ? event.target.files[0] : event.target.value })
   };
-//TODO ograniczyć nazwę użytkownika
+
   handleClick = event => {
     const target = event.target;
     if (this.state.isEdit && target.className === "button"){
@@ -80,7 +96,9 @@ class PersonalDataSection extends Component {
             target.dataset.theme,
           nick: this.props.profile.nick,
           email: this.props.auth.email,
-          city: this.props.profile.city
+          city: this.props.profile.city,
+          avatar: this.props.profile.avatar,
+          colorTheme: this.props.profile.colorTheme
         }
       });
     }
@@ -90,13 +108,9 @@ class PersonalDataSection extends Component {
   render() {
     const { nick, email, city, isEdit } = this.state;
     const { auth, profile } = this.props;
-    // console.log(this.state)
-    const avatar = (profile.avatar === "") ? <i className="far fa-user-circle"/> : <img src={ profile.avatar } alt={ profile.nick } width="280px"/>;
-    // console.log(avatar)
 
-    //TODO edycja danych oraz potwierdź
-    //TODO resetowanie state
-    //TODO wybieranie kolorów zrobić i zmiana na żywo
+    const avatar = (profile.avatar === "") ? <i className="far fa-user-circle"/> : <img src={ profile.avatar } alt={ profile.nick } width="280px"/>;
+
     return (
       <div id="profile">
         <h1>Witaj, { profile.nick }!</h1>
@@ -152,7 +166,7 @@ class PersonalDataSection extends Component {
         <div className="edit-place">
           <div className="colors">
             <p>Kolory: </p>
-            <div className="first" onClick={ this.changeColorSet } data-switch="colorTheme" data-theme="first-set">
+            <div className="first active" onClick={ this.changeColorSet } data-switch="colorTheme" data-theme="first-set">
               <div className="background" data-switch="colorTheme" data-theme="first-set"/>
               <div className="second-background" data-switch="colorTheme" data-theme="first-set"/>
               <div className="third-background" data-switch="colorTheme" data-theme="first-set"/>
