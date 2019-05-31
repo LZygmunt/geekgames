@@ -3,8 +3,9 @@ import { EventList } from "./";
 import { connect } from "react-redux";
 import { compose } from "redux";
 import { firestoreConnect } from "react-redux-firebase";
+import { Redirect } from "react-router-dom";
 
-import "./event-responsive.css"
+import "./event-responsive.css";
 
 const EventContainer = ({ events, auth }) => {
 
@@ -23,7 +24,7 @@ const EventContainer = ({ events, auth }) => {
 
   return (auth.uid) ? (
     <EventList events={ events }/>
-  ): (<div/>);
+  ): (<Redirect to="/"/>);
 };
 
 const mapStoreToProps = state => {
