@@ -22,7 +22,8 @@ class App extends Component {
     //TODO po wysyłaniu formularzy wymazywać ich stan
     
 
-    //todo wprowadzenie loadera
+    //todo wprowadzenie loadera <- Madzia (jeśli chcesz to dodaj w tych miejscach co nie ma tj.
+    // Profil, Game, Event, GameContainer, EventContainer
 
     const { auth } = this.props;
 

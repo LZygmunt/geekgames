@@ -14,7 +14,7 @@ class Event extends Component {
       this.props.followEvent(this.props.match.params.id, this.props.event[this.props.match.params.id].title):
       this.props.unfollowEvent(this.props.followThis[0].id, this.props.event[this.props.match.params.id].title)
   };
-//TODO Dodać sekcję komentarzy
+//TODO Dodać sekcję komentarzy <- Madzia (mogłabyś ale ja się w tej chwili za to zabieram)
   render() {
     const { auth, match, followers, followThis } = this.props;
     const event = this.props.event && this.props.event[match.params.id];

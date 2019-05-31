@@ -12,7 +12,7 @@ const EventMiniList = (props) => {
     follow={ followers && followers.filter(follow => follow.followThingId === event.id && follow) }
   />);
 
-//todo ustawić mini event na fixed
+//todo ustawić mini event na fixed <- Madzia (powiedz czy już to zrobiłaś)
   return (auth.uid) ?
     (<div style={{ marginTop:"20px",height: "400px",overflowY: "auto"}}>
       { eventList }
