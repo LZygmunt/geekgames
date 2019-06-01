@@ -2,8 +2,8 @@ import React, { Component } from "react";
 import { Comment } from "./index";
 import { connect } from "react-redux";
 import { createComment } from "../../store/actions/postActions";
-import {compose} from "redux";
-import {firestoreConnect} from "react-redux-firebase";
+import { compose } from "redux";
+import { firestoreConnect } from "react-redux-firebase";
 
 class CommentList extends Component{
   state = {
@@ -31,7 +31,7 @@ class CommentList extends Component{
       newComment: ""
     })
   };
-
+//TODO pokazywanie komentarzy - stronnicowanie
   showMore = async () => {
     // let first = db.collection("cities")
     //   .orderBy("population")
@@ -100,8 +100,8 @@ export default compose(
     {
       collection: "comments",
       orderBy: ["created", "desc"],
-      where: ["postId", "==", props.postId],
-      storeAs: `comments-${props.postId}`
+      where: props.postId ? ["postId", "==", props.postId] : ["eventId", "==", props.eventId],
+      storeAs: `comments-${props.postId ? props.postId: props.eventId}`
     }
   ]),
   connect(mapStoreToProps, mapDispatchToProps)

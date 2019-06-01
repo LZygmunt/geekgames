@@ -5,13 +5,14 @@ import { compose } from "redux";
 import { firestoreConnect } from "react-redux-firebase";
 
 const EventMiniList = (props) => {
+
   const { auth, events, followers } = props;
   const eventList = events && events.map(event => <EventMini
     key={ event.id }
     event={ event }
     follow={ followers && followers.filter(follow => follow.followThingId === event.id && follow) }
   />);
-
+//todo pobierać tylko i wyłącznie potrzebne followsy
   return (auth.uid) ?
     (<div style={{ marginTop:"20px",height: "400px",overflowY: "auto"}}>
       { eventList }

@@ -7,11 +7,11 @@ const ShortInfo = ({auth}) => {
     window.onscroll = function(){
         const leftSide = document.getElementById("fixed");
         if (leftSide != null){
-            const sticky = 80;
+            const sticky = 0;
 
             if (window.pageYOffset > sticky) {
                 leftSide.style.position = "fixed";
-                leftSide.style.top="110px";
+                leftSide.style.top= "130px";
             } else {
                 leftSide.style.position  = "relative";
                 leftSide.style.top="0";

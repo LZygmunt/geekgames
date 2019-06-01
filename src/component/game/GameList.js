@@ -2,6 +2,7 @@ import React from 'react';
 import { Link } from "react-router-dom";
 
 const GameList = ({ games }) => {
+  //TODO wprowadzić ilość obserwujących, postów oraz wydarzeń
   return (<div className="game-list">
     <div id="game-header-table" style={{width:"100%"}}>
       <div className="game-search">

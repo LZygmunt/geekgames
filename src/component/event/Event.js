@@ -6,6 +6,7 @@ import { compose } from "redux";
 import { firestoreConnect } from "react-redux-firebase";
 import { Link } from "react-router-dom";
 import { followEvent, unfollowEvent } from "../../store/actions/postActions";
+import { CommentList } from "../post";
 
 class Event extends Component {
 
@@ -49,7 +50,9 @@ class Event extends Component {
               <li>Brak obserwujących</li>}
           </ul>
         </div>
-
+        <div className="post">
+          <CommentList game={{ id: event.gameId, title: event.gameTitle}} eventId={ match.params.id }/>
+        </div>
       </div>) : (<div>Ładowanie wydarzenia...</div>)) : (<Redirect to="/"/>);
   }
 }
@@ -68,6 +71,7 @@ const mapStoreToProps = state => {
   return {
     auth: state.firebase.auth,
     event: state.firestore.data.events,
+    posts: state.firestore.data.posts,
     followers: followers,
     followThis: followThis ? followThis.length && followThis: null
   }

@@ -2,6 +2,7 @@ import React from 'react';
 import { Link } from "react-router-dom";
 
 const EventList = ({ events }) => {
+  //TODO ilość obserwujących
   return (<div className="game-list">
     <div id="game-header-table" style={{width:"100%"}}>
       <div className="game-search">
