@@ -1,6 +1,7 @@
 .sticky {
     position: fixed;
-    top: 0;
+    top: 110px;
+    width: 50% !important;
     background: var(--first-bg);
 }
 .sticky input {

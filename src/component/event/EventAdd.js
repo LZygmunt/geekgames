@@ -31,7 +31,6 @@ class EventAdd extends Component {
   };
 
   render() {
-    //TODO zrobić od do w datach <- Madzia (pewnie chodzi o to by bło napisane od XXXX do YYYY)
     const { title, place, desc, startDate, endDate } = this.state;
     return (
       <Modal title="Dodaj wydarzenie" handleClose={ this.props.handleClose } show={ this.props.show }>
@@ -56,6 +55,7 @@ class EventAdd extends Component {
             value={ startDate }
             onChange={ this.handleChange }
           />
+          <span style={{padding: "0 16px"}}>-</span>
           <input
             type="date"
             name="endDate"
