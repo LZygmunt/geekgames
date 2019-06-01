@@ -40,7 +40,7 @@ class App extends Component {
                 <Route path="/events" component={ EventContainer }/>
                 <Route path="/event/:id" component={ Event }/>
               </Switch>
-              <div>
+              <div style={{ display: "block", marginTop: "25px" }}>
                 <span>
                   Linki do grafik:
                 </span>

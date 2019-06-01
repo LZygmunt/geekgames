@@ -60,3 +60,14 @@
 .slide-button-without-bg i {
     margin-left: 5px;
 }
+.sticky {
+    position: fixed;
+    top: 130px;
+    background: var(--first-bg);
+}
+.sticky input {
+    margin-bottom: 0;
+}
+.sticky .game-item {
+    padding: 5px;
+}

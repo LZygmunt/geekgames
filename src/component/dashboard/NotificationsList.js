@@ -11,7 +11,7 @@ const NotificationsList = ({ notifications }) => {
   const notification = (notifications && notifications.length) ? notifications: false;
 
   return (
-    <div style={{height: "200px",overflowY: "auto"}}>
+    <div style={{height: "220px",overflowY: "auto"}}>
       <div className="notification-list">
       { notification ?
         notification.map(notification => <Notifications message={ notification.content } key={ notification.id }/>) :
