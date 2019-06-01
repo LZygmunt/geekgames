@@ -34,7 +34,6 @@ class PersonalDataSection extends Component {
         tgt.parentElement.className += " active";
       }
     }
-    //TODO ostylować klasę active <- Madzia
   };
 
   uploadFile = () => {

@@ -2,3 +2,14 @@
     width: 40%;
     max-width: 500px;
 }
+input:disabled{
+    background: #1a1a1a;
+}
+button:disabled{
+    background: var(--red-disabled);
+}
+span.error-msg{
+    color: var(--red);
+    top: -25px;
+    position: relative;
+}

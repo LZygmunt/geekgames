@@ -97,8 +97,6 @@ class SignUp extends Component {
 
   render() {
     const { authError } = this.props;
-    //TODO ostylowanie error-msg <- Madzia
-    //TODO ostylować button i inputy gdy jest disabled <- Madzia
     return (
       <div id="sign-up">
           <h1>Witaj!</h1>

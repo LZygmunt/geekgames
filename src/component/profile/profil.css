@@ -114,4 +114,6 @@
     top: 2px;
     width: 25px;
 }
-/*# sourceMappingURL=profil.css.map */
+.active{
+    border: 3px var(--red) solid !important;
+}
