@@ -118,7 +118,7 @@ a {
     text-align: center;
     line-height: 1;
     opacity: 0;
-    color: #fffc63;
+    color: var(--first-bg);
     max-width: 0;
     margin: auto;
     padding-left: 3px;

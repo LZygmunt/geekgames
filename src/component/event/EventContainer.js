@@ -8,20 +8,6 @@ import { Redirect } from "react-router-dom";
 import "./event-responsive.css";
 
 const EventContainer = ({ events, auth }) => {
-
-  window.onscroll = function(){
-    const header = document.getElementById("game-header-table");
-    if(header!=null) {
-      const sticky = header.offsetTop;
-
-      if (window.pageYOffset > sticky) {
-        header.className = "sticky";
-      } else {
-        header.className = "";
-      }
-    }
-  };
-
   return (auth.uid) ? (
     <EventList events={ events }/>
   ): (<Redirect to="/"/>);

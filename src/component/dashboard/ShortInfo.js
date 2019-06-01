@@ -1,32 +1,22 @@
 import React from "react";
 import { EventMiniList, NotificationsList } from "./";
-import {connect} from "react-redux";
+import { connect } from "react-redux";
 
-const ShortInfo = ({auth}) => {
-
-    window.onscroll = function(){
-        const leftSide = document.getElementById("fixed");
-        if (leftSide != null){
-            const sticky = 0;
-
-            if (window.pageYOffset > sticky) {
-                leftSide.style.position = "fixed";
-                leftSide.style.top= "130px";
-            } else {
-                leftSide.style.position  = "relative";
-                leftSide.style.top="0";
-            }
-
-        }
-    };
-
+const ShortInfo = ({ auth }) => {
+  window.onscroll = () => {
+    document.querySelectorAll("#fixed, #game-header-table").forEach( selector => {
+      (selector !== null && window.pageYOffset > 0) ?
+        selector.className = "sticky" :
+        selector.className = "";
+    });
+  };
 
   return (auth.uid) ?
-    (<div id="slide-event" style={{display:"block"}}>
-        <div id="fixed">
-      <NotificationsList />
-      <EventMiniList />
-        </div>
+    (<div id="slide-event" style={{ display: "block" }}>
+      <div id="fixed">
+        <NotificationsList/>
+        <EventMiniList/>
+      </div>
     </div>) : null
 };
 
@@ -36,4 +26,4 @@ const mapStoreToProps = state => {
   }
 };
 
-export default connect(mapStoreToProps)(ShortInfo);
+export default connect(mapStoreToProps)(ShortInfo);;

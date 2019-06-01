@@ -10,19 +10,6 @@ import "./game-list.css";
 import "./game-responsive.css";
 
 const GameContainer = ({ games, auth, followers }) => {
-  window.onscroll = function(){
-    const header = document.getElementById("game-header-table");
-    if(header!=null) {
-      const sticky = header.offsetTop;
-
-      if (window.pageYOffset > sticky) {
-        header.className = "sticky";
-      } else {
-        header.className = "";
-      }
-    }
-  };
-
   return (auth.uid) ? (<GameList games={ games } followers={ followers }/>): (<Redirect to="/"/>);
 };
 
