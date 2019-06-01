@@ -9,6 +9,7 @@
     --red: #d45640;
     --blue: #788fba;
     --dark-blue: #3c5176;
+    --red-disabled: #8b4e43;
 }
 
 .first-set{
@@ -22,6 +23,7 @@
     --red: #d45640;
     --blue: #788fba;
     --dark-blue: #3c5176;
+    --red-disabled: #8b4e43;
 }
 
 .second-set{
@@ -35,6 +37,7 @@
     --red:  #777a76;
     --blue: #395d02;
     --dark-blue: #233901;
+    --red-disabled: #575554;
 }
 .third-set{
     --first-bg: #2e350d;
@@ -47,6 +50,8 @@
     --red:  #7f5221;
     --blue: #f0c68f;
     --dark-blue: #a37f52;
+    --red-disabled: #524028;
+
 }
 
 body {
