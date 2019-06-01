@@ -53,7 +53,7 @@ class NavBar extends Component {
       show: event.target.dataset.name === "addGame"
     })
   };
-  //TODO ustawić navbar na fixed <- Madzia (wybierz czy dajemy strzałkę "powrót do góry" czy ma być fixed)
+
   render() {
     const props = this.props;
     const state = this.state;

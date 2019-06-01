@@ -11,9 +11,10 @@ const ShortInfo = ({auth}) => {
 
             if (window.pageYOffset > sticky) {
                 leftSide.style.position = "fixed";
-                leftSide.style.top="0";
+                leftSide.style.top="110px";
             } else {
                 leftSide.style.position  = "relative";
+                leftSide.style.top="0";
             }
 
         }
