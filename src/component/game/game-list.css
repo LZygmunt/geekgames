@@ -6,63 +6,34 @@
 .sticky input {
     margin-bottom: 0;
 }
-.sticky .game-item {
+.sticky .game-element {
     padding: 5px;
 }
 .game-list {
-    width: 70%;
+    width: 80%;
 }
 .game-list input {
     max-width: 980px;
 }
-.game-list .game-element {
-    display: flex;
-    flex-direction: column;
-}
-.game-list .game-element :hover {
+tbody tr:hover {
     background:  var(--darkenen-first-bg-5);
     transition: background 0.3s ease;
 }
-.game-list .game-element a {
-    border-bottom: 2px solid var(--blue);
-    max-width: 1000px;
+thead {
+    margin-bottom: 10px;
 }
-.game-list .game-item {
+
+tbody tr td{
+    padding-bottom: 10px;
+    border-bottom: 2px solid var(--blue);
+}
+.game-list .game-element {
     margin-top: 15px;
     margin-bottom: 15px;
-    /*width: 1000px;*/
-    display: flex;
-    justify-content: space-between;
 }
-.game-list .game-item .title {
-    width: 250px;
+tbody tr:first-child{
+    margin-top:5px;
 }
-.game-list .game-item .create-date {
-    width: 115px;
-    text-align: center;
-}
-.game-list .game-item .author {
-    text-align: center;
-}
-.game-list .game-item .num-of-user {
-    display: flex;
-    align-items: baseline;
-    justify-content: space-between;
-}
-.game-list .game-item .num-of-user-more {
-    background: var(--darkenen-first-bg-5);
-    border-radius: 50px;
-    padding: 3px;
-    margin: 0;
-    width: 20px;
-}
-.game-list .game-item .num-of-post,
-.game-list .game-item .num-of-event {
-    width: 50px;
-    text-align: center;
-}
-.game-list .game-item .author,
-.game-list .game-item .num-of-user,
-.game-list .game-item .num-of-event {
-    width: 100px;
+.game-title, .place{
+    max-width: 150px;
 }
