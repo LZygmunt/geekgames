@@ -14,7 +14,7 @@ const EventMiniList = (props) => {
   />);
 //todo pobierać tylko i wyłącznie potrzebne followsy
   return (auth.uid) ?
-    (<div style={{ marginTop:"20px", height: "530px", overflowY: "auto" }}>
+    (<div style={{ marginTop:"20px", height: "435px", overflowY: "auto" }}>
       { eventList }
     </div>) : null
 };

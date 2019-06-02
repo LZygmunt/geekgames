@@ -59,6 +59,7 @@ body {
     margin: 0;
     color: var(--blue   );
     min-height: calc(100vh + 500px);
+    overflow-y: hidden;
 }
 .unselectable {
     -webkit-touch-callout: none;
@@ -98,7 +99,7 @@ a {
     color: inherit;
 }
 #content {
-    margin-top: 130px;
+    margin-top: 25px;
     display: flex;
     justify-content: space-between;
 }
@@ -144,6 +145,8 @@ input[type="file"] {
 }
 #right-side{
     width:70%;
+    overflow-y: auto;
+    height: calc(100vh - 110px - 25px);
 }
 
 input[type="date"]{

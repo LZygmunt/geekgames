@@ -6,9 +6,8 @@
     background: var(--darken-third-bg-25);
     border-radius: 15px;
 }
-.comment .comment-identification {
+.comment .comment-identification{
     max-width: 100px;
-    margin: 0 auto;
 }
 .comment .comment-identification .comment-created {
     font-size: 9px;
