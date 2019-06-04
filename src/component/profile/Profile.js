@@ -3,6 +3,7 @@ import { EventSection, PersonalDataSection, GameSection, SignUp, SignIn} from ".
 import { connect } from "react-redux";
 import { compose } from "redux";
 import { firestoreConnect } from "react-redux-firebase";
+import Loader from "../dashboard/Loader";
 
 import logoSeparator from "./../../images/logo-geek-games.png"
 
@@ -13,8 +14,8 @@ import "./profil-responsive.css";
 
 const Profile = props => {
   const { auth, follows } = props;
- //TODO Sprawdzanie hasła oraz czyszczenie state
-  return (auth.uid) ?
+
+  return (auth) ? ((auth.uid) ?
     (<div>
         <PersonalDataSection auth={ auth }/>
         <EventSection follows={ follows }/>
@@ -28,7 +29,7 @@ const Profile = props => {
             <div className="bottom"/>
         </div>
         <SignUp />
-    </div>);
+    </div>)) : <Loader />;
 };
 
 const mapStateToProps = state => {

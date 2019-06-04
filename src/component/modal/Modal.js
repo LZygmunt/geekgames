@@ -15,8 +15,8 @@ class Modal extends Component {
   }
 
   handleClick = (event) => {
-    if(this.modal && !this.modal.contains(event.target)) this.props.handleClose(event);
-    if(event.key === "Escape") this.props.handleClose(event);
+    if((event.key === "Escape" && this.modal && !this.modal.contains(event.target)) ||
+      (event.type === "mousedown" && (this.modal && !this.modal.contains(event.target)))) this.props.handleClose(event);
   };
 
   render() {

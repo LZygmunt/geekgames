@@ -8,10 +8,8 @@ class GameAdd extends Component {
 
   state = {
     title: "",
-    image: "",
     imageFile: null,
     desc: "",
-    alt: "tekst alternatywny",
     progress: 0
   };
 
@@ -19,10 +17,13 @@ class GameAdd extends Component {
     this.setState({ [event.target.name]: event.target.files ? event.target.files[0] : event.target.value });
   };
 
+
   handleSubmit = event => {
     event.preventDefault();
     let game = {
-
+      title: this.state.title,
+      desc: this.state.desc,
+      alt: this.state.title
     };
     const upload = storage.ref(`images/${ this.state.imageFile.name }`).put(this.state.imageFile);
     upload.on("state_changed",
@@ -30,12 +31,12 @@ class GameAdd extends Component {
         this.setState({ progress: Math.round(snapshot.bytesTransferred / snapshot.totalBytes * 100) });
       },
       error => {
-        console.log(error)
+        alert("Błąd podczas przesyłania obrazu. Spróbuj jeszcze raz.");
+        console.log(error);
       },
       () => {
         storage.ref("images").child(this.state.imageFile.name).getDownloadURL().then(url => {
-          this.setState({ image: url });
-          this.props.createGame({...game, image: this.state.image});
+          this.props.createGame({...game, image: url});
           this.setState({
             title: "",
             image: "",
@@ -75,7 +76,7 @@ class GameAdd extends Component {
             onChange={ this.handleChange }
             rows="10"
           />
-          <button onClick={ this.handleSubmit } disabled={ imageFile === null}>Dodaj</button>
+          <button onClick={ this.handleSubmit } disabled={ imageFile === null }>Dodaj</button>
         </form>
       </Modal>
     )

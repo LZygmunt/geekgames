@@ -5,7 +5,6 @@ import { firestoreConnect } from "react-redux-firebase";
 import { Link } from "react-router-dom";
 
 /*
-* TODO 1 obserwowane wydarzenia dla danego użytkownika
 * TODO 2 wyszukiwarka wydarzeń obesrowanych
 * */
 

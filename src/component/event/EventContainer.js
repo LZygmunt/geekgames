@@ -6,10 +6,11 @@ import { firestoreConnect } from "react-redux-firebase";
 import { Redirect } from "react-router-dom";
 
 import "./event-responsive.css";
+import Loader from "../dashboard/Loader";
 
 const EventContainer = ({ events, auth }) => {
-  return (auth.uid) ? (
-    <EventList events={ events }/>
+  return (auth.uid) ? (events ?
+    <EventList events={ events }/> : <Loader />
   ): (<Redirect to="/"/>);
 };
 

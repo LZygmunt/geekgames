@@ -8,7 +8,7 @@ import { Game, GameContainer } from "./component/game";
 import { compose } from "redux";
 import { firebaseConnect } from "react-redux-firebase";
 import { connect } from "react-redux";
-// import Loader from "./component/dashboard/Loader";
+import Loader from "./component/dashboard/Loader";
 
 import logo from "./images/logo.png"
 import logoMini from "./images/logo-geek-games.png"
@@ -17,12 +17,7 @@ import "./App.css";
 
 class App extends Component {
   render() {
-    //TODO ożywić wszystkie guziki
     //TODO ulepszyć system powiadomień
-
-
-    //todo wprowadzenie loadera <- Madzia (jeśli chcesz to dodaj w tych miejscach co nie ma tj.
-    // Profil, Game, Event, GameContainer, EventContainer
 
     const { auth } = this.props;
 
@@ -32,7 +27,7 @@ class App extends Component {
           <NavBar imgSrc={ (window.innerWidth <= 580 )? logoMini : logo } altText={ "GeekGames logo" }/>
           <div id="content">
             <ShortInfo />
-            <div id="right-side">
+            <div id="right-side" className={auth.uid ? "": "guest"}>
               <Switch>
                 <Route exact path="/" component={ Profile }/>
                 <Route path="/games" component={ GameContainer }/>
@@ -54,10 +49,9 @@ class App extends Component {
             </div>
           </div>
         </div>
-        {/*<Loader/>*/}
       </BrowserRouter>
     );
-    return null;
+    return <Loader/>;
   }
 }
 

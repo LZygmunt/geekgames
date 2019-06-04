@@ -71,8 +71,7 @@ class Game extends Component {
             />
           </div>
         ) : (<Loader/>)
-      ) :
-      (<Redirect to="/"/>);
+      ) : (<Redirect to="/"/>);
   }
 }
 

@@ -6,7 +6,7 @@ const GameList = ({ games }) => {
   return (<table className="game-list" cellSpacing="0">
     <thead id="game-header-table" style={{width:"100%"}}>
     <tr>
-      <td className="game-search" colspan="3" >
+      <td className="game-search" colSpan="3" >
         <input type="text" placeholder="Zacznij pisać, aby wyszukać grę" />
       </td>
     </tr>

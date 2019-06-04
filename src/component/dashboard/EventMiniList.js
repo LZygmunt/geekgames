@@ -12,7 +12,7 @@ const EventMiniList = (props) => {
     event={ event }
     follow={ followers && followers.filter(follow => follow.followThingId === event.id && follow) }
   />);
-//todo pobierać tylko i wyłącznie potrzebne followsy
+
   return (auth.uid) ?
     (<div style={{ marginTop:"20px", height: "435px", overflowY: "auto" }}>
       { eventList }

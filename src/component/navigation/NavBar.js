@@ -57,7 +57,6 @@ class NavBar extends Component {
   render() {
     const props = this.props;
     const state = this.state;
-    // console.log("NavBar -> ", props, state)
     const MenuItems = state.menuItems.map(
       item => {
         if (item.button && !props.auth.isEmpty)

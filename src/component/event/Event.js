@@ -7,6 +7,7 @@ import { firestoreConnect } from "react-redux-firebase";
 import { Link } from "react-router-dom";
 import { followEvent, unfollowEvent } from "../../store/actions/postActions";
 import { CommentList } from "../post";
+import Loader from "../dashboard/Loader";
 
 class Event extends Component {
 
@@ -53,7 +54,7 @@ class Event extends Component {
         <div className="post">
           <CommentList game={{ id: event.gameId, title: event.gameTitle}} eventId={ match.params.id }/>
         </div>
-      </div>) : (<div>Ładowanie wydarzenia...</div>)) : (<Redirect to="/"/>);
+      </div>) : (<Loader />)) : (<Redirect to="/"/>);
   }
 }
 
