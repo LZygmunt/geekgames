@@ -15,7 +15,8 @@ class SignUp extends Component {
     passwordConfirm: "",
     colorTheme: "first-set",
     city: "",
-    errorMsg: {
+    avatar: "",
+    errorMassage: {
       email: null,
       password: null,
       passwordConfirm: null,
@@ -41,12 +42,12 @@ class SignUp extends Component {
         if(target.value.length > 20) {
           msg = "Nazwa użytkownika powinna wynosić mniej niż 20 znaków";
           this.setState(prevState => { return {
-            errorMsg: { ...prevState.errorMsg, nick: msg }
+            errorMassage: { ...prevState.errorMassage, nick: msg }
           }});
         } else {
           msg = null;
           this.setState(prevState => { return {
-            errorMsg: { ...prevState.errorMsg, nick: null }
+            errorMassage: { ...prevState.errorMassage, nick: null }
           }});
         }
         break;
@@ -54,12 +55,12 @@ class SignUp extends Component {
         if(target.value.indexOf("@") < 0) {
           msg = "Błędny adres e-mail";
           this.setState(prevState => { return {
-            errorMsg: { ...prevState.errorMsg, email: msg }
+            errorMassage: { ...prevState.errorMassage, email: msg }
           }});
         } else {
           msg = null;
           this.setState(prevState => { return {
-            errorMsg: { ...prevState.errorMsg, email: null }
+            errorMassage: { ...prevState.errorMassage, email: null }
           }});
         }
         break;
@@ -67,12 +68,12 @@ class SignUp extends Component {
         if(target.value.length < 8) {
           msg = "Hasło powinno wynosić więcej niż 8 znaków";
           this.setState(prevState => { return {
-            errorMsg: { ...prevState.errorMsg, password: msg }
+            errorMassage: { ...prevState.errorMassage, password: msg }
           }});
         } else {
           msg = null;
           this.setState(prevState => { return {
-            errorMsg: { ...prevState.errorMsg, password: null }
+            errorMassage: { ...prevState.errorMassage, password: null }
           }});
         }
         break;
@@ -80,12 +81,12 @@ class SignUp extends Component {
         if(target.value !== this.state.password) {
           msg = "Hasła się nie pokrywają";
           this.setState(prevState => { return {
-            errorMsg: { ...prevState.errorMsg, passwordConfirm: msg }
+            errorMassage: { ...prevState.errorMassage, passwordConfirm: msg }
           }});
         } else {
           msg = null;
           this.setState(prevState => { return {
-            errorMsg: { ...prevState.errorMsg, passwordConfirm: null }
+            errorMassage: { ...prevState.errorMassage, passwordConfirm: null }
           }});
         }
         break;
@@ -104,20 +105,19 @@ class SignUp extends Component {
         <form
           onSubmit={ this.handleSubmit }
           name="signUp"
-          noValidate
         >
           <div>
             <input
               type="text"
               name="nick"
               id="nick"
-              className={ !!this.state.errorMsg.nick ? "error-msg" : "" }
+              className={ !!this.state.errorMassage.nick ? "error-msg" : "" }
               placeholder="Podaj nazwę użytkownika"
               value={ this.state.nick }
               onChange={ this.handleChange }
               onBlur={ this.handleBlur }
             />
-            <span className="error-msg">{ this.state.errorMsg.nick }</span>
+            <span className="error-msg">{ this.state.errorMassage.nick }</span>
           </div>
           <div>
             <input
@@ -134,44 +134,44 @@ class SignUp extends Component {
               type="email"
               name="email"
               id="email"
-              className={ !!this.state.errorMsg.email ? "error-msg" : "" }
+              className={ !!this.state.errorMassage.email ? "error-msg" : "" }
               placeholder="Podaj e-mail"
               value={ this.state.email }
               onChange={this.handleChange }
               onBlur={ this.handleBlur }
             />
-            <span className="error-msg">{ this.state.errorMsg.email }</span>
+            <span className="error-msg">{ this.state.errorMassage.email }</span>
           </div>
           <div>
             <input
               type="password"
               name="password"
               id="password"
-              className={ !!this.state.errorMsg.password ? "error-msg" : "" }
+              className={ !!this.state.errorMassage.password ? "error-msg" : "" }
               placeholder="Podaj hasło"
               value={ this.state.password }
               onChange={ this.handleChange }
               onBlur={ this.handleBlur }
             />
-            <span className="error-msg">{ this.state.errorMsg.password }</span>
+            <span className="error-msg">{ this.state.errorMassage.password }</span>
           </div>
           <div>
             <input
               type="password"
               name="passwordConfirm"
               id="passwordConfirm"
-              className={ !!this.state.errorMsg.passwordConfirm ? "error-msg" : "" }
+              className={ !!this.state.errorMassage.passwordConfirm ? "error-msg" : "" }
               placeholder="Potwierdź hasło"
               value={ this.state.passwordConfirm }
               onChange={ this.handleChange }
               onBlur={ this.handleBlur }
             />
-            <span className="error-msg">{ this.state.errorMsg.passwordConfirm }</span>
+            <span className="error-msg">{ this.state.errorMassage.passwordConfirm }</span>
           </div>
           <div>
             <button
               name="signUp"
-              disabled={ Object.values(this.state.errorMsg).filter(val => val).length > 0 && true }
+              disabled={ Object.values(this.state.errorMassage).filter(val => val).length > 0 && true }
             >Zarejsetruj</button>
             { authError && <p>{ authError }</p> }
           </div>
