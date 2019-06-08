@@ -54,7 +54,7 @@ class PersonalDataSection extends Component {
         isEdit: false
       });
     } else {
-      const upload = storage.ref(`images/${this.state.imageFile.name}`).put(this.state.imageFile);
+      const upload = storage.ref(`images/${ this.props.auth.uid }-${ new Date().toLocaleDateString() }`).put(this.state.imageFile);
       upload.on("state_changed",
         snapshot => {
           this.setState({progress: Math.round(snapshot.bytesTransferred / snapshot.totalBytes * 100)});
@@ -85,8 +85,10 @@ class PersonalDataSection extends Component {
 
   handleClick = event => {
     const target = event.target;
+
     if (this.state.isEdit && target.className === "button"){
       this.uploadFile();
+      // console.log(this.state.imageFile && this.state.imageFile.name)
     } else {
       this.setState(prevState => {
         return {

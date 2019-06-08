@@ -20,12 +20,13 @@ class GameAdd extends Component {
 
   handleSubmit = event => {
     event.preventDefault();
+    const date = new Date();
     let game = {
       title: this.state.title,
       desc: this.state.desc,
       alt: this.state.title
     };
-    const upload = storage.ref(`images/${ this.state.imageFile.name }`).put(this.state.imageFile);
+    const upload = storage.ref(`images/${ this.props.auth.uid }-${ date.get }`).put(this.state.imageFile);
     upload.on("state_changed",
       snapshot => {
         this.setState({ progress: Math.round(snapshot.bytesTransferred / snapshot.totalBytes * 100) });

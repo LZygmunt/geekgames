@@ -30,10 +30,11 @@ class App extends Component {
             <div id="right-side" className={auth.uid ? "": "guest"}>
               <Switch>
                 <Route exact path="/" component={ Profile }/>
-                <Route path="/games" component={ GameContainer }/>
-                <Route path="/game/:id" component={ Game }/>
-                <Route path="/events" component={ EventContainer }/>
-                <Route path="/event/:id" component={ Event }/>
+                <Route exact path="/games" component={ GameContainer }/>
+                <Route exact path="/game/:id" component={ Game }/>
+                <Route exact path="/events" component={ EventContainer }/>
+                <Route exact path="/event/:id" component={ Event }/>
+                {/*<Route path="/*" component={ nazwa komponentu }/>*/}
               </Switch>
               <div style={{ display: "block", marginTop: "25px" }}>
                 <span>
