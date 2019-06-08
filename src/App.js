@@ -37,7 +37,7 @@ class App extends Component {
                 <Route exact path="/event/:id" component={ Event }/>
                 <Route path="/*" component={ Error404 }/>
               </Switch>
-              <div style={{ display: "block", marginTop: "25px" }}>
+              <div style={{ display: "block", marginTop: "25px", position:"static", bottom:"0" }}>
                 <span>
                   Linki do grafik:
                 </span>
