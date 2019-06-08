@@ -12,6 +12,7 @@ class PostAdd extends Component {
     title: "",
     desc: ""
   };
+
   togglePost = () => {
     this.setState(prevState => {
       return {
@@ -42,6 +43,10 @@ class PostAdd extends Component {
 
     this.props.createPost(post);
     this.togglePost();
+    this.setState({
+      desc: "",
+      title: ""
+    })
   };
 
   handleChange = (event) => {
