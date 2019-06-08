@@ -58,7 +58,7 @@ export const createComment = comment => {
   }
 };
 
-export const followEvent = (eventId, eventTitle) => {
+export const followEvent = (eventId, event) => {
   return (dispatch, getState, { getFirebase, getFirestore }) => {
     const firestore = getFirestore();
     const profile = getState().firebase.profile;
@@ -69,25 +69,26 @@ export const followEvent = (eventId, eventTitle) => {
       authorNick: profile.nick,
       authorAvatar: profile.avatar,
       followThingId: eventId,
-      message: "Wydarzenie",
-      followTitle: eventTitle,
+      message: "events",
+      followObject: event,
+      followTitleToLowerCase: event.title.toLowerCase(),
       created: new Date()
     }).then(() => {
-      dispatch({ type: "FOLLOW_EVENT", eventId, eventTitle })
+      dispatch({ type: "FOLLOW_EVENT", eventId, event })
     }).catch((err) => {
       dispatch({ type: "FOLLOW_EVENT_ERROR", err })
     });
   }
 };
 
-export const unfollowEvent = (followId, eventTitle) => {
+export const unfollowEvent = (followId, event) => {
   return (dispatch, getState, { getFirebase, getFirestore }) => {
     const firestore = getFirestore();
 
     firestore.collection("followers").doc(
       followId
     ).delete().then(() => {
-      dispatch({ type: "UNFOLLOW_EVENT", followId, eventTitle })
+      dispatch({ type: "UNFOLLOW_EVENT", followId, event })
     }).catch((err) => {
       dispatch({ type: "UNFOLLOW_EVENT_ERROR", err })
     });

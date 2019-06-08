@@ -21,13 +21,13 @@ const postReducer = (state = initState, action) => {
       console.log("created comment error: ", action.err.message);
       return state;
     case "FOLLOW_EVENT":
-      console.log("followed event: ", action.eventTitle);
+      console.log("followed event: ", action.event.title);
       return state;
     case "FOLLOW_EVENT_ERROR":
       console.log("followed event error: ", action.err.message);
       return state;
     case "UNFOLLOW_EVENT":
-      console.log("unfollowed event: ", action.eventTitle);
+      console.log("unfollowed event: ", action.event.title);
       return state;
     case "UNFOLLOW_EVENT_ERROR":
       console.log("unfollowed event error: ", action.err.message);

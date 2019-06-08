@@ -32,11 +32,11 @@ class GameAdd extends Component {
       },
       error => {
         alert("Błąd podczas przesyłania obrazu. Spróbuj jeszcze raz.");
-        console.log(error);
+        // console.log(error);
       },
       () => {
         storage.ref("images").child(this.state.imageFile.name).getDownloadURL().then(url => {
-          this.props.createGame({...game, image: url});
+          this.props.createGame({...game, image: url, titleToLowerCase: this.state.title.toLowerCase()});
           this.setState({
             title: "",
             image: "",

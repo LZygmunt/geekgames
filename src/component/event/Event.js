@@ -13,8 +13,8 @@ class Event extends Component {
 
   followIt = event => {
     event.target.dataset.follower === "false" ?
-      this.props.followEvent(this.props.match.params.id, this.props.event[this.props.match.params.id].title):
-      this.props.unfollowEvent(this.props.followThis[0].id, this.props.event[this.props.match.params.id].title)
+      this.props.followEvent(this.props.match.params.id, this.props.event[this.props.match.params.id]):
+      this.props.unfollowEvent(this.props.followThis[0].id, this.props.event[this.props.match.params.id])
   };
 
   render() {
@@ -60,8 +60,8 @@ class Event extends Component {
 
 const mapDispatchToProps = dispatch => {
   return {
-    followEvent: (eventId, eventTitle) => dispatch(followEvent(eventId, eventTitle)),
-    unfollowEvent: (followId, eventTitle) => dispatch(unfollowEvent(followId, eventTitle))
+    followEvent: (eventId, event) => dispatch(followEvent(eventId, event)),
+    unfollowEvent: (followId, event) => dispatch(unfollowEvent(followId, event))
   }
 };
 

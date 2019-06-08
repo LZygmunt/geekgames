@@ -8,13 +8,14 @@ import "./event-mini.css";
 class EventMini extends Component {
   followIt = () => {
     (this.props.isFollow.length) ?
-      this.props.unfollowMini(this.props.isFollow[0].id, this.props.event.title):
-      this.props.followMini(this.props.event.id, this.props.event.title);
+      this.props.unfollowMini(this.props.isFollow[0].id, this.props.event):
+      this.props.followMini(this.props.event.id, this.props.event);
   };
 
   render() {
     const { event, isFollow } = this.props;
 
+    //todo zabezpieczenie dat - początkowa musi być mniejsza niż końcowa
     return (
       <div className="event-mini">
         <div className="info">
@@ -54,8 +55,8 @@ const mapStateToProps = (state, ownProps) => {
 };
 const mapDispatchToProps = dispatch => {
   return {
-    followMini: (eventId, eventTitle) => dispatch(followEvent(eventId, eventTitle)),
-    unfollowMini: (followId, eventTitle) => dispatch(unfollowEvent(followId, eventTitle))
+    followMini: (eventId, event) => dispatch(followEvent(eventId, event)),
+    unfollowMini: (followId, event) => dispatch(unfollowEvent(followId, event))
   }
 };
 
