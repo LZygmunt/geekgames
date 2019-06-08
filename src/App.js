@@ -9,6 +9,7 @@ import { compose } from "redux";
 import { firebaseConnect } from "react-redux-firebase";
 import { connect } from "react-redux";
 import Loader from "./component/dashboard/Loader";
+import Error404 from "./component/error/Error404";
 
 import logo from "./images/logo.png"
 import logoMini from "./images/logo-geek-games.png"
@@ -34,7 +35,7 @@ class App extends Component {
                 <Route exact path="/game/:id" component={ Game }/>
                 <Route exact path="/events" component={ EventContainer }/>
                 <Route exact path="/event/:id" component={ Event }/>
-                {/*<Route path="/*" component={ nazwa komponentu }/>*/}
+                <Route path="/*" component={ Error404 }/>
               </Switch>
               <div style={{ display: "block", marginTop: "25px" }}>
                 <span>

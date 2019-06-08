@@ -1,8 +1,6 @@
 import React from "react";
 import { EventSection, PersonalDataSection, GameSection, SignUp, SignIn} from "./";
 import { connect } from "react-redux";
-import { compose } from "redux";
-import { firestoreConnect } from "react-redux-firebase";
 import Loader from "../dashboard/Loader";
 
 import logoSeparator from "./../../images/logo-geek-games.png"

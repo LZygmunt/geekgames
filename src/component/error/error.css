@@ -1,0 +1,82 @@
+.scene{
+    width: 65%;
+    background: #4bbab8;
+    height: 60vh;
+    position: absolute;
+    z-index: 1;
+}
+.error-ground{
+    background: url("../../images/404.png") no-repeat;
+    height: 40vh;
+    width: 100%;
+    padding-top: 15vh;
+    position:absolute;
+    z-index: 2;
+    left:11vw;
+    top:3vh;
+}
+.ground{
+    background: url("../../images/ground.png") repeat;
+    height: 10vh;
+    position: absolute;
+    width: 100%;
+    bottom: 0;
+    z-index: 2;
+}
+.mushrooms{
+    background: url("../../images/bad-mushrom.png") no-repeat;
+    height: 25px;
+    position:absolute;
+    width: 25px;
+    z-index: 3;
+    bottom: calc(10vh - 5px);
+    /*width: 25px;*/
+}
+.mario{
+    background: url("../../images/mario.png") no-repeat;
+    height: 48px;
+    position:absolute;
+    width: 35px;
+    z-index: 3;
+    bottom: calc(10vh - 5px);
+    left:calc(50% - 130px);
+}
+.chance{
+    background: url("../../images/chance.png") no-repeat;
+    height: 40px;
+    position:absolute;
+    width: 41px;
+    z-index: 3;
+    bottom: calc(10vh + 65px);
+    left:calc(50% + 70px);
+}
+.brick{
+    background: url("../../images/brick.png") no-repeat;
+    height: 40px;
+    position:absolute;
+    width: 41px;
+    z-index: 3;
+    bottom: calc(10vh + 65px);
+    left:calc(50% + 70px + 40px);
+}
+.mushrooms-up{
+    background: url("../../images/mushrom.png") no-repeat;
+    height: 40px;
+    position:absolute;
+    width: 41px;
+    z-index: 3;
+    bottom: calc(10vh + 65px + 39px);
+    left:calc(50% + 70px + 40px);
+}
+
+.text-404{
+    position:absolute;
+    background: #54ba7c;
+    color: #2b2a2b;
+    width: 150px;
+    padding: 15px;
+    border-radius: 15px;
+    top:260px;
+    left: 150px;
+    z-index: 3;
+}
