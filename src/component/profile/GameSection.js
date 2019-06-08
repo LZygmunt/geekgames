@@ -1,16 +1,8 @@
 import React, {Component} from "react";
 import {GameAdd} from "../game";
-import {compose} from "redux";
-import {firestoreConnect} from "react-redux-firebase";
-import {connect} from "react-redux";
-import {Link} from "react-router-dom";
 import Search from "../search/Search";
-// import {getList} from "../../store/actions/gameActions";
 
 
-/*
-* TODO 2 wyszukiwarka gry
-* */
 class GameSection extends Component {
   state = {
     show: false,
@@ -23,11 +15,6 @@ class GameSection extends Component {
     })
   };
 
-  updateSearch = event => {
-    this.setState({
-      search: event.target.name.value
-    })
-  };
 
   render() {
     return (
@@ -45,6 +32,7 @@ class GameSection extends Component {
           collection="followers"
           className="game-search"
           placeholder="Zacznij pisać, aby wyszukać grę"
+          followerId={ this.props.followerId }
         />
         <GameAdd show={this.state.show} handleClose={this.toggleModal}/>
       </div>

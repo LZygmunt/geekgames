@@ -3,10 +3,8 @@ import { connect } from "react-redux";
 import { compose } from "redux";
 import { firestoreConnect } from "react-redux-firebase";
 import { Link } from "react-router-dom";
+import Search from "../search/Search";
 
-/*
-* TODO 2 wyszukiwarka wydarzeń obesrowanych
-* */
 
 class EventSection extends Component {
   render() {
@@ -24,15 +22,28 @@ class EventSection extends Component {
       <div className="event-section">
         <div className="event-search">
           <h1>Obserwowane wydarzenia:</h1>
-          <input type="text" placeholder="Zacznij pisać, aby wyszukać wydarzenie"/>
+
+          <Search
+            message="events"
+            collection="followers"
+            className="event-search"
+            placeholder="Zacznij pisać, aby wyszukać grę"
+            followerId={ this.props.followerId }
+          />
         </div>
-        <ul>
-          { eventList }
-        </ul>
       </div>
     );
   }
 }
+
+/*
+* <Search
+          message="games"
+          collection="followers"
+          className="game-search"
+          placeholder="Zacznij pisać, aby wyszukać grę"
+        />
+* */
 
 const mapStoreToProps = state => {
   return {

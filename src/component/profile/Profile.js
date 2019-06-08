@@ -18,8 +18,8 @@ const Profile = props => {
   return (auth) ? ((auth.uid) ?
     (<div>
         <PersonalDataSection auth={ auth }/>
-        <EventSection follows={ follows }/>
-        <GameSection follows={ follows }/>
+        <EventSection followerId={ auth.uid }/>
+        <GameSection followerId={ auth.uid }/>
     </div>):
     (<div className="registry">
         <SignIn />
@@ -34,18 +34,8 @@ const Profile = props => {
 
 const mapStateToProps = state => {
   return {
-    auth: state.firebase.auth,
-    follows: state.firestore.ordered.follows
+    auth: state.firebase.auth
   }
 };
 
-export default compose(
-  firestoreConnect(props => [
-    {
-      collection: "followers",
-      where: ["authorId", "==", props.firebase._.authUid],
-      storeAs: "follows"
-    }
-  ]),
-  connect(mapStateToProps)
-)(Profile);
+export default connect(mapStateToProps)(Profile);

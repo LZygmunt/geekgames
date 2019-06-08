@@ -10,9 +10,9 @@ import "./game.css";
 import "./game-list.css";
 import "./game-responsive.css";
 
-const GameContainer = ({ games, auth, followers }) => {
+const GameContainer = ({ games, auth }) => {
   return (auth.uid) ? (games ?
-    <GameList games={ games } followers={ followers }/>: <Loader />
+    <GameList games={ games } />: <Loader />
     ): (<Redirect to="/"/>);
 };
 
