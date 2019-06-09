@@ -20,13 +20,13 @@ class GameAdd extends Component {
 
   handleSubmit = event => {
     event.preventDefault();
-    const date = new Date();
     let game = {
       title: this.state.title,
       desc: this.state.desc,
       alt: this.state.title
     };
-    const upload = storage.ref(`images/${ this.props.auth.uid }-${ date.get }`).put(this.state.imageFile);
+    const name = `${ this.props.auth.uid }-${ new Date().toLocaleDateString() }`;
+    const upload = storage.ref(`images/${ name }`).put(this.state.imageFile);
     upload.on("state_changed",
       snapshot => {
         this.setState({ progress: Math.round(snapshot.bytesTransferred / snapshot.totalBytes * 100) });
@@ -36,7 +36,7 @@ class GameAdd extends Component {
         // console.log(error);
       },
       () => {
-        storage.ref("images").child(this.state.imageFile.name).getDownloadURL().then(url => {
+        storage.ref("images").child(name).getDownloadURL().then(url => {
           this.props.createGame({...game, image: url, titleToLowerCase: this.state.title.toLowerCase()});
           this.setState({
             title: "",
@@ -84,10 +84,16 @@ class GameAdd extends Component {
   }
 }
 
+const mapStateToProps = state => {
+  return {
+    auth: state.firebase.auth
+  }
+};
+
 const mapDispatchToProps = dispatch => {
   return {
     createGame: game => dispatch(createGame(game))
   }
 };
 
-export default connect(null, mapDispatchToProps)(GameAdd);
+export default connect(mapStateToProps, mapDispatchToProps)(GameAdd);

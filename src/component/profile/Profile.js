@@ -11,7 +11,7 @@ import "./games-section.css";
 import "./profil-responsive.css";
 
 const Profile = props => {
-  const { auth, follows } = props;
+  const { auth } = props;
 
   return (auth) ? ((auth.uid) ?
     (<div>

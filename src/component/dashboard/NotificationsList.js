@@ -8,14 +8,14 @@ import { compose } from "redux";
 import "./notifications.css";
 
 const NotificationsList = ({ notifications }) => {
-  const notification = (notifications && notifications.length) ? notifications: false;
+  const notificationList = (notifications && notifications.length) ?
+    notifications.map(notification => <Notifications notification={ notification } key={ notification.id }/>):
+    <Notifications message="Brak powiadomień"/>;
 
   return (
-    <div style={{height: "220px",overflowY: "auto"}}>
+    <div style={{ height: "220px",overflowY: "auto" }}>
       <div className="notification-list">
-      { notification ?
-        notification.map(notification => <Notifications message={ notification.content } key={ notification.id }/>) :
-        <Notifications message="Brak powiadomień"/> }
+      { notificationList }
     </div>
     </div>
   )

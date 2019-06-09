@@ -43,7 +43,8 @@ class PersonalDataSection extends Component {
       colorTheme: this.state.colorTheme,
       avatar: this.state.avatar
     };
-    if( this.state.imageFile === null) {
+    const name = `${ this.props.auth.uid }-${ new Date().toLocaleDateString() }`;
+    if(this.state.imageFile === null) {
       this.props.updateUserProfile(user);
       this.setState({
         nick: "",
@@ -54,7 +55,7 @@ class PersonalDataSection extends Component {
         isEdit: false
       });
     } else {
-      const upload = storage.ref(`images/${ this.props.auth.uid }-${ new Date().toLocaleDateString() }`).put(this.state.imageFile);
+      const upload = storage.ref(`images/${ name }`).put(this.state.imageFile);
       upload.on("state_changed",
         snapshot => {
           this.setState({progress: Math.round(snapshot.bytesTransferred / snapshot.totalBytes * 100)});
@@ -63,7 +64,7 @@ class PersonalDataSection extends Component {
           console.log(error)
         },
         () => {
-          storage.ref("images").child(this.state.imageFile.name).getDownloadURL().then(url => {
+          storage.ref("images").child(name).getDownloadURL().then(url => {
             this.setState({ avatar: url });
             this.props.updateUserProfile({...user, avatar: this.state.avatar});
             this.setState({
