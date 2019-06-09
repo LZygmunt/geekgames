@@ -13,6 +13,20 @@ class EventAdd extends Component {
     endDate: new Date().toJSON().slice(0,10)
   };
 
+  handleBlur = event => {
+    let start = new Date(this.state.startDate.slice(0,4),this.state.startDate.slice(5,7),this.state.startDate.slice(8,10));
+    let stop = new Date(this.state.endDate.slice(0,4),this.state.endDate.slice(5,7),this.state.endDate.slice(8,10));
+
+    if(start > stop) {
+      document.getElementById("errorDate").style.display='block';
+      document.getElementById("submitButton").setAttribute('disabled','');
+    } else{
+      document.getElementById("errorDate").style.display='none';
+      document.getElementById("submitButton").removeAttribute('disabled');
+
+    }
+  };
+
   handleChange = event => {
     this.setState({ [event.target.name]: event.target.value })
   };
@@ -53,15 +67,21 @@ class EventAdd extends Component {
             type="date"
             name="startDate"
             value={ startDate }
+            onBlur={this.handleBlur}
             onChange={ this.handleChange }
+            min={new Date().toJSON().slice(0,10)}
           />
           <span style={{padding: "0 16px"}}>-</span>
           <input
             type="date"
             name="endDate"
             value={ endDate }
+            onBlur={this.handleBlur}
             onChange={ this.handleChange }
+            min={new Date().toJSON().slice(0,10)}
+
           />
+          <div id="errorDate" style={{display:'none'}}>Data rozpoczęcia jest później niż data zakończenia</div>
           <textarea
             name="desc"
             value={ desc }
@@ -70,7 +90,7 @@ class EventAdd extends Component {
             rows="10"
             onChange={ this.handleChange }
           />
-          <button onClick={ this.handleSubmit }>Dodaj</button>
+          <button id="submitButton" onClick={ this.handleSubmit }>Dodaj</button>
         </form>
       </Modal>
     )
