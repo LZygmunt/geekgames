@@ -10,7 +10,7 @@
   }
   .game-list .game-item .title,
   .game-list .game-item .author,
-  .game-list .game-item .create-date,
+  .game-list .game-item .second-col,
   .game-list .game-item .num-of-user,
   .game-list .game-item .num-of-post {
     display: block;
@@ -28,7 +28,7 @@
   }
   .game-list .game-item .title,
   .game-list .game-item .author,
-  .game-list .game-item .create-date {
+  .game-list .game-item .second-col {
     display: block;
     width: 50%;
   }
@@ -40,8 +40,8 @@
   .game-list {
     width: 100%;
   }
-  .game-list .game-element .game-item .create-date,
-  .game-list #game-header-table .game-item .create-date,
+  .game-list .game-element .game-item .second-col,
+  .game-list #game-header-table .game-item .second-col,
   .game-list .game-element .game-item .num-of-user,
   .game-list #game-header-table .game-item .num-of-user,
   .game-list .game-element .game-item .num-of-post,

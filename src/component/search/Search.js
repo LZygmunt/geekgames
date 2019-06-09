@@ -88,7 +88,7 @@ class Search extends Component {
                 {item.title}
               </Link>
             </td>
-            <td className="create-date"> {item.created.toDate().toLocaleDateString()}</td>
+            <td className="second-col"> {item.created.toDate().toLocaleDateString()}</td>
             <td className="author"> {item.authorNick}</td>
           </tr>);
         break;
@@ -98,10 +98,8 @@ class Search extends Component {
           <tr className="game-element" key={item.id}>
 
             <td className="title"><Link to={"/event/" + item.id}> {item.title}</Link></td>
-            <td className="place"> {item.place} </td>
-            <td className="game-title">{item.gameTitle}</td>
-            <td className="start-date"> {item.startDate}</td>
-            <td className="author"> {item.authorNick}</td>
+            <td className="second-col"> {item.place} </td>
+            <td className="author"> {item.startDate}</td>
           </tr>
         );
         break;
@@ -143,7 +141,7 @@ class Search extends Component {
           </tr>
           <tr className="game-item">
             <td className="title">Nazwa gry</td>
-            <td className="create-date">Data stworzenia</td>
+            <td className="second-col">Data stworzenia</td>
             <td className="author">Nick autora</td>
           </tr>
           </thead>
@@ -167,11 +165,9 @@ class Search extends Component {
           </td>
         </tr>
         <tr className="game-item">
-          <td className="title">Nazwa wydarzenia</td>
-          <td className="place">Miejsce</td>
-          <td className="game-title">Nazwa gry</td>
-          <td className="start-date">Data rozpoczęcia</td>
-          <td className="author">Nick autora</td>
+          <td>Nazwa wydarzenia</td>
+          <td>Miejsce</td>
+          <td>Data rozpoczęcia</td>
         </tr>
         </thead><tbody>
       {listOfSearch}

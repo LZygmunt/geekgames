@@ -3,7 +3,7 @@
     background: #4bbab8;
     height: 60vh;
     position: absolute;
-    z-index: 1;
+    z-index: -3;
 }
 .error-ground{
     background: url("../../images/404.png") no-repeat;
@@ -41,6 +41,15 @@
     bottom: calc(10vh - 5px);
     left:calc(50% - 130px);
 }
+.mario-up{
+    background: url("../../images/mario-up.png") no-repeat;
+    height: 48px;
+    position:absolute;
+    width: 35px;
+    z-index: 3;
+    bottom: calc(10vh - 5px);
+    left:calc(50% - 130px);
+}
 .chance{
     background: url("../../images/chance.png") no-repeat;
     height: 40px;
@@ -71,12 +80,12 @@
 
 .text-404{
     position:absolute;
-    background: #54ba7c;
-    color: #2b2a2b;
+    background: #95581f;
+    color: #c9c8c9;
     width: 150px;
     padding: 15px;
     border-radius: 15px;
-    top:260px;
-    left: 150px;
+    top:240px;
+    left: 110px;
     z-index: 3;
 }
