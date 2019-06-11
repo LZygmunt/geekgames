@@ -1,8 +1,7 @@
 import React from 'react';
-import { Link } from "react-router-dom";
 import Search from "../search/Search";
 
-const EventList = ({ events }) => {
+const EventList = () => {
   return (
     <Search
       message="event-list"

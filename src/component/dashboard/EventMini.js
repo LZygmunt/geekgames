@@ -15,7 +15,6 @@ class EventMini extends Component {
   render() {
     const { event, isFollow } = this.props;
 
-    //todo zabezpieczenie dat - początkowa musi być mniejsza niż końcowa
     return (
       <div className="event-mini">
         <div className="info">

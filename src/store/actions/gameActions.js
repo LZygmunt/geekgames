@@ -1,5 +1,3 @@
-import {firebase} from "../../config/fbConfig";
-
 export const createGame = game => {
   return (dispatch, getState, {getFirebase, getFirestore}) => {
     const firestore = getFirestore();
@@ -46,7 +44,6 @@ export const followGame = (gameId, game) => {
 export const unfollowGame = (followId, game) => {
   return (dispatch, getState, {getFirebase, getFirestore}) => {
     const firestore = getFirestore();
-    // const authorId = getState().firebase.auth.uid;
 
     firestore.collection("followers").doc(
       followId
@@ -55,23 +52,5 @@ export const unfollowGame = (followId, game) => {
     }).catch((err) => {
       dispatch({type: "UNFOLLOW_GAME_ERROR", err})
     });
-  }
-};
-
-export const getList = (collection, search) => {
-  return async (dispatch, getState, {getFirebase, getFirestore}) => {
-    const firestore = getFirestore();
-    const authorId = getState().firebase.auth.uid;
-
-    const follow = firestore.collection("followers").where("message", "==", collection).get();
-    // follow.map(follow => follow.followThingId);
-console.log("action" , follow);
-    const followList = await firestore.collection(collection)
-      .orderBy("titleToLowerCase")
-      .startAt(search)
-      .endAt(search + "\uf8ff")
-      .get();
-
-    return followList.filter(item => follow.include(item.id));
   }
 };

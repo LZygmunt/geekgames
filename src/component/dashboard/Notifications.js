@@ -2,7 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 
 const Notifications = ({ notification, message }) => {
-  let msg, collection;
+  let msg, collection; console.log(notification)
   switch (notification && notification.message) {
     case "games":
       msg = "Gra";
@@ -30,11 +30,9 @@ const Notifications = ({ notification, message }) => {
         message ?
           <p> { message }</p>:
           <p>
-            { msg }&nbsp;
-            <Link to={`/${ collection }/${ notification.objectId }`}>
+            { msg } <Link to={`/${ collection }/${ notification.objectId }`} >
               "{ notification.objectTitle }"
-            </Link>&nbsp;
-            { notification.content }
+            </Link> { notification.content }
           </p>
       }
     </div>

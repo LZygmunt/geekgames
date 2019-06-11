@@ -100,7 +100,8 @@ class PersonalDataSection extends Component {
           email: this.props.auth.email,
           city: this.props.profile.city,
           avatar: this.props.profile.avatar,
-          colorTheme: this.props.profile.colorTheme
+          colorTheme: this.props.profile.colorTheme !== "" ?
+            this.props.profile.colorTheme : "first-set"
         }
       });
     }
@@ -108,9 +109,9 @@ class PersonalDataSection extends Component {
   };
 
   render() {
-    const { nick, email, city, isEdit } = this.state;
-    const { auth, profile } = this.props;
 
+    const { auth, profile } = this.props;
+    const { nick, email, city, isEdit } = this.state;
     const avatar = (profile.avatar === "") ? <i className="far fa-user-circle"/> : <img src={ profile.avatar } alt={ profile.nick } width="280px"/>;
 
     return (

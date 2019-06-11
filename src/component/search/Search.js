@@ -10,15 +10,16 @@ class Search extends Component {
     list: []
   };
 
-  handleChange = event => {
+  handleChange = async event => {
     const evt = event ? event.target.value : "";
     this.setState({search: evt});
-    this.searchFor(evt);
+    await this.searchFor(evt);
   };
 
-  componentDidMount() {
-    this.searchFor("");
+  async componentDidMount() {
+    await this.searchFor("");
   }
+
 
   searchFor = async (search) => {
     let snapshot;
@@ -42,8 +43,6 @@ class Search extends Component {
           .startAt(search)
           .endAt(search + "\uf8ff")
           .get();
-
-
         break;
       }
     }
@@ -54,7 +53,7 @@ class Search extends Component {
       array.push({...item.data(), id:item.id})
     );
 
-    this.setState({list: array});
+    this.setState({list: await array});
   };
 
   render() {

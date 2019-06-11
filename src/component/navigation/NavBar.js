@@ -46,6 +46,7 @@ class NavBar extends Component {
   signOutLink = () => {
     const { firebase } = this.props;
     this.props.signOut(firebase);
+    document.body.className = "";
   };
 
   toggleModal = event => {
