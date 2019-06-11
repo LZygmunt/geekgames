@@ -46,7 +46,11 @@
 .hide {
     display: none;
 }
-
+#errorDate{
+    color: red;
+    text-align: center;
+    margin-top: -21px;
+}
 @media screen and (min-width: 768px) {
     .modal-main {
         margin-top: 5% !important;
