@@ -2,12 +2,39 @@ import React, { Component } from "react";
 import { Comment } from "./index";
 import { connect } from "react-redux";
 import { createComment } from "../../store/actions/postActions";
-import { compose } from "redux";
-import { firestoreConnect } from "react-redux-firebase";
+import { firebase } from "../../config/fbConfig"
 
 class CommentList extends Component{
   state = {
-    newComment: ""
+    newComment: "",
+    comments: [],
+    more: false,
+    demount: null
+  };
+
+  componentDidMount = async () => {
+    this.setState({ demount: await this.showMore() });
+    if (this.state.demount && this.state.demount.docs && this.state.demount.docs.length > 1) {
+      this.setState({
+        more: true
+      });
+    }
+  };
+
+  componentWillUnmount() {
+    this.state.demount();
+  }
+
+  getMore = async () => {
+    const { comments } = this.state;
+    let lastComment = comments && comments[comments.length - 1];
+    this.setState({ demount: await this.showMore(lastComment) });
+
+    if (this.state.demount && this.state.demount.docs && this.state.demount.docs.length <= 1) {
+      this.setState({
+        more: false
+      })
+    }
   };
 
   handleChange = (event) => {
@@ -22,42 +49,70 @@ class CommentList extends Component{
       comment: this.state.newComment,
       postId: (this.props.postId) ? this.props.postId: "",
       eventId: (this.props.eventId) ? this.props.eventId: "",
-      appearTitle: this.props.game.title,
+      appearTitle: this.props.eventTitle,
       message: (this.props.eventId) ? "event": "post",
-      gameId: this.props.game.id
+      gameId: this.props.gameId
     };
     this.props.createComment(comment);
     this.setState({
       newComment: ""
     })
   };
-//TODO pokazywanie komentarzy - stronnicowanie
-  showMore = async () => {
-    // let first = db.collection("cities")
-    //   .orderBy("population")
-    //   .limit(25);
-    //
-    // return first.get().then(function (documentSnapshots) {
-    //   // Get the last visible document
-    //   var lastVisible = documentSnapshots.docs[documentSnapshots.docs.length-1];
-    //   console.log("last", lastVisible);
-    //
-    //   // Construct a new query starting at this document,
-    //   // get the next 25 cities.
-    //   var next = db.collection("cities")
-    //     .orderBy("population")
-    //     .startAfter(lastVisible)
-    //     .limit(25);
-    // });
 
+  showMore = async lastComment => {
+    const ref = firebase.firestore().collection('comments');
+    try {
+      let startAfter = lastComment && await firebase.firestore().collection('comments').doc(lastComment.id).get();
+
+      let path, idValue;
+      if (this.props.postId) {
+        path = "postId";
+        idValue = this.props.postId
+      } else {
+        path = "eventId";
+        idValue = this.props.eventId
+      }
+
+      let query;
+      lastComment
+        ? query = ref
+          .where(path, "==", idValue)
+          .orderBy("created", "desc")
+          .startAfter(startAfter)
+          .limit(5)
+        : query = ref
+          .where(path, "==", idValue)
+          .orderBy("created", "desc")
+          .limit(5);
+      return await query.onSnapshot({
+        next: snapshot => {
+          if (snapshot.docs.length === 0) this.setState({ more: false });
+          let cmnt = [];
+          let top = false;
+          snapshot.docs.forEach(doc => this.state.comments.find(comment => comment.id === doc.id)
+            ? top = true
+            : cmnt.push({ ...doc.data(), id: doc.id })
+          );
+          this.setState(prevState => {
+            cmnt = top ? cmnt.concat(prevState.comments) : prevState.comments.concat(cmnt);
+            return {
+              comments: cmnt
+            }
+          });
+        },
+        error: error => console.log(error),
+        complete: () => console.log("Query complete")
+      });
+    } catch (error) {
+      console.log(error)
+    }
   };
 
   render() {
-    const { comments } = this.props;
-// console.log(this.props)
+    const { comments } = this.state;
+
     const commentList = comments
       && comments.map(comment => <Comment comment={ comment } key={ comment.id }/>);
-
     return (<div className={ "comments " }>
       <div className="comment-add">
         <input
@@ -72,22 +127,12 @@ class CommentList extends Component{
       <div className="comment-list">
         { commentList }
       </div>
-      <div className="comment-extend">
-        <div className="button" onClick={ this.showMore }>Więcej komentarzy...</div>
-      </div>
+      {this.state.more ? <div className="comment-extend">
+        <div className="button" onClick={this.getMore}>Więcej komentarzy...</div>
+      </div>:null}
     </div>)
   }
 }
-
-const mapStoreToProps = (state, ownProps) => {
-  const id = (ownProps.postId) ? ownProps.postId: ownProps.eventId;
-  // console.log(state.firestore.ordered[`comments-${id}`] && state.firestore.ordered[`comments-${id}`][4])
-
-  return {
-    comments: state.firestore.ordered[`comments-${id}`],
-    last: state.firestore.ordered[`comments-${id}`] && state.firestore.ordered[`comments-${id}`][4]
-  }
-};
 
 const mapDispatchToProps = dispatch => {
   return {
@@ -95,14 +140,4 @@ const mapDispatchToProps = dispatch => {
   }
 };
 
-export default compose(
-  firestoreConnect( props => [
-    {
-      collection: "comments",
-      orderBy: ["created", "desc"],
-      where: props.postId ? ["postId", "==", props.postId] : ["eventId", "==", props.eventId],
-      storeAs: `comments-${props.postId ? props.postId: props.eventId}`
-    }
-  ]),
-  connect(mapStoreToProps, mapDispatchToProps)
-)(CommentList);
+export default connect(null, mapDispatchToProps)(CommentList);

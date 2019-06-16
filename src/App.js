@@ -18,7 +18,6 @@ import "./App.css";
 
 class App extends Component {
   render() {
-    //TODO ulepszyć system powiadomień
 
     const { auth } = this.props;
 
@@ -37,17 +36,6 @@ class App extends Component {
                 <Route exact path="/event/:id" component={ Event }/>
                 <Route path="/*" component={ Error404 }/>
               </Switch>
-              <div style={{ display: "block", marginTop: "25px", position:"static", bottom:"0" }}>
-                <span>
-                  Linki do grafik:
-                </span>
-                <p>
-                  Image by <a href="https://pixabay.com/users/Comfreak-51581/?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=image&amp;utm_content=1042480">Jonny Lindner</a> from <a href="https://pixabay.com/?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=image&amp;utm_content=1042480">Pixabay</a>
-                </p>
-                <p>
-                  Image by <a href="https://pixabay.com/users/OpenClipart-Vectors-30363/?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=image&amp;utm_content=1295429">OpenClipart-Vectors</a> from <a href="https://pixabay.com/?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=image&amp;utm_content=1295429">Pixabay</a>
-                </p>
-              </div>
             </div>
           </div>
         </div>

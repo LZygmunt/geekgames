@@ -25,7 +25,6 @@ class Game extends Component {
   };
 
   followIt = () => {
-    console.log(this.props.follow);
     (this.props.follow.length) ?
       this.props.unfollowGame(this.props.follow[0].id, this.props.game[this.props.match.params.id]) :
       this.props.followGame(this.props.match.params.id, this.props.game[this.props.match.params.id]);

@@ -23,7 +23,7 @@ class PostComponent extends Component {
     return (<div className="post">
         <PostDescribe post={post} showComment={ showComment }/>
         { showComment ?
-          <CommentList postId={ post.id } game={ game }/>:
+          <CommentList postId={ post.id } gameId={ game.id }/>:
           <div onClick={ this.showComment }>Rozwiń</div>
         }
     </div>);

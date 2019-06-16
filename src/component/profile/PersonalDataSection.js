@@ -105,7 +105,6 @@ class PersonalDataSection extends Component {
         }
       });
     }
-
   };
 
   render() {

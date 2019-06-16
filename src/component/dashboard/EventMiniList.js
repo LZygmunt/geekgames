@@ -31,8 +31,8 @@ export default compose(
   firestoreConnect([
     {
       collection: "events",
-      where: ["startDate", ">=", new Date().toJSON().slice(0,10)],
-      orderBy: ["startDate", "asc"],
+      where: ["endDate", ">=", new Date().toJSON().slice(0,10)],
+      orderBy: ["endDate", "asc"],
       limit: 5,
       storeAs: "eventMiniList"
     },

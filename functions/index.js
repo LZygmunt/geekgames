@@ -6,6 +6,11 @@ const createNotifications = notification => {
   let ref = admin.firestore().collection("followArray")
     .doc(`${ notification.array.message }-${ notification.array.id }`);
 
+  if (notification.type === "follow")
+    return ref.get().then(doc => admin.firestore().collection("notifications")
+      .add(notification)
+      .then(doc => console.log("notification added", doc)));
+
   return ref.get().then(doc => admin.firestore().collection("notifications")
     .add({ ...notification, followers: doc.data().followers })
     .then(doc => console.log("notification added", doc)));
@@ -14,14 +19,20 @@ const createNotifications = notification => {
 const followsArrayAdd = follows => {
   return admin.firestore().collection("followArray")
     .doc(`${ follows.message }-${ follows.id }`)
-    .update({ followers: admin.firestore.FieldValue.arrayUnion(follows.follower) })
+    .update({
+      followers: admin.firestore.FieldValue.arrayUnion(follows.follower),
+      lastUpdate: admin.firestore.FieldValue.serverTimestamp()
+    })
     .then(doc => console.log("follows added", doc))
 };
 
 const followsArrayRemove = follows => {
   return admin.firestore().collection("followArray")
     .doc(`${ follows.message }-${ follows.id }`)
-    .update({ followers: admin.firestore.FieldValue.arrayRemove(follows.follower) })
+    .update({
+      followers: admin.firestore.FieldValue.arrayRemove(follows.follower),
+      lastUpdate: admin.firestore.FieldValue.serverTimestamp()
+    })
     .then(doc => console.log("follows added", doc))
 };
 
@@ -40,7 +51,8 @@ exports.follow = functions.firestore
 
     const notification = {
       content: "została/-o zaobserwowana/-e",
-      receiverId: follow.authorId,
+      type: "follow",
+      followers: [follow.authorId],
       objectTitle: follow.followObject.title,
       message: follow.message,
       array: {
@@ -69,7 +81,8 @@ exports.unfollow = functions.firestore
 
     const notification = {
       content: "nie jest obserwowana/-e",
-      receiverId: follow.authorId,
+      type: "follow",
+      followers: [follow.authorId],
       objectTitle: follow.followObject.title,
       message: follow.message,
       array: {
@@ -90,6 +103,7 @@ exports.createPost = functions.firestore
 
     const notification = {
       content: "został dodany nowy post",
+      type: "createPost",
       objectId: post.gameId,
       objectTitle: post.gameTitle,
       message: "posts",
@@ -109,7 +123,7 @@ exports.createGame = functions.firestore
   .onCreate(doc => {
     return admin.firestore().collection("followArray")
       .doc(`game-${ doc.id }`)
-      .set({ followers: [] });
+      .set({ followers: [], created: admin.firestore.FieldValue.serverTimestamp() });
   });
 
 exports.createComment = functions.firestore
@@ -120,6 +134,7 @@ exports.createComment = functions.firestore
 
     const notification = {
       content: "został dodany nowy komentarz",
+      type: "createComment",
       objectId: comment.eventId,
       message: "comments",
       array: {
@@ -141,14 +156,15 @@ exports.createEvent = functions.firestore
 
     admin.firestore().collection("followArray")
       .doc(`event-${ doc.id }`)
-      .set({ followers: [] });
+      .set({ followers: [], created: admin.firestore.FieldValue.serverTimestamp() });
 
     const notification = {
       content: "zostało dodane nowe wydarzenie",
+      type: "createEvent",
       message: "events",
       array: {
-          message: "event",
-          id: event
+          message: "game",
+          id: event.gameId
       },
       objectId: doc.id,
       objectTitle: event.title,

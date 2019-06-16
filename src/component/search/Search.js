@@ -7,53 +7,65 @@ class Search extends Component {
     search: "",
     limit: 30,
     last: "",
-    list: []
+    list: [],
+    demount: null
   };
 
   handleChange = async event => {
     const evt = event ? event.target.value : "";
-    this.setState({search: evt});
-    await this.searchFor(evt);
+    this.setState({ search: evt });
+    this.setState({ demount: await this.searchFor(evt.toLowerCase()) });
   };
 
-  async componentDidMount() {
-    await this.searchFor("");
+  componentDidMount = async () => {
+    this.setState({ demount: await this.searchFor("") });
+  };
+
+  componentWillUnmount() {
+    this.state.demount();
   }
 
-
   searchFor = async (search) => {
-    let snapshot;
+    const array = [];
     switch (this.props.message) {
       case "games":
       case "events":
       {
-        snapshot = await firebase.firestore().collection(this.props.collection)
+        return await firebase.firestore().collection(this.props.collection)
           .where('authorId','==', this.props.followerId)
           .where('message', '==', this.props.message)
           .orderBy('followTitleToLowerCase')
           .startAt(search)
           .endAt(search + "\uf8ff")
           .limit(5)
-          .get();
-        break;
+          .onSnapshot({
+            next: snapshot => {
+              snapshot.docs.forEach(item =>
+                array.push({...item.data(), id:item.id})
+              );
+              this.setState({ list: array });
+            },
+            error: error => console.log(error),
+            complete: () => console.log("Query completed")
+          });
       }
       default:{
-        snapshot = await firebase.firestore().collection(this.props.collection)
+        return await firebase.firestore().collection(this.props.collection)
           .orderBy('titleToLowerCase')
           .startAt(search)
           .endAt(search + "\uf8ff")
-          .get();
-        break;
+          .onSnapshot({
+            next: snapshot => {
+              snapshot.docs.forEach(item =>
+                array.push({...item.data(), id:item.id})
+              );
+              this.setState({ list: array });
+            },
+            error: error => console.log(error),
+            complete: () => console.log("Query completed")
+          });
       }
     }
-
-    const array = [];
-
-    snapshot.docs.forEach(item =>
-      array.push({...item.data(), id:item.id})
-    );
-
-    this.setState({list: await array});
   };
 
   render() {

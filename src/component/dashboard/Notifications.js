@@ -2,7 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 
 const Notifications = ({ notification, message }) => {
-  let msg, collection; console.log(notification)
+  let msg, collection;
   switch (notification && notification.message) {
     case "games":
       msg = "Gra";
