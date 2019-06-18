@@ -10,7 +10,11 @@ class EventAdd extends Component {
     place: "",
     desc: "",
     startDate: new Date().toJSON().slice(0,10),
-    endDate: new Date().toJSON().slice(0,10)
+    endDate: new Date().toJSON().slice(0,10),
+    isFill: {
+      place: false,
+      title: false
+    }
   };
 
   handleBlur = event => {
@@ -28,7 +32,31 @@ class EventAdd extends Component {
   };
 
   handleChange = event => {
-    this.setState({ [event.target.name]: event.target.value })
+    const evt = event.target;
+    console.log(evt)
+    this.setState(prevState => {
+      if((evt.name === "place" || evt.name === "title") && evt.value !== "") {
+        return {
+          [evt.name]: evt.value,
+          isFill: {
+            ...this.state.isFill,
+            [evt.name] : true
+          }
+        }
+      }
+      if((evt.name === "place" || evt.name === "title") && evt.value === "") {
+        return {
+          [evt.name]: evt.value,
+          isFill: {
+            ...this.state.isFill,
+            [evt.name] : false
+          }
+        }
+      }
+      return{
+        [evt.name]: evt.value
+      }
+    })
   };
 
   handleSubmit = event => {
@@ -45,7 +73,7 @@ class EventAdd extends Component {
   };
 
   render() {
-    const { title, place, desc, startDate, endDate } = this.state;
+    const { title, place, desc, startDate, endDate, isFill } = this.state;
     return (
       <Modal title="Dodaj wydarzenie" handleClose={ this.props.handleClose } show={ this.props.show }>
         <form>
@@ -90,7 +118,7 @@ class EventAdd extends Component {
             rows="10"
             onChange={ this.handleChange }
           />
-          <button id="submitButton" onClick={ this.handleSubmit }>Dodaj</button>
+          <button id="submitButton" onClick={ this.handleSubmit } disabled={!(isFill.place && isFill.title)}>Dodaj</button>
         </form>
       </Modal>
     )

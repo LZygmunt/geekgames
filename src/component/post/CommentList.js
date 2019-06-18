@@ -14,6 +14,7 @@ class CommentList extends Component{
 
   componentDidMount = async () => {
     this.setState({ demount: await this.showMore() });
+
     if (this.state.demount && this.state.demount.docs && this.state.demount.docs.length > 1) {
       this.setState({
         more: true
@@ -86,7 +87,8 @@ class CommentList extends Component{
           .limit(5);
       return await query.onSnapshot({
         next: snapshot => {
-          if (snapshot.docs.length === 0) this.setState({ more: false });
+          if (snapshot.docs.length < 5) this.setState({ more: false });
+          if (snapshot.docs.length === 5) this.setState({ more: true });
           let cmnt = [];
           let top = false;
           snapshot.docs.forEach(doc => this.state.comments.find(comment => comment.id === doc.id)
