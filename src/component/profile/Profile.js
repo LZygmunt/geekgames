@@ -12,7 +12,7 @@ import "./profil-responsive.css";
 
 const Profile = props => {
   const { auth } = props;
-//TODO nie poprawnie działa zzmiana kolorów
+
   return (auth) ? ((auth.uid) ?
     (<div>
         <PersonalDataSection auth={ auth }/>

@@ -3,15 +3,15 @@
     background: #4bbab8;
     height: 60vh;
     position: absolute;
-    z-index: -3;
+    /*z-index: -3;*/
 }
 .error-ground{
     background: url("../../images/404.png") no-repeat;
     height: 40vh;
-    width: 100%;
+    width: 80%;
     padding-top: 15vh;
     position:absolute;
-    z-index: 2;
+    /*z-index: 2;*/
     left:11vw;
     top:3vh;
 }
@@ -21,14 +21,14 @@
     position: absolute;
     width: 100%;
     bottom: 0;
-    z-index: 2;
+    /*z-index: 2;*/
 }
 .mushrooms{
     background: url("../../images/bad-mushrom.png") no-repeat;
     height: 25px;
     position:absolute;
     width: 25px;
-    z-index: 3;
+    /*z-index: 3;*/
     bottom: calc(10vh - 5px);
     /*width: 25px;*/
 }
@@ -37,7 +37,7 @@
     height: 48px;
     position:absolute;
     width: 35px;
-    z-index: 3;
+    /*z-index: 3;*/
     bottom: calc(10vh - 5px);
     left:calc(50% - 130px);
 }
@@ -46,7 +46,7 @@
     height: 48px;
     position:absolute;
     width: 35px;
-    z-index: 3;
+    /*z-index: 3;*/
     bottom: calc(10vh - 5px);
     left:calc(50% - 130px);
 }
@@ -55,7 +55,7 @@
     height: 40px;
     position:absolute;
     width: 41px;
-    z-index: 3;
+    /*z-index: 3;*/
     bottom: calc(10vh + 65px);
     left:calc(50% + 70px);
 }
@@ -64,7 +64,7 @@
     height: 40px;
     position:absolute;
     width: 41px;
-    z-index: 3;
+    /*z-index: 3;*/
     bottom: calc(10vh + 65px);
     left:calc(50% + 70px + 40px);
 }
@@ -73,7 +73,7 @@
     height: 40px;
     position:absolute;
     width: 41px;
-    z-index: 3;
+    /*z-index: 3;*/
     bottom: calc(10vh + 65px + 39px);
     left:calc(50% + 70px + 40px);
 }
@@ -87,5 +87,5 @@
     border-radius: 15px;
     top:240px;
     left: 110px;
-    z-index: 3;
+    /*z-index: 3;*/
 }

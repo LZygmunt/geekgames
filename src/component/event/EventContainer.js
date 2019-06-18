@@ -5,14 +5,24 @@ import { Redirect } from "react-router-dom";
 
 import "./event-responsive.css";
 
-const EventContainer = ({ events, auth }) => {
+/**
+ * Komponent odpowiadający za przechowywanie widoku listy wydarzeń
+ * @param auth - Obiekt przechowujący informacje o użytkowniku autoryzowanym
+ * @return {*} - Zwraca widok listy wydarzeń
+ */
+const EventContainer = ({ auth }) => {
   return (auth.uid) ? <EventList />: (<Redirect to="/"/>);
 };
 
-const mapStoreToProps = state => {
+/**
+ * Zaciąga dane ze store
+ * @param store - Magazyn przechowujący dane aplikacji
+ * @return {{auth: ((app?: firebase.app.App) => firebase.auth.Auth) | (() => FirebaseAuth) | firebase.auth}} - Zwracany
+ * jest użytkownik autoryzowany
+ */
+const mapStoreToProps = store => {
   return {
-    auth: state.firebase.auth,
-    events: state.firestore.ordered.events
+    auth: store.firebase.auth
   }
 };
 

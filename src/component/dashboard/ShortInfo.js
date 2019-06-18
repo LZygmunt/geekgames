@@ -2,6 +2,11 @@ import React from "react";
 import { EventMiniList, NotificationsList } from "./";
 import { connect } from "react-redux";
 
+/**
+ * Komponent przechowujący listę powiadomień oraz listę wydarzeń najbliższych
+ * @param auth - Obiekt autoryzowanego użytkownika
+ * @returns {null} - Zwraca panel lewy lub brak w przypadku braku autoryzacji użytkownika
+ */
 const ShortInfo = ({ auth }) => {
 
   return (auth.uid) ?
@@ -13,10 +18,11 @@ const ShortInfo = ({ auth }) => {
     </div>) : null
 };
 
-const mapStoreToProps = state => {
+// Zaciągnięcie ze store inforamcji o autoryzowanym użytkowniku
+const mapStoreToProps = store => {
   return {
-    auth: state.firebase.auth
+    auth: store.firebase.auth
   }
 };
 
-export default connect(mapStoreToProps)(ShortInfo);;
+export default connect(mapStoreToProps)(ShortInfo);

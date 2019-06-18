@@ -1,3 +1,7 @@
+/**
+ * Przechowywane są tu elementy menu
+ * @type {*[]} - Tablica zawierająca informacje o elementach menu
+ */
 const MenuItemsData = [
   {
     id: 0,

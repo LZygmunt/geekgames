@@ -66,3 +66,10 @@ This section has moved here: https://facebook.github.io/create-react-app/docs/de
 ### `npm run build` fails to minify
 
 This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+
+Remember!!!
+
+If you want modify cloud function you must install firebase SDK and firebase tools. 
+See [here](https://firebase.google.com/docs/web/setup)
+
+

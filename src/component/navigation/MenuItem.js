@@ -1,9 +1,12 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-const MenuItem = props => {
-  const item = props.item;
-
+/**
+ * Komponent tworzący widok pojedyńczej opcji w menu
+ * @param item - Element menu
+ * @return {*} - Zwraca widok pojedyńczej opcji w menu
+ */
+const MenuItem = ({ item }) => {
   return (
     <Link to={ "/" + item.page }>
       <div className="position-in-menu">

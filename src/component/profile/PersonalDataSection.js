@@ -15,14 +15,19 @@ class PersonalDataSection extends Component {
     progress: 0
   };
 
-  componentDidUpdate(prevProps, prevState, snapshot) {
-    if(this.props.profile.colorTheme !== prevProps.profile.colorTheme) {
+
+  componentDidUpdate = (prevProps, prevState, snapshot) => {
+    if(this.props.profile.colorTheme && this.props.profile.colorTheme !== prevProps.profile.colorTheme ) {
       document.body.className = this.props.profile.colorTheme;
+      let selector = this.props.profile.colorTheme === "first-set" ? ".first" :
+        this.props.profile.colorTheme === "second-set" ? ".second" :
+          this.props.profile.colorTheme === "third-set"? ".third" : ".first";
+      document.querySelector(selector).className += " active";
     }
     if(this.state.colorTheme !== prevState.colorTheme){
       document.body.className = this.state.colorTheme;
     }
-  }
+  };
 
   changeColorSet = event => {
     if (this.state.isEdit) {
@@ -51,7 +56,6 @@ class PersonalDataSection extends Component {
         avatar: "",
         imageFile: null,
         city: "",
-        colorTheme: "",
         isEdit: false
       });
     } else {
@@ -72,7 +76,6 @@ class PersonalDataSection extends Component {
               avatar: "",
               imageFile: null,
               city: "",
-              colorTheme: "",
               isEdit: false
             });
           })
@@ -168,7 +171,7 @@ class PersonalDataSection extends Component {
         <div className="edit-place">
           <div className="colors">
             <p>Kolory: </p>
-            <div className="first active" onClick={ this.changeColorSet } data-switch="colorTheme" data-theme="first-set">
+            <div className="first" onClick={ this.changeColorSet } data-switch="colorTheme" data-theme="first-set">
               <div className="background" data-switch="colorTheme" data-theme="first-set"/>
               <div className="second-background" data-switch="colorTheme" data-theme="first-set"/>
               <div className="third-background" data-switch="colorTheme" data-theme="first-set"/>

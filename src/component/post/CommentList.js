@@ -49,7 +49,7 @@ class CommentList extends Component{
       comment: this.state.newComment,
       postId: (this.props.postId) ? this.props.postId: "",
       eventId: (this.props.eventId) ? this.props.eventId: "",
-      appearTitle: this.props.eventTitle,
+      appearTitle: this.props.title,
       message: (this.props.eventId) ? "event": "post",
       gameId: this.props.gameId
     };
@@ -121,6 +121,7 @@ class CommentList extends Component{
           placeholder="Zacznij pisać..."
           value={ this.state.newComment }
           onChange={ this.handleChange }
+          onKeyDown={ event => event.key === "Enter" ? this.addComment(event): null }
         />
         <i className="fas fa-paper-plane" onClick={ this.addComment }/>
       </div>

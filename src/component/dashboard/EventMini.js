@@ -5,6 +5,11 @@ import { followEvent, unfollowEvent } from "../../store/actions/postActions";
 
 import "./event-mini.css";
 
+/**
+ * Komponent odpowiadający za widok skróconej wersji wydarzenia
+ * @function followIt - Akcja pozwalająca na zaobserwowanie wydarzenia lub też zaprzestania obserwacji
+ * @return {*} - Zwraca widok wydarzenia w skróconej wersji
+ */
 class EventMini extends Component {
   followIt = () => {
     (this.props.isFollow.length) ?
@@ -12,7 +17,7 @@ class EventMini extends Component {
       this.props.followMini(this.props.event.id, this.props.event);
   };
 
-  render() {
+  render = () => {
     const { event, isFollow } = this.props;
 
     return (
@@ -46,12 +51,16 @@ class EventMini extends Component {
   }
 }
 
+// Zaciągnięcie ze store użytkownika autoryzowanego oraz utworzenie obiektu sprawdzającego czy dany użytkownik
+// obserwuje dane wydarzenie
 const mapStateToProps = (state, ownProps) => {
   return {
     auth: state.firebase.auth,
     isFollow: ownProps.follow && ownProps.follow.filter(follow => follow.authorId === state.firebase.auth.uid)
   }
 };
+
+// Odwołanie się do akcji zaobserwowania i zaprzestania obserwacji
 const mapDispatchToProps = dispatch => {
   return {
     followMini: (eventId, event) => dispatch(followEvent(eventId, event)),
@@ -59,4 +68,5 @@ const mapDispatchToProps = dispatch => {
   }
 };
 
+// Połączenie ze storem
 export default connect(mapStateToProps, mapDispatchToProps)(EventMini);

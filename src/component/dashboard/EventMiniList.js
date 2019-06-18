@@ -4,9 +4,15 @@ import { connect } from "react-redux";
 import { compose } from "redux";
 import { firestoreConnect } from "react-redux-firebase";
 
-const EventMiniList = (props) => {
+/**
+ * Komponent odpowiadający za widok listy wydarzeń w skróconej wersji
+ * @param auth - Obiekt autoryzowanego użytkownika
+ * @param events - Obiekt listy wydarzeń
+ * @param followers - Obiekt listy obserwujących
+ * @returns {null} - Zwraca widok listy wydarzeń
+ */
+const EventMiniList = ({ auth, events, followers }) => {
 
-  const { auth, events, followers } = props;
   const eventList = events && events.map(event => <EventMini
     key={ event.id }
     event={ event }
@@ -19,14 +25,16 @@ const EventMiniList = (props) => {
     </div>) : null
 };
 
-const mapStoreToProps = state => {
+// Zaciągnięcie ze store autoryzowanego użytkownika, wydarzeń i obserwujących, i zapisanie ich w propsach
+const mapStoreToProps = store => {
   return {
-    auth: state.firebase.auth,
-    events: state.firestore.ordered.eventMiniList,
-    followers: state.firestore.ordered.eventMiniFollowers
+    auth: store.firebase.auth,
+    events: store.firestore.ordered.eventMiniList,
+    followers: store.firestore.ordered.eventMiniFollowers
   }
 };
 
+// Połączenie z firestore, zaciągnięcie wydareń i obserwujących oraz zapisanie ich w store
 export default compose(
   firestoreConnect([
     {

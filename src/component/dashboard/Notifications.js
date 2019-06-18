@@ -1,6 +1,12 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
+/**
+ * Komponent odpowiadający za widok jednego powiadomienia
+ * @param notification - Obiekt zawierający informacje o powiadomieniu
+ * @param message - wiadomość o braku powiadomień
+ * @returns {*} - Zwraca widok powiadomienia
+ */
 const Notifications = ({ notification, message }) => {
   let msg, collection;
   switch (notification && notification.message) {

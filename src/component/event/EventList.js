@@ -1,6 +1,10 @@
 import React from 'react';
 import Search from "../search/Search";
 
+/**
+ * Komponent odpowiadający za wyświetlenie listy wydarzeń wyszukanych
+ * @return {*} - Zwraca widok listy wyszukanych wydarzeń
+ */
 const EventList = () => {
   return (
     <Search

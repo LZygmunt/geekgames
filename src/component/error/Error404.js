@@ -3,7 +3,12 @@ import React, {Component} from 'react';
 import "./error.css"
 import {Link} from "react-router-dom";
 
-
+/**
+ * Komponent odpowiadający za stronę 404
+ * @function _onMouseMove - Funkcja animująca tło
+ * @param e - Element, na którym wykryto zdarzenie
+ * @return {*} - Komponent zwraca widok strony 404
+ */
 class Error404 extends Component {
   state={
     x:0,
@@ -12,16 +17,17 @@ class Error404 extends Component {
 
   _onMouseMove = (e) =>{
     this.setState({x: e.screenX, y: e.screenY});
-    console.log((this.state.x/18)+","+(this.state.y/18));
+    // console.log((this.state.x/18)+","+(this.state.y/18));
     document.querySelectorAll(".mushrooms").forEach(item => item.style.transform=`translate3d( ${this.state.x/15 - 100}px,0,0)`);
     document.querySelectorAll(".mushrooms-up").forEach(item => item.style.transform=`translate3d( ${this.state.x/60 - 50 }px,0,0)`);
     document.querySelectorAll(".mario").forEach(item => {
+      console.log(this.state.y/6 - 105, "mario");
       item.style.transform=`translate3d( ${this.state.x/18 - 50 }px,${this.state.y/3 - 105 }px,0)`;
       item.className="mario-up";
     });
     document.querySelectorAll(".mario-up").forEach(item => {
       item.style.transform=`translate3d( ${this.state.x/18 - 50 }px,${this.state.y/6 - 105 }px,0)`;
-      console.log(this.state.y/6 - 105);
+      console.log(this.state.y/6 - 105, "mario up");
       if(this.state.y/6 - 105 > -6)
         item.className="mario";
     });
@@ -33,8 +39,8 @@ class Error404 extends Component {
       <div className="scene">
         <div className="error-ground"/>
         <div className="ground"/>
-        <div className="mushrooms" style={{right: '160px'}}/>
-        <div className="mushrooms" style={{right: '130px'}}/>
+        <div className="mushrooms" style={{right: '260px'}}/>
+        <div className="mushrooms" style={{right: '230px'}}/>
         <div className="mario"/>
         <div className="chance"/>
         <div className="brick"/>

@@ -52,7 +52,7 @@ class Event extends Component {
           </ul>
         </div>
         <div className="post">
-          <CommentList gameId={ event.gameId } eventTitle={ event.title } eventId={ match.params.id }/>
+          <CommentList gameId={ event.gameId } title={ event.title } eventId={ match.params.id }/>
         </div>
       </div>) : (<Loader />)) : (<Redirect to="/"/>);
   }
