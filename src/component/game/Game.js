@@ -33,9 +33,10 @@ class Game extends Component {
   render() {
     const {auth, post, match, follow} = this.props;
     const game = this.props.game && this.props.game[match.params.id];
-    // console.log(follow)
+    console.log(game)
     return (auth.uid) ? (
-        (game) ? (
+        (game !== undefined) ? (
+          (game !== null) ? (
           <div id="game">
             <div className="game-property">
               <img
@@ -68,8 +69,7 @@ class Game extends Component {
               handleClose={this.toggleModal}
               game={{gameId: match.params.id, gameTitle: game.title}}
             />
-          </div>
-        ) : (<Loader/>)
+          </div>) : (<Redirect to="/not_found"/>)) :(<Loader/>)
       ) : (<Redirect to="/"/>);
   }
 }
@@ -82,7 +82,7 @@ const mapStoreToProps = state => {
     auth: state.firebase.auth,
     game: state.firestore.data.games,
     post: state.firestore.ordered.posts,
-    follow: emf && emf.filter(follow => g && follow.followThingId === g[0].id && follow)
+    follow: emf && emf.filter(follow => g && g[0] && follow.followThingId === g[0].id && follow)
       .filter(follow => follow.authorId === state.firebase.auth.uid)
   }
 };

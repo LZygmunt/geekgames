@@ -17,17 +17,14 @@ class Error404 extends Component {
 
   _onMouseMove = (e) =>{
     this.setState({x: e.screenX, y: e.screenY});
-    // console.log((this.state.x/18)+","+(this.state.y/18));
     document.querySelectorAll(".mushrooms").forEach(item => item.style.transform=`translate3d( ${this.state.x/15 - 100}px,0,0)`);
     document.querySelectorAll(".mushrooms-up").forEach(item => item.style.transform=`translate3d( ${this.state.x/60 - 50 }px,0,0)`);
     document.querySelectorAll(".mario").forEach(item => {
-      console.log(this.state.y/6 - 105, "mario");
       item.style.transform=`translate3d( ${this.state.x/18 - 50 }px,${this.state.y/3 - 105 }px,0)`;
       item.className="mario-up";
     });
     document.querySelectorAll(".mario-up").forEach(item => {
       item.style.transform=`translate3d( ${this.state.x/18 - 50 }px,${this.state.y/6 - 105 }px,0)`;
-      console.log(this.state.y/6 - 105, "mario up");
       if(this.state.y/6 - 105 > -6)
         item.className="mario";
     });

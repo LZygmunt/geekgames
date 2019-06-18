@@ -41,8 +41,7 @@ class Search extends Component {
           .onSnapshot({
             next: snapshot => {
               snapshot.docs.forEach(item =>
-                array.push({...item.data(), id:item.id})
-              );
+                (!array.find(object => object.id === item.id) || !this.state.list.find(object => object.id === item.id)) && array.push({...item.data(), id:item.id}));
               this.setState({ list: array });
             },
             error: error => console.log(error),
@@ -57,8 +56,7 @@ class Search extends Component {
           .onSnapshot({
             next: snapshot => {
               snapshot.docs.forEach(item =>
-                array.push({...item.data(), id:item.id})
-              );
+                !array.find(object => object.id === item.id) && array.push({...item.data(), id:item.id}));
               this.setState({ list: array });
             },
             error: error => console.log(error),
@@ -107,7 +105,6 @@ class Search extends Component {
       default: {
         listOfSearch = this.state.list.map(item =>
           <tr className="game-element" key={item.id}>
-
             <td className="title"><Link to={"/event/" + item.id}> {item.title}</Link></td>
             <td className="second-col"> {item.place} </td>
             <td className="author"> {item.startDate}</td>

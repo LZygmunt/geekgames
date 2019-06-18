@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { BrowserRouter, Route, Switch } from "react-router-dom";
+import {BrowserRouter, Redirect, Route, Switch} from "react-router-dom";
 import NavBar from "./component/navigation/NavBar";
 import { Event, EventContainer } from "./component/event";
 import { ShortInfo } from "./component/dashboard"
@@ -34,7 +34,8 @@ class App extends Component {
                 <Route exact path="/game/:id" component={ Game }/>
                 <Route exact path="/events" component={ EventContainer }/>
                 <Route exact path="/event/:id" component={ Event }/>
-                <Route path="/*" component={ Error404 }/>
+                <Route path="/not_found" component={ Error404 }/>
+                <Redirect from="/*" to="/not_found"/>
               </Switch>
             </div>
           </div>

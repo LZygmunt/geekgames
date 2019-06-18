@@ -22,7 +22,7 @@ class Event extends Component {
     const event = this.props.event && this.props.event[match.params.id];
 
     return (auth.uid) ? (
-      (event) ? (<div id="event-content">
+      (event !== undefined) ? ((event !== null) ? (<div id="event-content">
         <div id="background-header">
           <h1 id="title-header">{ event.title }</h1>
         </div>
@@ -54,7 +54,8 @@ class Event extends Component {
         <div className="post">
           <CommentList gameId={ event.gameId } title={ event.title } eventId={ match.params.id }/>
         </div>
-      </div>) : (<Loader />)) : (<Redirect to="/"/>);
+      </div>): (<Redirect to="/not_found"/>)) : (<Loader />)
+    ) : (<Redirect to="/"/>);
   }
 }
 
