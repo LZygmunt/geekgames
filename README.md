@@ -1,3 +1,10 @@
+### Test account
+
+Credentials to test page:
+nick: test@test.pl
+pass: test1234
+If not work please contact with me via email lzygmunt0@gmail.com
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
