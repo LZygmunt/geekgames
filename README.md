@@ -1,8 +1,8 @@
 ### Test account
 
-Credentials to test page:
-nick: test@test.pl
-pass: test1234
+Credentials to test page:<br />
+nick: test@test.pl<br />
+pass: test1234<br />
 If not work please contact with me via email lzygmunt0@gmail.com
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
