@@ -1,6 +1,6 @@
 ### Test account
 
-Credentials to test page:<br />
+Credentials for testing app:<br />
 nick: test@test.pl<br />
 pass: test1234<br />
 If not work please contact with me via email lzygmunt0@gmail.com
